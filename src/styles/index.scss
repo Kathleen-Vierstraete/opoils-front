@@ -16,3 +16,9 @@ body {
     font-family: 'Roboto', sans-serif;
   }
 */
+:root {
+  --index: calc(1vw + 1vh)
+}
+::-webkit-scrollbar-track{
+  background-color: #1F1916;
+}
