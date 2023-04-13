@@ -1,5 +1,5 @@
-import texture from '../../../img/texture.png';
-import logo from '../../../img/logo.png';
+import texture from '../../assets/img/texture.png';
+import logo from '../../assets/img/logo.png';
 import './styles.scss';
 
 function AppHeader() {
