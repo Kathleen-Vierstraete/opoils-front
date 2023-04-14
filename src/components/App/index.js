@@ -13,6 +13,8 @@ import DogEdit from '../DogPages/editprofile';
 import DogAdd from '../DogPages/addprofile';
 import UserProfile from '../UserPages/profile';
 import UserEdit from '../UserPages/editprofile';
+import UserSearch from '../SearchPages/usersearch';
+import DogSearch from '../SearchPages/dogsearch';
 
 function App() {
   return (
@@ -31,6 +33,8 @@ function App() {
         <Route path="/ajouter-un-chien" element={<DogAdd />} />
         <Route path="/useredit" element={<UserEdit />} />
         <Route path="/vicky" element={<UserProfile />} />
+        <Route path="/recherche-de-chien" element={<DogSearch />} />
+        <Route path="/recherche-de-proprietaire" element={<UserSearch />} />
       </Routes>
     </div>
   );

@@ -1,0 +1,286 @@
+@use 'src/styles/vars';
+@use 'src/styles/index';
+
+@media (max-width: 1080px) {
+
+  #dog-search-page{
+    background-image: url(../../assets/img/pexels-viktorija-stankevičiūtė-12729351.jpg);
+  }
+  #user-search-page{
+    background-image: url(../../assets/img/pexels-aleksa-kalajdzic-3780917.jpg);
+  }
+
+  #dog-search-page, #user-search-page{
+    display: flex;
+    justify-content: center;
+    background-image: url(../../assets/img/pexels-viktorija-stankevičiūtė-12729351.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    padding-top: 20%;
+    padding-bottom: 5%;
+
+    & .search-div{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width:80%;
+      height: 90%;
+      background-color: #4c858291;
+      border-radius: 30px;
+      display:flex;
+      justify-content: center;
+      flex-direction: column;
+      box-shadow: 2px 2px 10px black;
+      padding-bottom: 5%;
+      padding-top: 10%;
+
+      & #dog-searchbar, #user-searchbar{
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        height:5%;
+        width: 80%;
+        background-color: vars.$primaryDarkColor;
+        border-radius: 15px;
+        box-shadow: 1px 1px 3px black;
+
+        & img{
+          padding-top:10%;
+          width: calc(var(--index) / 1 );
+          height: calc(var(--index) / 1 );
+        }
+
+        & input {
+          width: 50%;
+          outline:none;
+          border: none;
+          font-size: calc(var(--index) / 2);
+          transition: 2s ;
+          background: transparent;
+        }      
+      }
+
+      & .cards{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        width: 100%;
+        height: 80%;
+
+        & .card {
+          background-color: #14110db9;
+          margin-top: calc(var(--index) * 3);
+          width: calc(var(--index) * 17.2);
+          height: calc(var(--index) * 24);
+          border-radius: 10px;
+          overflow: hidden;
+          cursor: pointer;
+          position: relative;
+          color: vars.$primaryLightColor;
+          box-shadow: 2px 2px 10px black;
+
+          & img {
+            position: absolute;
+            object-fit: cover;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            opacity: 0.6;
+            z-index: 1;         
+          }
+
+          & .card-content {
+            height: 100%;
+            padding: 10%;
+            padding-top: 30%;
+
+            & h1 {
+              font-size:calc(var(--index) * 2 ) ;
+              padding-bottom:10% ;
+              background-color: black;
+              border-radius: 10px 10px 0px 0px;
+            }
+
+            & p{
+              padding: 2.5%;
+              background-color: black;
+              border-radius: 0px 0px 10px 10px;
+            }
+
+            & a {
+              height:100%;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: 1080px){
+
+  #dog-search-page{
+    background-image: url(../../assets/img/pexels-viktorija-stankevičiūtė-12729351.jpg);
+  }
+  #user-search-page{
+    background-image: url(../../assets/img/pexels-aleksa-kalajdzic-3780917.jpg);
+  }
+
+  #dog-search-page, #user-search-page{  
+    display: flex;
+    justify-content: center;
+    background-size: cover;
+    height:83.5vh;
+    background-position: 10%;
+    background-repeat: no-repeat;
+    padding-top: 5.4%;
+
+    &  .search-div{
+      width:calc(var(--index) * 60 );
+      height: 90%;
+      background-color: #4c8582a2;
+      border-radius: 30px 10px 10px 30px;
+      display:flex;
+      justify-content: center;
+      flex-direction: column;
+      align-items: center;
+      box-shadow: 2px 2px 10px black;
+      overflow: auto;
+      & #dog-searchbar, #user-searchbar{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height:5%;
+        width: 2.5%;
+        background-color: vars.$primaryDarkColor;
+        border-radius: 15px;
+        box-shadow: inset 4px 4px 6px #070605, inset -4px -4px 6px #473a33;
+        padding-right: 1%;
+        transition: 2s ;
+        & img{
+          padding-top:10%;
+          width: calc(var(--index) / 1 );
+          height: calc(var(--index) / 1 );
+        }
+        & input {
+          color: vars.$primaryLightColor;
+          width: 0%;
+          outline:none;
+          border: none;
+          font-size: calc(var(--index) / 2);
+          transition: 2s ;
+          background: transparent;
+        }
+        & input::placeholder {
+          color: vars.$primaryLightColor;
+          font-size: calc(var(--index) / 1.7)
+        }
+      }
+      & #dog-searchbar:hover input, #user-searchbar:hover input{
+        width: 80%;
+        transition: 2s ;
+      }
+      & #dog-searchbar:hover, #user-searchbar:hover {
+        width: 25%;
+        transition: 1.5s ;
+        padding-left: 2%;
+        padding-right: 2%;
+      }
+      & .cards{
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        width: 100%;
+        height: 80%;
+        & .card {
+          background-color: #14110db9;
+          margin-top: calc(var(--index) * 3);
+          margin-bottom: calc(var(--index) * 1);
+          margin-left: calc(var(--index) * 4 );
+          margin-right: calc(var(--index) * 1);
+          width: calc(var(--index) * 9);
+          height: calc(var(--index) * 12);
+          border-radius: 8%;
+          overflow: hidden;
+          cursor: pointer;
+          position: relative;
+          color: vars.$primaryLightColor;
+          box-shadow: 2px 2px 10px black;
+          & img {
+            position: absolute;
+            object-fit: cover;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            opacity: 0.9;
+            transition: opacity .2s ease-out;        
+            border: calc(var(--index) / 12) solid vars.$primaryDarkColor;  
+          }
+
+          & .card-content {
+            & :hover {
+              background-color: #14110db9;
+              z-index: 1;
+            }
+            & h1 {
+            font-size: calc(var(--index) / 1.2 );
+            position: absolute;
+            inset: auto auto 0% 23%;
+            margin: 0;
+            transition: inset .3s .1s ease-out;
+            font-weight: normal;
+            text-transform: uppercase;
+            color: vars.$primaryLightColor;
+            z-index: 2;
+            background-color: rgba(0, 0, 0, 0.514);
+            border-radius: 10px 10px 10px 10px;
+            padding: 7%;
+            box-shadow: 2px 2px 10px black;
+
+            }
+            & p, a {
+              position: absolute;
+              opacity: 0;
+              transition: opacity .3s ease-out;
+              font-size: calc(var(--index) / 2);
+            }
+            &  p {
+              max-width: 85%;
+              inset: auto auto 20% 10%;
+              color: vars.$primaryLightColor;
+              text-shadow: 1px 1px 10px rgb(0, 0, 0);
+              z-index: 2;
+            }
+            &  a {
+              height:100%;
+              width: 100%;
+              color: inherit;
+              text-decoration: none;
+              z-index: 1;
+            }
+            &:hover h1 {
+              color: vars.$primaryLightColor;
+              inset: auto auto 70% 10%;
+              transition: inset .3s ease-out;
+              text-shadow: 5px 5px 15px rgb(255, 230, 196);
+            }
+            &:hover p, &:hover a {
+              opacity: 1;
+              transition: opacity .5s .1s ease-in;
+              border-radius: 10px;
+              padding: 3%;
+            }
+            
+            &:hover img {
+              transition: opacity .3s ease-in;
+              opacity: 1;
+            }    
+          }
+        }
+      }
+    }
+  }
+}
