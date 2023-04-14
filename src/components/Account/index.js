@@ -11,7 +11,7 @@ function Account() {
       <div id="account-page">
         <div id="account-div">
           <div className="account-cards">
-            <div className="account-ard">
+            <div className="account-card">
               <div className="account-card-header">
                 <div className="account-title">
                   <h1 href="/vicky">Vicky</h1>
