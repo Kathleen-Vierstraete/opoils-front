@@ -1,0 +1,220 @@
+@use 'src/styles/vars';
+@use 'src/styles/index';
+
+@media (max-width: 1080px) {
+
+  #website-description{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-image: url(../../assets/img/pexels-matthias-zomer-103533.jpg);
+    height:110vh;
+    padding-top: calc(var(--index) * 9.1 );
+    background-size: cover;
+    background-repeat: no-repeat;
+    z-index: 2;
+    padding-bottom: 12%;
+    text-align: center;
+
+    & #main-text{
+      width: 95%;
+      padding: 2%;
+      height: 20%;
+      & p{
+        text-shadow: 3px 3px 10px rgb(0, 0, 0);
+        padding-top:5%;
+        font-size: calc(var(--index) * 1.1 );
+      }
+      & h1 {
+        text-shadow: 3px 3px 10px rgb(0, 0, 0);
+        font-size: calc(var(--index) * 1.7 );
+        color:vars.$primaryLightColor;
+      }
+    }
+
+    & #second-text{
+      padding: 2%;
+      width: 95%;
+      height: 20%;
+      & p{
+        text-shadow: 3px 3px 10px rgb(0, 0, 0);
+        padding-top:5%;
+        font-size: calc(var(--index) * 1.1 );
+      }
+      & h1 {
+        text-shadow: 3px 3px 10px rgb(0, 0, 0);
+        font-size: calc(var(--index) * 1.7 );
+        color:vars.$primaryLightColor;
+      }
+    }
+
+    & .nav-div{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      background-color: #1f1916ce;
+      height: 100%;
+      width: 80%;
+      padding: 5%;
+      padding-top: 10%;
+      padding-bottom: 18%;
+      z-index: 1;
+      box-shadow: 3px 10px 30px black;
+      font-size: calc(var(--index) / 1.8 );
+      border-radius: 20px;
+      & .nav {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        width: 100%;
+        height: 20%;
+        & ul{
+          width: 100%;
+          & li{
+            font-size: calc(var(--index) * 1 );
+          text-align: center;
+          color:vars.$primaryLightColor;
+          text-shadow: 2px 2px 7px #f2cc96c0;
+          margin-top: 8%;
+          & a{
+            display: flex;
+            width: 100%;
+            justify-content: center;
+          }
+          & img{
+            height:calc(var(--index) *2);
+          }
+        }
+      }
+
+      & #nav-up li:hover{
+        text-align: center;
+        padding: 5%;
+        background-color: #f2cc9671;
+        width: 100%;
+        border-radius: 10px;
+        box-shadow: 3px 3px 10px black;
+      }
+      & #nav-bottom{
+        & ul{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 5%;
+        margin-left: 10.5%;
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        & li{
+          padding-right: 20%;
+          width: 80%;
+        }
+      }
+      }
+      }
+      }
+    }
+  }
+
+  
+@media (min-width: 1080px) {
+
+#website-description{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  background-image: url(../../assets/img/pexels-matthias-zomer-103533.jpg);
+  height:93.8vh;
+  padding-top: calc(var(--index) * 9.1 );
+  background-size: cover;
+  background-repeat: no-repeat;
+  z-index: 2;
+  & #main-text{
+    width: 40%;
+    padding: 2%;
+  & p{
+    text-shadow: 3px 3px 10px rgb(0, 0, 0);
+    padding-top:5%;
+    font-size: calc(var(--index) / 2 );
+  }
+  & h1 {
+    text-shadow: 3px 3px 10px rgb(0, 0, 0);
+    font-size: calc(var(--index) / 1.2 );
+    color:vars.$primaryLightColor;
+  }
+  }
+  & #second-text{
+    padding: 2%;
+    width: 40%;
+  & p{
+    text-shadow: 3px 3px 10px rgb(0, 0, 0);
+    padding-top:5%;
+    font-size: calc(var(--index) / 2 );
+  }
+  & h1 {
+    text-shadow: 3px 3px 10px rgb(0, 0, 0);
+    font-size: calc(var(--index) / 1.2 );
+    color:vars.$primaryLightColor;
+  }
+  }
+  & .nav-div{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #1f1916ce;
+    height: 40%;
+    padding: 5%;
+    z-index: 1;
+    box-shadow: 3px 10px 30px black;
+    font-size: calc(var(--index) / 1.8 );
+    & .nav {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      width: 10%;
+      & ul{
+        padding-top:1%;
+        width: 10%;
+        width: 100%;
+        & li{
+        text-align: center;
+        color:vars.$primaryLightColor;
+        text-shadow: 2px 2px 7px #f2cc96c0;
+        margin-top: 8%;
+        & a{
+          display: flex;
+          width: 100%;
+          justify-content: center;
+        }
+        & img{
+          height:calc(var(--index) / 1.5);
+        }
+      }
+    }
+    & #nav-up li:hover{
+      text-align: center;
+      padding: 5%;
+      background-color: #f2cc9671;
+      width: 100%;
+      border-radius: 10px;
+      box-shadow: 3px 3px 10px black;
+    }
+    & #nav-bottom{
+      & ul{
+      margin-top: 5%;
+      margin-left: 33%;
+      width: 100%;
+      display: flex;
+      flex-direction: row;
+        & li{
+          padding-right: 20%;
+          width: 10%;
+        }
+      }
+    }
+    }
+    }
+  }
+}
