@@ -4,6 +4,7 @@ import HomePage from '../HomePage';
 import Faq from '../WebsiteInfos/faq';
 import Confidentiality from '../WebsiteInfos/confidentiality';
 import Contact from '../WebsiteInfos/contact';
+import Mentions from '../WebsiteInfos/mentions';
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
         <Route path="/faq" element={<Faq />} />
         <Route path="/termes-de-confidentialite" element={<Confidentiality />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/mentions-legales" element={<Mentions />} />
       </Routes>
     </div>
   );
