@@ -8,6 +8,9 @@ import Mentions from '../WebsiteInfos/mentions';
 import Login from '../Authentification/login';
 import Signin from '../Authentification/signin';
 import Account from '../Account';
+import DogProfile from '../DogPages/profile';
+import DogEdit from '../DogPages/editprofile';
+import DogAdd from '../DogPages/addprofile';
 
 function App() {
   return (
@@ -21,6 +24,9 @@ function App() {
         <Route path="/connexion" element={<Login />} />
         <Route path="/inscription" element={<Signin />} />
         <Route path="/mon-compte" element={<Account />} />
+        <Route path="/snoopy" element={<DogProfile />} />
+        <Route path="/dogedit" element={<DogEdit />} />
+        <Route path="/ajouter-un-chien" element={<DogAdd />} />
       </Routes>
     </div>
   );
