@@ -1,0 +1,275 @@
+@use 'src/styles/vars';
+@use 'src/styles/index';
+
+@media (max-width: 1080px) {
+
+  .authentification-form {
+    display: flex;
+    justify-content: center;
+    background-image: url(../../assets/img/pexels-ylanite-koppens-1495160.jpg);
+    height:120vh;
+    padding-top: 25%;
+    background-size:cover;
+    background-repeat: no-repeat;
+    padding-bottom: 10%;
+
+    & .authentification-form-div {
+      width:70%;
+      box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.822);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      & .authentification-image {
+        order:1;
+        height:100%;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+      }
+
+      & #login-image{
+        background-image: url(../../assets/img/pexels-laura-stanley-3090875.jpg);
+      }
+
+      & #signin-image{
+        background-image: url(../../assets/img/pexels-anna-shvets-4587998.jpg);
+      }
+
+      .authentification-side-text {
+        order: -1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background-image: url(../../assets/img/login.png);
+        width: 100%;
+        height:100%;
+        background-repeat: none;
+        background-size: cover;
+        padding-bottom: 5%;
+
+        & h1{
+          font-size: calc(var(--index) * 2);
+          font-weight: bolder;
+          text-shadow: 1px 1px 5px vars.$primaryLightColor;
+        }
+
+        & .authentification-inputs {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          text-align: left;
+          margin-top: 2%;
+        }
+
+        & label, input, button {
+          text-transform: capitalize;
+          display: block;
+          width: 100%;
+          padding: 0;
+          border: none;
+          outline: none;
+          box-sizing: border-box;
+          text-align: center;
+        }
+
+        & label {
+          margin-bottom: 3%;
+          font-size: calc(var(--index) * 1.2);
+          text-shadow: 2px 2px 3px #000000;
+          margin-top: 3%;
+        }
+            
+        & input::placeholder {
+          color: #f2cc966e;
+          font-size: calc(var(--index) * 1);
+        }
+        
+        & input {
+          color:vars.$primaryLightColor;
+          background: vars.$primaryDarkColor;
+          padding: 5%;
+          padding-left: 10%;
+          width: calc(var(--index) * 15);;
+          height: calc(var(--index) * 3);
+          font-size: calc(var(--index) * 1);
+          border-radius: 50px;
+          box-shadow: inset 6px 6px 6px #070605, inset -6px -6px 6px #473a33;
+        }
+        
+        & button {
+          color: vars.$primaryDarkColor;
+          margin-top: 10%;
+          background: vars.$primaryLightColor;
+          height: calc(var(--index) * 2);
+          width: 65%;
+          border-radius: 20px;
+          cursor: pointer;
+          font-weight: 900;
+          box-shadow: 6px 6px 6px #473a33, -6px -4px 6px #070605;
+          transition: 0.5s;
+          font-size: calc(var(--index) * 1.2)
+        }
+
+        & a {
+          margin-top: 10%;
+          font-size: calc(var(--index) * 1 );
+          color: vars.$primaryDarkColor;
+          font-weight: bolder;
+          text-shadow: 2px 2px 15px #000000;
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: 1080px) {
+
+  .authentification-form {
+    display: flex;
+    justify-content: center;
+    background-image: url(../../assets/img/pexels-ylanite-koppens-1495160.jpg);
+    height:83.5vh;
+    padding-top: 6%;
+    background-size:cover;
+    background-repeat: no-repeat;
+    padding-bottom: 5%;
+
+    & h1{
+      color:vars.$primaryDarkColor
+    }
+
+    & .authentification-form-div {
+      width:50%;
+      box-shadow: 5px 5px 30px rgba(0, 0, 0, 0.822);
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+
+      & #login-image{
+        width: 49.2%;
+        height:100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background-image: url(../../assets/img/pexels-laura-stanley-3090875.jpg);
+        background-repeat: no-repeat;
+        background-size: cover;
+      }
+
+      & .authentification-image {
+        width: 49.2%;
+        height:100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+      }
+
+      & #login-image{
+        background-image: url(../../assets/img/pexels-laura-stanley-3090875.jpg);
+      }
+
+      & #signin-image{
+        background-image: url(../../assets/img/pexels-anna-shvets-4587998.jpg);
+      }
+
+      .authentification-side-text {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background-image: url(../../assets/img/login.png);
+        width: 70%;
+        height:100%;
+        background-repeat: none;
+        background-size: cover;
+        padding-bottom: 5%;
+        padding-top: 3%;
+
+        & h1{
+          font-size: calc(var(--index) / 1.2);
+          font-weight: bolder;
+          text-shadow: 1px 1px 5px vars.$primaryLightColor;
+        }
+
+        & .authentification-inputs{
+          text-align: left;
+          margin-top: 2%;
+        }
+
+        & label, input, button {
+          text-transform: capitalize;
+          display: block;
+          width: 100%;
+          padding: 0;
+          border: none;
+          outline: none;
+          box-sizing: border-box;
+          text-align: center;
+        }
+
+        & label {
+          margin-bottom: 3%;
+          font-size: calc(var(--index) / 1.5);
+          text-shadow: 2px 2px 3px #000000;
+          margin-top: 3%;
+        }
+            
+        & input::placeholder {
+          color: #f2cc966e;
+          font-size: calc(var(--index) / 1.7)
+        }
+        
+        & input {
+          text-transform: none;
+          text-align: center;
+          color:vars.$primaryLightColor;
+          background: vars.$primaryDarkColor;
+          height: calc(var(--index) * 1.5);
+          font-size: calc(var(--index) / 1.5);
+          border-radius: 50px;
+          box-shadow: inset 6px 6px 6px #070605, inset -6px -6px 6px #473a33;
+        }
+        
+        & button {
+          color: vars.$primaryDarkColor;
+          margin-top: 9%;
+          background: vars.$primaryLightColor;
+          height: calc(var(--index) * 1.5);
+          border-radius: 20px;
+          cursor: pointer;
+          font-weight: 900;
+          box-shadow: 6px 6px 6px #473a33, -6px -5px 6px #070605;
+          transition: 0.5s;
+          margin-bottom: 8%;
+          font-size: calc(var(--index) / 1.5)
+        }
+        
+        & button:hover {
+          box-shadow: none;
+        }
+
+        & a {
+          font-size: calc(var(--index) / 2 );
+          color: vars.$primaryDarkColor;
+          font-weight: bolder;
+          text-shadow: 2px 2px 15px #000000;
+        }
+
+        & a:hover {
+          text-shadow: 3px 3px 15px #0fd129;
+        }
+      }
+    }
+  }
+}

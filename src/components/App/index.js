@@ -5,6 +5,8 @@ import Faq from '../WebsiteInfos/faq';
 import Confidentiality from '../WebsiteInfos/confidentiality';
 import Contact from '../WebsiteInfos/contact';
 import Mentions from '../WebsiteInfos/mentions';
+import Login from '../Authentification/login';
+import Signin from '../Authentification/signin';
 
 function App() {
   return (
@@ -15,6 +17,8 @@ function App() {
         <Route path="/termes-de-confidentialite" element={<Confidentiality />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/mentions-legales" element={<Mentions />} />
+        <Route path="/connexion" element={<Login />} />
+        <Route path="/inscription" element={<Signin />} />
       </Routes>
     </div>
   );
