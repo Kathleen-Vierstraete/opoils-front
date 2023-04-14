@@ -5,13 +5,13 @@ import './styles.scss';
 function Confidentiality() {
   return (
     <><AppHeader />
-      <div id="website-sumary">
-        <div id="infos-div">
-          <div id="main-text">
+      <div className="websiteinfos-sumary">
+        <div className="websiteinfos-infos-div">
+          <div className="websiteinfos-main-text">
             <h1>Termes de confidentialité</h1>
             <p> Nous sommes conscients de l'importance de la protection de la vie privée de nos utilisateurs et nous nous engageons à protéger les informations personnelles que nous collectons.</p>
           </div>
-          <div id="second-text">
+          <div className="websiteinfos-second-text">
               <ul>
                 <li><h1>Collecte d'informations personnelles :</h1></li>
                 <li><p>Nous collectons des informations personnelles lorsque vous vous inscrivez sur notre site ou lorsque vous utilisez nos services. Ces informations peuvent inclure votre nom, votre adresse e-mail, votre adresse postale, votre numéro de téléphone et d'autres informations nécessaires pour vous fournir nos services.</p></li>

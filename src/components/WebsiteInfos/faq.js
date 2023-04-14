@@ -5,13 +5,13 @@ import './styles.scss';
 function Faq() {
   return (
     <><AppHeader />
-      <div id="website-sumary">
-        <div id="infos-div">
-          <div id="main-text">
+      <div className="websiteinfos-sumary">
+        <div className="websiteinfos-infos-div">
+          <div className="websiteinfos-main-text">
             <h1>Foire aux questions</h1>
             <p> Bienvenue sur la foire aux questions de notre site internet de rencontre pour chien ! Nous avons rassemblé ci-dessous les questions les plus fréquemment posées par nos utilisateurs, accompagnées de leurs réponses détaillées. Si vous ne trouvez pas la réponse à votre question, n'hésitez pas à nous contacter.</p>
           </div>
-          <div id="second-text">
+          <div className="websiteinfos-second-text">
               <ul>
                 <li><h1>Q : Comment puis-je créer un profil pour mon chien sur votre site internet ?</h1></li>
                 <li><p>R : Pour créer un profil pour votre chien sur notre site internet, veuillez suivre les étapes suivantes : (1) Créez un compte en fournissant vos informations personnelles ; (2) Ajoutez les informations de votre chien, y compris sa race, son âge et sa personnalité ; (3) Ajoutez des photos de votre chien. Une fois que votre profil est créé, vous pouvez commencer à chercher d'autres chiens compatibles pour des rencontres.</p></li>

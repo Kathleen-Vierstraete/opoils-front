@@ -5,13 +5,13 @@ import './styles.scss';
 function Contact() {
   return (
     <><AppHeader />
-      <div id="website-sumary">
-        <div id="infos-div">
-          <div id="main-text">
+      <div className="websiteinfos-sumary">
+        <div className="websiteinfos-infos-div">
+          <div className="websiteinfos-main-text">
             <h1>Nous sommes ravis de vous aider !</h1>
             <p>  N'hésitez pas à nous contacter si vous avez des questions, des commentaires ou des préoccupations concernant notre site internet.</p>
           </div>
-          <div id="second-text">
+          <div className="websiteinfos-second-text">
               <ul>
                 <li><h1>Vous pouvez nous contacter de plusieurs manières :</h1></li>
                 <li><h1>Par e-mail :</h1></li>

@@ -5,13 +5,13 @@ import './styles.scss';
 function Mentions() {
   return (
     <><AppHeader />
-      <div id="website-sumary">
-        <div id="infos-div">
-          <div id="main-text">
+      <div className="websiteinfos-sumary">
+        <div className="websiteinfos-infos-div">
+          <div className="websiteinfos-main-text">
             <h1>Mentions légales</h1>
             <p> Ce site est édité par [Nom de la société], société [forme juridique] au capital de [montant] euros, immatriculée au Registre du Commerce et des Sociétés de [ville] sous le numéro [numéro RCS], dont le siège social est situé à [adresse].</p>
           </div>
-          <div id="second-text">
+          <div className="websiteinfos-second-text">
           <ul>
             <li><h1>Directeur de la publication :</h1></li>
             <li><a>[Nom du directeur de la publication]</a></li>

@@ -2,7 +2,7 @@
 @use 'src/styles/index';
 
 @media (max-width: 1080px) {
-  #website-sumary{
+  .websiteinfos-sumary{
     display: flex;
     justify-content: center;
     background-image: url(../../assets/img/faq.png);
@@ -10,7 +10,7 @@
     padding-top: calc(var(--index) * 9.1 );
     background-size:cover;
     background-repeat: no-repeat;
-    & #infos-div {
+    & .websiteinfos-infos-div {
       border-radius: 10px;
       width:80%;
       height:90%;
@@ -21,7 +21,7 @@
       align-items: center;
       overflow-y: scroll;
       padding: 10%;
-    & #main-text{
+    & .websiteinfos-main-text{
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -38,7 +38,7 @@
       text-align: center;
     }
     }
-    #second-text{
+    .websiteinfos-second-text{
       width:100%;
       & h2{
         padding: 3%;
@@ -78,7 +78,7 @@
 }
 @media (min-width: 1080px) {
 
-#website-sumary{
+.websiteinfos-sumary{
   display: flex;
   justify-content: center;
   background-image: url(../../assets/img/faq.png);
@@ -92,7 +92,7 @@
     text-shadow: 1px 1px 6px vars.$primaryLightColor;
     font-weight: bolder;
   }
-  & #infos-div {
+  & .websiteinfos-infos-div {
     border-radius: 10px;
     width:60%;
     height:100%;
@@ -103,7 +103,7 @@
     align-items: center;
     overflow-y: scroll;
     padding: 3%;
-  & #main-text{
+  & .websiteinfos-main-text{
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -119,7 +119,7 @@
     font-size: calc(var(--index) / 1 );
   }
   }
-  #second-text{
+  .websiteinfos-second-text{
     width:100%;
     & h2{
       padding: 3%;
