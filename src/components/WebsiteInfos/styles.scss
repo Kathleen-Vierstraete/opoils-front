@@ -1,0 +1,160 @@
+@use 'src/styles/vars';
+@use 'src/styles/index';
+
+@media (max-width: 1080px) {
+  #website-sumary{
+    display: flex;
+    justify-content: center;
+    background-image: url(../../../img/faq.png);
+    height:98vh;
+    padding-top: calc(var(--index) * 9.1 );
+    background-size:cover;
+    background-repeat: no-repeat;
+    & #infos-div {
+      border-radius: 10px;
+      width:80%;
+      height:90%;
+      box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.479);
+      background-color: #027c085e;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      overflow-y: scroll;
+      padding: 10%;
+    & #main-text{
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 3%;
+    & p{
+      text-shadow: 5px 5px 15px rgba(0, 0, 0, 0.582);
+      padding-top:5%;
+      font-size: calc(var(--index) *1.5 );
+    }
+    & h1 {
+      text-shadow: 5px 5px 15px rgba(0, 0, 0, 0.582);
+      font-size: calc(var(--index) *2.5 );
+      text-align: center;
+    }
+    }
+    #second-text{
+      width:100%;
+      & h2{
+        padding: 3%;
+        font-size: calc(var(--index) * 2 );
+        color:vars.$primaryDarkColor;
+        text-align: center;
+      }
+      & ul{
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        padding-top:10%;
+        width: 100%;
+        & li{
+          padding: 1%;
+          & h1 {
+            text-shadow: 5px 5px 15px rgba(0, 0, 0, 0.582);
+            font-size: calc(var(--index) *1.5 );;
+          }
+          & p{
+            font-size: calc(var(--index) * 1 );
+          }
+        }
+        & a{
+        text-align: center;
+        color:vars.$primaryLightColor;
+        text-shadow: 2px 2px 7px #f2cc96c0;
+        font-size: calc(var(--index) * 1 );
+        }
+      }
+    }
+    }
+  }
+  h1 {
+    color: vars.$primaryDarkColor;
+  }
+}
+@media (min-width: 1080px) {
+
+#website-sumary{
+  display: flex;
+  justify-content: center;
+  background-image: url(../../../img/faq.png);
+  height:83.5vh;
+  padding-top: calc(var(--index) * 9.1 );
+  background-size:cover;
+  background-repeat: no-repeat;
+  padding-bottom: 5%;
+  h1 {
+    color: vars.$primaryDarkColor;
+    text-shadow: 1px 1px 6px vars.$primaryLightColor;
+    font-weight: bolder;
+  }
+  & #infos-div {
+    border-radius: 10px;
+    width:60%;
+    height:100%;
+    box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.479);
+    background-color: #027c085e;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow-y: scroll;
+    padding: 3%;
+  & #main-text{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 1%;
+  & p{
+    text-shadow: 5px 5px 15px rgba(0, 0, 0, 0.582);
+    padding-top:5%;
+    font-size: calc(var(--index) / 1.5 );
+  }
+  & h1 {
+    text-shadow: 5px 5px 15px rgba(0, 0, 0, 0.582);
+    font-size: calc(var(--index) / 1 );
+  }
+  }
+  #second-text{
+    width:100%;
+    & h2{
+      padding: 3%;
+      font-size: calc(var(--index) / 1 );
+      color:vars.$primaryDarkColor;
+      text-align: center;
+    }
+    & ul{
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      padding-top:1%;
+      width: 100%;
+      & li{
+        padding: 1%;
+        & h1 {
+          text-shadow: 5px 5px 15px rgba(0, 0, 0, 0.582);
+          font-size: calc(var(--index) / 1.5 );
+        }
+        & p{
+          font-size: calc(var(--index) / 2 );
+        }
+      }
+      & a{
+      text-align: center;
+      color:vars.$primaryLightColor;
+      text-shadow: 2px 2px 7px #f2cc96c0;
+      font-size: calc(var(--index) / 2 );
+      }
+      & a:hover{
+        border-radius: 10px;
+        box-shadow: 3px 3px 10px black;
+      }
+    }
+  }
+  }
+}
+}
