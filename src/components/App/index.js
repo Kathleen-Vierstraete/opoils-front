@@ -7,6 +7,7 @@ import Contact from '../WebsiteInfos/contact';
 import Mentions from '../WebsiteInfos/mentions';
 import Login from '../Authentification/login';
 import Signin from '../Authentification/signin';
+import Account from '../Account';
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
         <Route path="/mentions-legales" element={<Mentions />} />
         <Route path="/connexion" element={<Login />} />
         <Route path="/inscription" element={<Signin />} />
+        <Route path="/mon-compte" element={<Account />} />
       </Routes>
     </div>
   );
