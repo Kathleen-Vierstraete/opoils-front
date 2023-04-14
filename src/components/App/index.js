@@ -11,6 +11,8 @@ import Account from '../Account';
 import DogProfile from '../DogPages/profile';
 import DogEdit from '../DogPages/editprofile';
 import DogAdd from '../DogPages/addprofile';
+import UserProfile from '../UserPages/profile';
+import UserEdit from '../UserPages/editprofile';
 
 function App() {
   return (
@@ -27,6 +29,8 @@ function App() {
         <Route path="/snoopy" element={<DogProfile />} />
         <Route path="/dogedit" element={<DogEdit />} />
         <Route path="/ajouter-un-chien" element={<DogAdd />} />
+        <Route path="/useredit" element={<UserEdit />} />
+        <Route path="/vicky" element={<UserProfile />} />
       </Routes>
     </div>
   );
