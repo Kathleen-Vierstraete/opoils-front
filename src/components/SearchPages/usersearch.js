@@ -1,109 +1,55 @@
 import './styles.scss';
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import PropTypes from 'prop-types';
+import { FETCH_PROFILES } from '../../actions/profiles';
+import Card from '../Card';
 import search from '../../assets/img/search.png';
 import AppHeader from '../AppHeader';
 import AppFooter from '../AppFooter';
-import user from '../../assets/img/user.jpg';
 
-function SearchUser() {
+const SearchUser = ({ profiles }) => {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch({ type: FETCH_PROFILES });
+  }, [dispatch]);
+
   return (
-    <><AppHeader />
-        <div id="user-search-page">
-          <div className="search-div">
-            <div id="user-searchbar">
-              <input type="text" placeholder="Rechercher" />
-              <a href="#">
-              <img src={search} alt="search-image" />
-              </a>
-            </div>
-            <div className="cards">
-              <div className="card">
-                <img src={user} alt="main-image" />
-                <div className="card-content">
-                  <h1>Vicky</h1>
-                  <p>
-                  Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nesciunt exercitationem iste, voluptatum, quia explicabo laboriosam rem adipisci voluptates cumque, veritatis atque nostrum corrupti ipsa asperiores harum? Dicta odio aut hic.
-                  </p>
-                  <a href="/vicky" class="button">
-                  </a>
-                </div>
-              </div>
-              <div className="card">
-                <img src={user} alt="main-image" />
-                <div className="card-content">
-                  <h1>Vicky</h1>
-                  <p>
-                  Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nesciunt exercitationem iste, voluptatum, quia explicabo laboriosam rem adipisci voluptates cumque, veritatis atque nostrum corrupti ipsa asperiores harum? Dicta odio aut hic.
-                  </p>
-                  <a href="/vicky" class="button">
-                  </a>
-                </div>
-              </div>
-              <div className="card">
-              <img src={user} alt="main-image" />
-                <div className="card-content">
-                  <h1>Vicky</h1>
-                  <p>
-                  Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nesciunt exercitationem iste, voluptatum, quia explicabo laboriosam rem adipisci voluptates cumque, veritatis atque nostrum corrupti ipsa asperiores harum? Dicta odio aut hic.
-                  </p>
-                  <a href="/vicky" class="button"></a>
-                </div>
-              </div>
-              <div className="card">
-              <img src={user} alt="main-image" />
-                <div className="card-content">
-                  <h1>Vicky</h1>
-                  <p>
-                  Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nesciunt exercitationem iste, voluptatum, quia explicabo laboriosam rem adipisci voluptates cumque, veritatis atque nostrum corrupti ipsa asperiores harum? Dicta odio aut hic.
-                  </p>
-                  <a href="/vicky" class="button"></a>
-                </div>
-              </div>
-              <div className="card">
-              <img src={user} alt="main-image" />
-                <div className="card-content">
-                  <h1>Vicky</h1>
-                  <p>
-                  Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nesciunt exercitationem iste, voluptatum, quia explicabo laboriosam rem adipisci voluptates cumque, veritatis atque nostrum corrupti ipsa asperiores harum? Dicta odio aut hic.
-                  </p>
-                  <a href="#" class="button"></a>
-                </div>
-              </div>
-              <div className="card">
-              <img src={user} alt="main-image" />
-                <div className="card-content">
-                  <h1>Vicky</h1>
-                  <p>
-                  Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nesciunt exercitationem iste, voluptatum, quia explicabo laboriosam rem adipisci voluptates cumque, veritatis atque nostrum corrupti ipsa asperiores harum? Dicta odio aut hic.
-                  </p>
-                  <a href="#" class="button"></a>
-                </div>
-              </div>
-              <div className="card">
-              <img src={user} alt="main-image" />
-                <div className="card-content">
-                  <h1>Vicky</h1>
-                  <p>
-                  Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nesciunt exercitationem iste, voluptatum, quia explicabo laboriosam rem adipisci voluptates cumque, veritatis atque nostrum corrupti ipsa asperiores harum? Dicta odio aut hic.
-                  </p>
-                  <a href="#" class="button"></a>
-                </div>
-              </div>
-              <div className="card">
-              <img src={user} alt="main-image" />
-                <div className="card-content">
-                  <h1>Vicky</h1>
-                  <p>
-                  Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nesciunt exercitationem iste, voluptatum, quia explicabo laboriosam rem adipisci voluptates cumque, veritatis atque nostrum corrupti ipsa asperiores harum? Dicta odio aut hic.
-                  </p>
-                  <a href="#" class="button"></a>
-                </div>
-              </div>
-            </div>
+    <>
+      <AppHeader />
+      <div id="user-search-page">
+        <div className="search-div">
+          <div id="user-searchbar">
+            <input type="text" placeholder="Rechercher" />
+            <a href="#">
+            <img src={search} alt="search-image" />
+            </a>
           </div>
+          {profiles && (
+          <div className="cards">
+            {profiles.map((profile) => (
+              <Card key={profile.id} {...profile} />
+            ))}
+          </div>
+          )}
         </div>
+      </div>
       <AppFooter />
     </>
   );
-}
+};
+
+SearchUser.propTypes = {
+  profiles: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+    }),
+  ),
+};
+
+SearchUser.defaultProps = {
+  profiles: null,
+};
 
 export default SearchUser;
