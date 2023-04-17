@@ -1,7 +1,7 @@
 @use 'src/styles/vars';
 @use 'src/styles/index';
 
-@media (max-width: 1080px) {
+@media (max-width: 900px) {
 
   .authentification-form {
     display: flex;
@@ -19,6 +19,7 @@
       display: flex;
       flex-direction: column;
       align-items: center;
+      justify-content: center;
 
       & .authentification-image {
         order:1;
@@ -102,6 +103,12 @@
           border-radius: 50px;
           box-shadow: inset 6px 6px 6px #070605, inset -6px -6px 6px #473a33;
         }
+        & form {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          flex-direction: column;
+        }
         
         & button {
           color: vars.$primaryDarkColor;
@@ -129,7 +136,7 @@
   }
 }
 
-@media (min-width: 1080px) {
+@media (min-width: 900px) {
 
   .authentification-form {
     display: flex;
