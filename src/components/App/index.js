@@ -21,10 +21,17 @@ import UserSearch from '../SearchPages/usersearch';
 import DogSearch from '../SearchPages/dogsearch';
 
 import { fetchProfiles } from '../../actions/profiles';
+import { changeLoginField, submitLogin } from '../../actions/user';
 
 function App() {
   const dispatch = useDispatch();
   const profiles = useSelector((state) => state.profiles.list);
+  const emailValue = useSelector((state) => state.user.email);
+  const passwordValue = useSelector((state) => state.user.password);
+  const isLogged = useSelector((state) => state.user.logged);
+  const nickname = useSelector((state) => state.user.nickname);
+  const token = localStorage.getItem('token');
+  const staylogged = !!token;
 
   useEffect(() => {
     // console.log('récupération des recettes');
@@ -33,13 +40,32 @@ function App() {
 
   return (
     <div className="wrapper">
-      <Routes>
+      <Routes staylogged={staylogged} >
         <Route path="/accueil" element={<HomePage />} />
         <Route path="/faq" element={<Faq />} />
         <Route path="/termes-de-confidentialite" element={<Confidentiality />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/mentions-legales" element={<Mentions />} />
-        <Route path="/connexion" element={<Login />} />
+        <Route
+          path="/connexion"
+          element={
+            <Login
+              email={emailValue}
+              password={passwordValue}
+              changeField={(newValue, identifier) => {
+                dispatch(changeLoginField(newValue, identifier));
+              }}
+              handleLogin={() => {
+                dispatch(submitLogin());
+              }}
+              handleLogout={() => {
+                console.log('handleLogout');
+              }}
+              isLogged={isLogged}
+              loggedMessage={`Au revoir ${nickname}!`}
+            />
+              }
+        />
         <Route path="/inscription" element={<Signin />} />
         <Route path="/mon-compte" element={<Account />} />
         <Route path="/:slug" element={<DogProfile />} />
