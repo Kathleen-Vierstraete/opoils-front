@@ -3122,6 +3122,11 @@ detect-node@^2.0.4:
   resolved "https://registry.yarnpkg.com/detect-node/-/detect-node-2.1.0.tgz#c9c70775a49c3d03bc2c06d9a73be550f978f8b1"
   integrity sha512-T0NIuQpnTvFDATNuHN5roPwSBG83rFsuO+MXXH9/3N1eFbn4wcPjttvjMLEPWJ0RGUYgQE7cGgS3tNxbqCGM7g==
 
+dev-tools@^0.1.6:
+  version "0.1.6"
+  resolved "https://registry.yarnpkg.com/dev-tools/-/dev-tools-0.1.6.tgz#091dfb7567af29e853050e743555e479a2a4ae50"
+  integrity sha512-pddj9W+dHEytobyyFs4N8IE29mPFpZD+T16xjF+HhEfQEJ9gRjSgW7sNUwJR6S+MeSdgTEgwGl0snyCHTpXv9g==
+
 diff-sequences@^29.4.3:
   version "29.4.3"
   resolved "https://registry.yarnpkg.com/diff-sequences/-/diff-sequences-29.4.3.tgz#9314bc1fabe09267ffeca9cbafc457d8499a13f2"

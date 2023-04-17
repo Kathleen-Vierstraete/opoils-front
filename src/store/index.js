@@ -3,12 +3,14 @@ import { legacy_createStore as createStore, applyMiddleware, compose } from 'red
 import reducer from 'src/reducers';
 
 import profilesMiddleware from '../middlewares/profilesMiddleware';
+import userMiddleware from '../middlewares/userMiddleware';
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const enhancers = composeEnhancers(
   applyMiddleware(
     profilesMiddleware,
+    userMiddleware,
   ),
 );
 
