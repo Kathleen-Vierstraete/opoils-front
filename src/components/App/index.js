@@ -43,7 +43,7 @@ function App() {
       <Routes staylogged={staylogged} >
         <Route path="/accueil" element={<HomePage />} />
         <Route path="/faq" element={<Faq />} />
-        <Route path="/termes-de-confidentialite" element={<Confidentiality />} />
+        <Route path="/politique-de-confidentialite" element={<Confidentiality />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/mentions-legales" element={<Mentions />} />
         <Route

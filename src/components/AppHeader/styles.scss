@@ -1,7 +1,7 @@
 @use 'src/styles/vars';
 @use 'src/styles/index';
 
-@media (max-width: 1080px) or (min-height:1920px) {
+@media (max-width: 900px) {
 
   .header-nav{
     font-size: calc(var(--index) / 2 );
@@ -44,8 +44,8 @@
       right: 2%;
       top: 0.8%;
       z-index: 100;
-      width:12%;
-      height: 6%;
+      width:calc(var(--index) * 4);
+      height: calc(var(--index) * 4);
       background: vars.$primaryDarkColor;
       border-radius: 50% 50% 50% 50%;
       -webkit-transition: .5s ease-in-out;
@@ -58,8 +58,8 @@
       right: 25%;
       top: 45%;
       z-index: 100;
-      width:50%;
-      height: 2.5%;
+      width:calc(var(--index) * 2);
+      height:calc(var(--index) / 10);
       background: vars.$primaryLightColor;
       display: block;
       -webkit-transform-origin: center;
@@ -80,11 +80,11 @@
     }
 
     & label .hamburger:before{ 
-      top: -600%; 
+      top: calc(var(--index) * 0.5); 
     }
 
     & label .hamburger:after{ 
-      bottom: -550%; 
+      bottom: calc(var(--index) * 0.5); 
     }
 
     & label input{ 
@@ -93,7 +93,8 @@
 
     & label input:checked + .menu{
       box-shadow: 0 0 0 10vw vars.$primaryLightColor, 0 calc(var(--index) * 3 ) 0 calc(var(--index) * 15 ) vars.$primaryLightColor;
-      border-radius: 5px;
+      border-radius: 20px;
+      opacity: 0.8;
     } 
 
     & label input:checked + .menu .hamburger{
@@ -114,15 +115,16 @@
     }
 
     & label input:checked + .menu + ul{ 
+      z-index: 200;
       opacity: 1; 
     }
 
     & label ul{
-      z-index: 200;
+      z-index: -1;
       position: absolute;
-      right: 1%;
-      top: 15%;
-      width: 30%;
+      right: calc(var(--index) * 2);
+      top: calc(var(--index) * 11);
+      width: calc(var(--index) * 10);
       -webkit-transform: translate(-50%, -50%);
       transform: translate(-50%, -50%);
       opacity: 0;
@@ -139,15 +141,15 @@
       font-size: calc(var(--index) * 1.5 );
       background-color: #1F1916;
       text-align: center;
-      border-radius: 20px;
-      padding: 2%;
+      border-radius: 10px;
+      padding: calc(var(--index) / 2.5 );
       box-shadow: inset 4px 4px 6px #070605, inset -4px -4px 6px #473a33;
     }
   }
 }
 
 
-@media (min-width: 1080px) or (min-height:1920px) {
+@media (min-width: 900px) {
 
   .header-nav{
     

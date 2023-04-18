@@ -1,7 +1,8 @@
 @use 'src/styles/vars';
 @use 'src/styles/index';
 
-@media (max-width: 1080px) {
+@media (max-width: 900px) {
+
   .websiteinfos-sumary{
     display: flex;
     justify-content: center;
@@ -76,7 +77,7 @@
     color: vars.$primaryDarkColor;
   }
 }
-@media (min-width: 1080px) {
+@media (min-width: 900px) {
 
 .websiteinfos-sumary{
   display: flex;

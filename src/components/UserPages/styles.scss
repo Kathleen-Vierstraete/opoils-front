@@ -2,7 +2,7 @@
 @use 'src/styles/index';
 
 
-@media (max-width: 1080px) {
+@media (max-width: 900px) {
 
   .user-profile{
     display: flex;
@@ -242,7 +242,7 @@
   }
 }
 
-@media (min-width: 1080px) {
+@media (min-width: 900px) {
 
   .user-profile{
     display: flex;
