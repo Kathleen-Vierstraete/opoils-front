@@ -11,13 +11,15 @@ function Signin() {
           <div className="authentification-side-text">
             <h1>Bienvenue !</h1>
             <div className="authentification-inputs">
-              <label>email</label>
-              <input type="email" placeholder="example@test.com" />
-              <label>pseudo</label>
-              <input type="email" placeholder="vanilledu33" />
-              <label>mot de passe</label>
-              <input type="password" placeholder="Min 6 caractères de long" />
-              <button type="submit">inscription</button>
+              <form>
+                <label>email</label>
+                <input type="email" placeholder="example@test.com" />
+                <label>pseudo</label>
+                <input type="email" placeholder="vanilledu33" />
+                <label>mot de passe</label>
+                <input type="password" placeholder="Min 6 caractères de long" />
+                <button type="submit">inscription</button>
+              </form>
             </div>
           </div>
         </div>
