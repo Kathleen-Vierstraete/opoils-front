@@ -31,6 +31,10 @@ function App() {
   const isLogged = useSelector((state) => state.user.logged);
   const nickname = useSelector((state) => state.user.nickname);
 
+  const handleFilteredProfiles = (filteredProfiles) => {
+    console.log(filteredProfiles);
+  };
+
   useEffect(() => {
     // console.log('récupération des recettes');
     dispatch(fetchProfiles());
@@ -71,7 +75,7 @@ function App() {
         <Route path="/ajouter-un-chien" element={<DogAdd />} />
         <Route path="/useredit" element={<UserEdit />} />
         <Route path="/vicky" element={<UserProfile />} />
-        <Route path="/recherche-de-chien" element={<DogSearch profiles={profiles} />} />
+        <Route path="/recherche-de-chien" element={<DogSearch profiles={profiles} onFilteredProfiles={handleFilteredProfiles} />} />
         <Route path="/recherche-de-proprietaire" element={<UserSearch profiles={profiles} />} />
       </Routes>
     </div>
