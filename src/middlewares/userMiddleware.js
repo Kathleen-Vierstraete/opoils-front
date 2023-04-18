@@ -13,7 +13,6 @@ const userMiddleware = (store) => (next) => (action) => {
       )
         .then((response) => {
           store.dispatch(saveAuthData(response.data.pseudo, response.data.token));
-          localStorage.setItem('token', response.data.token);
         })
         .catch((error) => {
           console.warn(error);

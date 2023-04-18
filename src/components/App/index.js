@@ -30,8 +30,6 @@ function App() {
   const passwordValue = useSelector((state) => state.user.password);
   const isLogged = useSelector((state) => state.user.logged);
   const nickname = useSelector((state) => state.user.nickname);
-  const token = localStorage.getItem('token');
-  const staylogged = !!token;
 
   useEffect(() => {
     // console.log('récupération des recettes');
@@ -40,7 +38,7 @@ function App() {
 
   return (
     <div className="wrapper">
-      <Routes staylogged={staylogged} >
+      <Routes>
         <Route path="/accueil" element={<HomePage />} />
         <Route path="/faq" element={<Faq />} />
         <Route path="/politique-de-confidentialite" element={<Confidentiality />} />

@@ -1,7 +1,7 @@
 @use 'src/styles/vars';
 @use 'src/styles/index';
 
-@media (max-width: 900px) {
+@media (max-width: 1200px) {
 
   #dog-search-page{
     & .search-div{
@@ -142,7 +142,7 @@
   }
 }
 
-@media (min-width: 900px){
+@media (min-width: 1200px){
 
   #dog-search-page{
     background-image: url(../../assets/img/pexels-viktorija-stankevičiūtė-12729351.jpg);
@@ -165,7 +165,7 @@
     background-position: 10%;
     background-repeat: no-repeat;
     padding:4%;
-    height:81.1vh;
+    height:87vh;
 
     &  .search-div{
       width:calc(var(--index) * 60 );

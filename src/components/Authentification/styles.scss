@@ -1,7 +1,7 @@
 @use 'src/styles/vars';
 @use 'src/styles/index';
 
-@media (max-width: 900px) {
+@media (max-width: 1200px) {
 
   .authentification-form {
     display: flex;
@@ -136,13 +136,13 @@
   }
 }
 
-@media (min-width: 900px) {
+@media (min-width: 1200px) {
 
   .authentification-form {
     display: flex;
     justify-content: center;
     background-image: url(../../assets/img/pexels-ylanite-koppens-1495160.jpg);
-    height:81.1vh;
+    height:87vh;
     padding-top: 6%;
     background-size:cover;
     background-repeat: no-repeat;

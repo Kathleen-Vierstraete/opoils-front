@@ -6,7 +6,7 @@
   src: url('../../assets/fonts/CANDY___.otf');
 }
 
-@media (max-width: 900px) {
+@media (max-width: 1200px) {
 
   .header-nav{
     font-size: calc(var(--index) / 2 );
@@ -154,7 +154,7 @@
 }
 
 
-@media (min-width: 900px) {
+@media (min-width: 1200px) {
 
   .header-nav{
     font-family: 'CandyInc', sans-serif;

@@ -1,7 +1,7 @@
 @use 'src/styles/vars';
 @use 'src/styles/index';
 
-@media (max-width: 1080px) {
+@media (max-width: 1200px) {
 
   #account-page{
     display: flex;
@@ -148,7 +148,7 @@
   }
 }
 
-@media (min-width: 1080px) {
+@media (min-width: 1200px) {
 
   #account-page{
     
@@ -156,7 +156,7 @@
     justify-content: center;
     background-image: url(../../assets/img/pexels-cátia-matos-1072179.jpg);
     background-size: cover;
-    height:81.1vh;
+    height:87vh;
     background-position: 10%;
     background-repeat: no-repeat;
     padding-top: 3.5%;

@@ -2,7 +2,7 @@
 @use 'src/styles/index';
 
 
-@media (max-width: 900px) {
+@media (max-width: 1200px) {
 
   .dog-profile{
     display: flex;
@@ -245,7 +245,7 @@
   }
 }
 
-@media (min-width: 900px) {
+@media (min-width: 1200px) {
   
 
   .dog-profile{
@@ -253,7 +253,7 @@
     justify-content: center;
     background-image: url(../../assets/img/pexels-pixabay-235985.jpg);
     background-size: cover;
-    height: 81.1vh;
+    height: 87vh;
     width: 100%;
     background-repeat: no-repeat;
     padding-top: 5%;

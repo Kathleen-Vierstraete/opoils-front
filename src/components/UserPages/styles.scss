@@ -2,7 +2,7 @@
 @use 'src/styles/index';
 
 
-@media (max-width: 900px) {
+@media (max-width: 1200px) {
 
   .user-profile{
     display: flex;
@@ -242,14 +242,14 @@
   }
 }
 
-@media (min-width: 900px) {
+@media (min-width: 1200px) {
 
   .user-profile{
     display: flex;
     justify-content: center;
     background-image: url(../../assets/img/pexels-pixabay-235985.jpg);
     background-size: cover;
-    height: 81.1vh;
+    height: 87vh;
     background-position: 10%;
     background-repeat: no-repeat;
     padding-top: 4.5%;

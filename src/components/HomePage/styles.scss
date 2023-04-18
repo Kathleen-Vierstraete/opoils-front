@@ -1,7 +1,7 @@
 @use 'src/styles/vars';
 @use 'src/styles/index';
 
-@media (max-width: 900px) {
+@media (max-width: 1200px) {
 
   #website-description{
     display: flex;
@@ -125,7 +125,7 @@
 }
 
 
-@media (min-width: 900px){
+@media (min-width: 1200px){
 
 #website-description{
   display: flex;
@@ -136,6 +136,8 @@
   padding-bottom: calc(var(--index) * 6.3);
   background-size: cover;
   background-repeat: no-repeat;
+  height: 95vh;
+
   & #main-text{
     width: 40%;
     padding: 2%;
