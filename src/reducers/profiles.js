@@ -2,6 +2,7 @@ import { SAVE_PROFILES } from '../actions/profiles';
 
 export const initialState = {
   list: [],
+  isProfilesLoaded: false,
 };
 
 const reducer = (state = initialState, action = {}) => {
@@ -10,6 +11,7 @@ const reducer = (state = initialState, action = {}) => {
       return {
         ...state,
         list: action.recipes,
+        isProfilesLoaded: true,
       };
 
     default:

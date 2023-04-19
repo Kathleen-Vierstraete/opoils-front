@@ -19,6 +19,7 @@ import UserProfile from '../UserPages/profile';
 import UserEdit from '../UserPages/editprofile';
 import UserSearch from '../SearchPages/usersearch';
 import DogSearch from '../SearchPages/dogsearch';
+import Loading from './Loading';
 
 import { fetchProfiles } from '../../actions/profiles';
 import { changeLoginField, submitLogin } from '../../actions/user';
@@ -31,9 +32,15 @@ function App() {
   const isLogged = useSelector((state) => state.user.logged);
   const nickname = useSelector((state) => state.user.nickname);
 
+  const isProfilesLoaded = useSelector((state) => state.profiles.isProfilesLoaded);
+
   useEffect(() => {
     dispatch(fetchProfiles());
   }, []);
+
+  if (!isProfilesLoaded) {
+    return <Loading />;
+  }
 
   return (
     <div className="wrapper">
