@@ -5,7 +5,7 @@ export const fetchProfiles = () => ({
   type: FETCH_PROFILES,
 });
 
-export const saveProfiles = (recipes) => ({
+export const saveProfiles = (profiles) => ({
   type: SAVE_PROFILES,
-  recipes: recipes,
+  profiles: profiles,
 });

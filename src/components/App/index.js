@@ -22,6 +22,7 @@ import DogSearch from '../SearchPages/dogsearch';
 import Loading from './Loading';
 
 import { fetchProfiles } from '../../actions/profiles';
+import { fetchRegions, fetchDepartements } from '../../actions/location';
 import { changeLoginField, submitLogin } from '../../actions/user';
 
 function App() {
@@ -36,6 +37,8 @@ function App() {
 
   useEffect(() => {
     dispatch(fetchProfiles());
+    dispatch(fetchRegions());
+    dispatch(fetchDepartements());
   }, []);
 
   if (!isProfilesLoaded) {

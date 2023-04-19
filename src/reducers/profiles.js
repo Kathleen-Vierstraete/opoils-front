@@ -10,7 +10,7 @@ const reducer = (state = initialState, action = {}) => {
     case SAVE_PROFILES:
       return {
         ...state,
-        list: action.recipes,
+        list: action.profiles,
         isProfilesLoaded: true,
       };
 

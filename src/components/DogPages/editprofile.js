@@ -33,7 +33,7 @@ function DogEdit() {
                   <label>Taille</label>
                 </li>
                 <select name="Taille">
-                  <option value="">--Choisir un gabarit--</option>
+                  <option value="">Choisir un gabarit</option>
                     <option value="1">Petit</option>
                     <option value="2">Moyen</option>
                     <option value="2">Grand</option>
@@ -41,8 +41,8 @@ function DogEdit() {
                 <li>
                   <label>Tempérament</label>
                 </li>
-                <select name="Taille">
-                  <option value="">--Choisir un caractère--</option>
+                <select name="Caractère">
+                  <option value="">Choisir un caractère</option>
                       <option value="1">Calme</option>
                       <option value="2">Adaptable</option>
                       <option value="2">Energique</option>
