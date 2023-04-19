@@ -192,6 +192,7 @@
     }
 
     & ul{
+    
     display: flex;
     justify-content: flex-end;
     z-index: 3;
@@ -208,7 +209,9 @@
      --s: calc(var(--index) / 9 );
       /* size of the corner */
       --color: #f2cc96;
-      padding: calc(.005% + var(--s)) calc(2.5% + var(--s));
+      padding: calc(var(--index) / 6 );
+      padding-left: calc(var(--index) * 1 );
+      padding-right: calc(var(--index) * 1 );
       color: var(--color);
       --_p: var(--s);
       background: conic-gradient(from 90deg at var(--b) var(--b),#0000 90deg,var(--color) 0)

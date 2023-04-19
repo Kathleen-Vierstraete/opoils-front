@@ -3,7 +3,7 @@ import './styles.scss';
 import youtube from '../../assets/img/youtube.png';
 import instagram from '../../assets/img/instagram.png';
 import facebook from '../../assets/img/facebook.png';
-import dog from '../../assets/img/dog.png';
+/* import dog from '../../assets/img/dog.png'; */
 
 function HomePage() {
   return (
@@ -21,7 +21,7 @@ function HomePage() {
             </p>
           </div>
           <div className="nav">
-            <img className="dogimg" src={dog} alt="dog-image" />
+{/*             <img className="dogimg" src={dog} alt="dog-image" /> */}
             <div className="nav-section" id="nav-up">
               <ul>
                 <li><a href="/faq">FAQ</a></li>
