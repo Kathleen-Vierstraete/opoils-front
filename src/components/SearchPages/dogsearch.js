@@ -1,16 +1,18 @@
 import './styles.scss';
 import { useState, useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 import { FETCH_PROFILES } from '../../actions/profiles';
 import Card from '../Card';
 import search from '../../assets/img/search.png';
 import AppHeader from '../AppHeader';
 import AppFooter from '../AppFooter';
+import SelectLocation from './SelectLocation';
 
 const SearchDog = ({ profiles }) => {
   const dispatch = useDispatch();
   const [searchInput, setSearchInput] = useState('');
+  const location = useSelector((state) => state.location);
 
   useEffect(() => {
     dispatch({ type: FETCH_PROFILES });
@@ -34,15 +36,38 @@ const SearchDog = ({ profiles }) => {
       <div id="dog-search-page">
         <div className="search-div">
           <div id="dog-searchbar">
-            <input
-              type="text"
-              placeholder="Rechercher"
-              value={searchInput}
-              onChange={(e) => setSearchInput(e.target.value)}
-            />
-            <a href="#">
-              <img src={search} alt="search-image" />
-            </a>
+            <div className="searchbar">
+              <input
+                type="text"
+                placeholder="Rechercher"
+                value={searchInput}
+                onChange={(e) => setSearchInput(e.target.value)}
+              />
+              <a href="#">
+                <img src={search} alt="search-image" />
+              </a>
+            </div>
+            <div className="select-div">
+              <div className="select-elem">
+              <select name="Taille">
+                  <option value="">Choisir un gabarit</option>
+                    <option value="1">Petit</option>
+                    <option value="2">Moyen</option>
+                    <option value="2">Grand</option>
+                </select>
+              </div>
+              <div className="select-elem">
+                <select name="Caractère">
+                  <option value="">Choisir un caractère</option>
+                      <option value="1">Calme</option>
+                      <option value="2">Adaptable</option>
+                      <option value="2">Energique</option>
+                </select>
+              </div>
+              <div className="select-elem location">
+                <SelectLocation location={location} />
+              </div>
+            </div>
           </div>
           {filteredProfiles && (
             <div className="cards">
