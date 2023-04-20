@@ -1,3 +1,4 @@
+import { NavLink } from 'react-router-dom';
 import AppHeader from '../AppHeader';
 import './styles.scss';
 import youtube from '../../assets/img/youtube.png';
@@ -24,17 +25,31 @@ function HomePage( {isLogged} ) {
 {/*             <img className="dogimg" src={dog} alt="dog-image" /> */}
             <div className="nav-section" id="nav-up">
               <ul>
-                <li><a href="/faq">FAQ</a></li>
-                <li><a href="/contact">Contact</a></li>
-                <li><a href="/mentions-legales">Mentions légales</a></li>
-                <li><a href="/politique-de-confidentialite">Politique de Confidentialité</a></li>
+                <li>
+                  <NavLink to="/faq">FAQ</NavLink>
+                </li>
+                <li>
+                  <NavLink to="/contact">Contact</NavLink>
+                </li>
+                <li>
+                  <NavLink to="/mentions-legales">Mentions légales</NavLink>
+                </li>
+                <li>
+                  <NavLink to="/politique-de-confidentialite">Politique de Confidentialité</NavLink>
+                </li>
               </ul>
             </div>
             <div className="nav-section" id="nav-bottom">
               <ul>
-                <li><a href="#"><img src={facebook} alt="facebook-logo" /></a></li>
-                <li><a href="#"><img src={youtube} alt="youtube-logo" /></a></li>
-                <li><a href="#"><img src={instagram} alt="instagram-logo" /></a></li>
+                <li>
+                  <NavLink to="/#"><img src={facebook} alt="facebook-logo" /></NavLink>
+                </li>
+                <li>
+                  <NavLink to="/#"><img src={youtube} alt="youtube-logo" /></NavLink>
+                </li>
+                <li>
+                  <NavLink to="/#"><img src={instagram} alt="instagram-logo" /></NavLink>
+                </li>
               </ul>
             </div>
           </div>

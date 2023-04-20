@@ -1,9 +1,11 @@
 import PropTypes from 'prop-types';
+import { NavLink } from 'react-router-dom';
 import AppHeader from '../AppHeader';
 import AppFooter from '../AppFooter';
 import Field from './Field';
 
 import './styles.scss';
+import { leaveSession } from '../../actions/user';
 
 const Login = ({
   email,
@@ -17,6 +19,11 @@ const Login = ({
   const handleSubmit = (evt) => {
     evt.preventDefault();
     handleLogin();
+  };
+
+  const handleClick = () => {
+    console.log('appuyé');
+    handleLogout();
   };
   return (
     <><AppHeader isLogged={isLogged} />
@@ -43,7 +50,7 @@ const Login = ({
                   />
                   <button type="submit">connexion</button>
                 </form>
-                <a href="/inscription"><h2>Pas de compte ? Venez vous inscrire ici ! </h2></a>
+                <NavLink to="/inscription"><h2>Pas de compte ? Venez vous inscrire ici ! </h2></NavLink>
               </div>
             </div>
           )}
@@ -53,7 +60,7 @@ const Login = ({
               <div className="authentification-inputs">
                 <button
                   type="button"
-                  onClick={handleLogout}
+                  onClick={handleClick}
                 >
                   Déconnexion
                 </button>

@@ -1,4 +1,5 @@
 import './styles.scss';
+import { NavLink } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
@@ -42,9 +43,9 @@ const SearchUser = ({ profiles, isLogged }) => {
                 value={searchInput}
                 onChange={(e) => setSearchInput(e.target.value)}
               />
-              <a href="#">
+              <NavLink to="/#">
                 <img src={search} alt="search-image" />
-              </a>
+              </NavLink>
             </div>
             <div className="select-div">
               <div className="select-elem location">

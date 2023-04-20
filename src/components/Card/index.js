@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import '../SearchPages/styles.scss';
 
 const Card = ({
@@ -13,7 +13,7 @@ const Card = ({
     <div className="card-content">
       <h1>{title}</h1>
       <p>{instructions}</p>
-      <Link
+      <NavLink
         to={`/${slug}`}
         className="card-link"
       />

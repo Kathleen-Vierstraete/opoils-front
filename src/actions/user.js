@@ -24,3 +24,10 @@ export const keepSession = (authToken) => ({
   type: KEEP_SESSION,
   authToken: authToken,
 });
+
+export const leaveSession = () => {
+  console.log('dispatching disconnect action');
+  return {
+    type: 'LEAVE_SESSION',
+  };
+};

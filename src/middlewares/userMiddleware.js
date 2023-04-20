@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { saveAuthData, SUBMIT_LOGIN } from '../actions/user';
+import { saveAuthData, SUBMIT_LOGIN, LEAVE_SESSION } from '../actions/user';
 
 const userMiddleware = (store) => (next) => (action) => {
   switch (action.type) {
@@ -20,10 +20,13 @@ const userMiddleware = (store) => (next) => (action) => {
         });
       break;
 
-    default:
-  }
+    case LEAVE_SESSION:
+      localStorage.removeItem('authToken');
+      break;
 
-  next(action);
+    default:
+      next(action);
+  }
 };
 
 export default userMiddleware;

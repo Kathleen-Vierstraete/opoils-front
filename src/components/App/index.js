@@ -23,7 +23,7 @@ import Loading from './Loading';
 
 import { fetchProfiles } from '../../actions/profiles';
 import { fetchRegions, fetchDepartements } from '../../actions/location';
-import { changeLoginField, submitLogin, keepSession } from '../../actions/user';
+import { changeLoginField, submitLogin, keepSession, leaveSession } from '../../actions/user';
 
 function App() {
   const dispatch = useDispatch();
@@ -67,11 +67,11 @@ function App() {
               changeField={(newValue, identifier) => {
                 dispatch(changeLoginField(newValue, identifier));
               }}
+              handleLogout={() => {
+                dispatch(leaveSession());
+              }}
               handleLogin={() => {
                 dispatch(submitLogin());
-              }}
-              handleLogout={() => {
-                console.log('handleLogout');
               }}
               isLogged={isLogged}
               loggedMessage={`Au revoir ${nickname}!`}
