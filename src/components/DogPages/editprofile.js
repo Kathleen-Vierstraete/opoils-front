@@ -7,9 +7,9 @@ import AppHeader from '../AppHeader';
 import AppFooter from '../AppFooter';
 
 
-function DogEdit() {
+function DogEdit({isLogged}) {
   return (
-    <><AppHeader />
+    <><AppHeader isLogged={isLogged} />
       <div className="dog-profile">
         <div className="infos">
           <div className="dog-images">

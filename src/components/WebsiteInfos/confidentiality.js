@@ -2,9 +2,9 @@ import AppHeader from '../AppHeader';
 import AppFooter from '../AppFooter';
 import './styles.scss';
 
-function Confidentiality() {
+function Confidentiality({isLogged}) {
   return (
-    <><AppHeader />
+    <><AppHeader isLogged={isLogged} />
       <div className="websiteinfos-sumary">
         <div className="websiteinfos-infos-div">
           <div className="websiteinfos-main-text">

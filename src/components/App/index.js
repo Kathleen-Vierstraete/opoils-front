@@ -23,15 +23,20 @@ import Loading from './Loading';
 
 import { fetchProfiles } from '../../actions/profiles';
 import { fetchRegions, fetchDepartements } from '../../actions/location';
-import { changeLoginField, submitLogin } from '../../actions/user';
+import { changeLoginField, submitLogin, keepSession } from '../../actions/user';
 
 function App() {
   const dispatch = useDispatch();
   const profiles = useSelector((state) => state.profiles.list);
   const emailValue = useSelector((state) => state.user.email);
   const passwordValue = useSelector((state) => state.user.password);
-  const isLogged = useSelector((state) => state.user.logged);
+  const isLogged = useSelector((state) => state.user.isLogged);
   const nickname = useSelector((state) => state.user.nickname);
+  const authToken = useSelector((state) => state.user.authToken);
+
+  if (authToken) {
+    dispatch(keepSession());
+  }
 
   const isProfilesLoaded = useSelector((state) => state.profiles.isProfilesLoaded);
 
@@ -48,11 +53,11 @@ function App() {
   return (
     <div className="wrapper">
       <Routes>
-        <Route path="/accueil" element={<HomePage />} />
-        <Route path="/faq" element={<Faq />} />
-        <Route path="/politique-de-confidentialite" element={<Confidentiality />} />
-        <Route path="/contact" element={<Contact />} />
-        <Route path="/mentions-legales" element={<Mentions />} />
+        <Route path="/accueil" element={<HomePage isLogged={isLogged} />} />
+        <Route path="/faq" element={<Faq isLogged={isLogged} />} />
+        <Route path="/politique-de-confidentialite" element={<Confidentiality isLogged={isLogged} />} />
+        <Route path="/contact" element={<Contact isLogged={isLogged} />} />
+        <Route path="/mentions-legales" element={<Mentions isLogged={isLogged} />} />
         <Route
           path="/connexion"
           element={
@@ -73,15 +78,15 @@ function App() {
             />
               }
         />
-        <Route path="/inscription" element={<Signin />} />
-        <Route path="/mon-compte" element={<Account />} />
-        <Route path="/:slug" element={<DogProfile />} />
-        <Route path="/dogedit" element={<DogEdit />} />
-        <Route path="/ajouter-un-chien" element={<DogAdd />} />
-        <Route path="/useredit" element={<UserEdit />} />
-        <Route path="/vicky" element={<UserProfile />} />
-        <Route path="/recherche-de-chien" element={<DogSearch profiles={profiles} />} />
-        <Route path="/recherche-de-proprietaire" element={<UserSearch profiles={profiles} />} />
+        <Route path="/inscription" element={<Signin isLogged={isLogged} />} />
+        <Route path="/mon-compte" element={<Account isLogged={isLogged} />} />
+        <Route path="/:slug" element={<DogProfile isLogged={isLogged} />} />
+        <Route path="/dogedit" element={<DogEdit isLogged={isLogged} />} />
+        <Route path="/ajouter-un-chien" element={<DogAdd isLogged={isLogged} />} />
+        <Route path="/useredit" element={<UserEdit isLogged={isLogged} />} />
+        <Route path="/vicky" element={<UserProfile isLogged={isLogged} />} />
+        <Route path="/recherche-de-chien" element={<DogSearch profiles={profiles} isLogged={isLogged} />} />
+        <Route path="/recherche-de-proprietaire" element={<UserSearch profiles={profiles} isLogged={isLogged} />} />
       </Routes>
     </div>
   );

@@ -5,9 +5,9 @@ import instagram from '../../assets/img/instagram.png';
 import facebook from '../../assets/img/facebook.png';
 /* import dog from '../../assets/img/dog.png'; */
 
-function HomePage() {
+function HomePage( {isLogged} ) {
   return (
-    <><AppHeader />
+    <><AppHeader isLogged={isLogged} />
       <div id="website-description">
         <div className="nav-div">
           <div id="main-text">

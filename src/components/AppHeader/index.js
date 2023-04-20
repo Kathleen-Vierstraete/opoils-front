@@ -16,19 +16,19 @@ const AppHeader = ({
       <label>
         <input type="checkbox" />
         <span className="menu"> <span className="hamburger"></span> </span>
-        {isLogged && (
+        {!isLogged && (
           <ul className="list">
             <li className="item"><a href="/accueil" className="link">Accueil</a></li>
             <li className="item"><a href="/connexion" className="link">Connexion</a></li>
           </ul>
         )}
-        {!isLogged && (
+        {isLogged && (
           <ul className="list">
             <li className="item"><a href="/accueil" className="link">Accueil</a></li>
-            <li className="item"><a href="/connexion" className="link">Deconnexion</a></li>
-            <li className="item"><a href="/mon-compte" className="link">Mon compte</a></li>
             <li className="item"><a href="/recherche-de-chien" className="link">Recherche chien</a></li>
             <li className="item"><a href="/recherche-de-proprietaire" className="link">Recherche Proprietaire</a></li>
+            <li className="item"><a href="/mon-compte" className="link">Mon compte</a></li>
+            <li className="item"><a href="/connexion" className="link">Deconnexion</a></li>
           </ul>
         )}
       </label>

@@ -5,9 +5,9 @@ import firstimage from '../../assets/img/first-image.png';
 import profile from '../../assets/img/profile.png';
 import user from '../../assets/img/user.jpg';
 
-function Account() {
+function Account({isLogged}) {
   return (
-    <><AppHeader />
+    <><AppHeader isLogged={isLogged} />
       <div id="account-page">
         <div id="account-div">
           <div className="account-cards">

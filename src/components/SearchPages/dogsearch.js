@@ -9,7 +9,7 @@ import AppHeader from '../AppHeader';
 import AppFooter from '../AppFooter';
 import SelectLocation from './SelectLocation';
 
-const SearchDog = ({ profiles }) => {
+const SearchDog = ({ profiles, isLogged }) => {
   const dispatch = useDispatch();
   const [searchInput, setSearchInput] = useState('');
   const location = useSelector((state) => state.location);
@@ -32,7 +32,7 @@ const SearchDog = ({ profiles }) => {
 
   return (
     <>
-      <AppHeader />
+      <AppHeader isLogged={isLogged} />
       <div id="dog-search-page">
         <div className="search-div">
           <div id="dog-searchbar">

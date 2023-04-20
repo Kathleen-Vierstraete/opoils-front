@@ -2,9 +2,9 @@ import AppHeader from '../AppHeader';
 import AppFooter from '../AppFooter';
 import './styles.scss';
 
-function Contact() {
+function Contact({isLogged}) {
   return (
-    <><AppHeader />
+    <><AppHeader isLogged={isLogged} />
       <div className="websiteinfos-sumary">
         <div className="websiteinfos-infos-div">
           <div className="websiteinfos-main-text">
