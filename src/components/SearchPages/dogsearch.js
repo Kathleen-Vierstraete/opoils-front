@@ -1,4 +1,5 @@
 import './styles.scss';
+import { NavLink } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
@@ -9,7 +10,7 @@ import AppHeader from '../AppHeader';
 import AppFooter from '../AppFooter';
 import SelectLocation from './SelectLocation';
 
-const SearchDog = ({ profiles }) => {
+const SearchDog = ({ profiles, isLogged }) => {
   const dispatch = useDispatch();
   const [searchInput, setSearchInput] = useState('');
   const location = useSelector((state) => state.location);
@@ -32,7 +33,7 @@ const SearchDog = ({ profiles }) => {
 
   return (
     <>
-      <AppHeader />
+      <AppHeader isLogged={isLogged} />
       <div id="dog-search-page">
         <div className="search-div">
           <div id="dog-searchbar">
@@ -43,9 +44,9 @@ const SearchDog = ({ profiles }) => {
                 value={searchInput}
                 onChange={(e) => setSearchInput(e.target.value)}
               />
-              <a href="#">
+              <NavLink to="/#">
                 <img src={search} alt="search-image" />
-              </a>
+              </NavLink>
             </div>
             <div className="select-div">
               <div className="select-elem">

@@ -4,9 +4,9 @@ import userimage from '../../assets/img/user.jpg';
 import AppHeader from '../AppHeader';
 import AppFooter from '../AppFooter';
 
-function UserEdit() {
+function UserEdit({isLogged}) {
   return (
-    <><AppHeader />
+    <><AppHeader isLogged={isLogged} />
       <div className="user-profile">
         <div className="infos">
           <div className="user-part">

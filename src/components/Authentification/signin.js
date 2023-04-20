@@ -4,7 +4,7 @@ import './styles.scss';
 
 function Signin() {
   return (
-    <><AppHeader />
+    <><AppHeader isLogged={isLogged} />
       <div className="authentification-form">
         <div className="authentification-form-div">
           <div className="authentification-image" id="signin-image" />

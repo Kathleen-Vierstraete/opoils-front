@@ -3,9 +3,9 @@ import profile from '../../assets/img/profile.png';
 import AppHeader from '../AppHeader';
 import AppFooter from '../AppFooter';
 
-function AddDog() {
+function AddDog({isLogged}) {
   return (
-    <><AppHeader />
+    <><AppHeader isLogged={isLogged} />
       <div className="dog-profile">
         <div className="infos">
           <div className="dog-images">
