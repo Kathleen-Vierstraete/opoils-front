@@ -1,4 +1,5 @@
 import './styles.scss';
+import PropTypes from 'prop-types';
 import firstimage from '../../assets/img/first-image.png';
 import secondimage from '../../assets/img/second-image.png';
 import thirdimage from '../../assets/img/third-image.png';
@@ -6,15 +7,20 @@ import fourthimage from '../../assets/img/fourth-image.png';
 import AppHeader from '../AppHeader';
 import AppFooter from '../AppFooter';
 
-function DogProfile({isLogged}) {
+function DogProfile({
+  isLogged,
+  thumbnail,
+  title,
+  instructions,
+}) {
   return (
     <><AppHeader isLogged={isLogged} />
       <div className="dog-profile">
         <div className="infos">
           <div className="dog-images">
-            <h1>Snoopy</h1>
+            <h1>{title}</h1>
             <div className="main-image">
-              <img src={firstimage} alt="main-image" />
+              <img src={thumbnail} alt="main-image" />
             </div>
             <div className="other-images">
               <img src={secondimage} alt="second-image" />
@@ -57,9 +63,7 @@ function DogProfile({isLogged}) {
           </div>
           <div className="dog-description">
             <h1>Présentation</h1>
-            <p>Phasellus vitae elementum nulla, vel tincidunt lectus. Phasellus cursus id mauris eget vulputate. Suspendisse efficitur tellus vel leo aliquam dapibus id sed erat.
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur diam eros, porta sed dui eget, porta aliquet sapien. Aliquam sollicitudin metus nec consequat fermentum. Phasellus vitae elementum nulla, vel tincidunt lectus. Phasellus cursus id mauris eget vulputate. Suspendisse efficitur tellus vel leo aliquam dapibus id sed erat. 
-            </p>
+            <p>{instructions}</p>
           </div>
         </div>
       </div>
@@ -67,5 +71,12 @@ function DogProfile({isLogged}) {
     </>
   );
 }
+
+DogProfile.propTypes = {
+  thumbnail: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  instructions: PropTypes.string.isRequired,
+  slug: PropTypes.string.isRequired,
+};
 
 export default DogProfile;

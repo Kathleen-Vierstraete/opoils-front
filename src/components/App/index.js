@@ -23,7 +23,7 @@ import Loading from './Loading';
 
 import { fetchProfiles } from '../../actions/profiles';
 import { fetchRegions, fetchDepartements } from '../../actions/location';
-import { changeLoginField, submitLogin, keepSession, leaveSession } from '../../actions/user';
+import { changeLoginField, submitLogin, keepSession } from '../../actions/user';
 
 function App() {
   const dispatch = useDispatch();
@@ -32,11 +32,6 @@ function App() {
   const passwordValue = useSelector((state) => state.user.password);
   const isLogged = useSelector((state) => state.user.isLogged);
   const nickname = useSelector((state) => state.user.nickname);
-  const authToken = useSelector((state) => state.user.authToken);
-
-  if (authToken) {
-    dispatch(keepSession());
-  }
 
   const isProfilesLoaded = useSelector((state) => state.profiles.isProfilesLoaded);
 
@@ -66,9 +61,6 @@ function App() {
               password={passwordValue}
               changeField={(newValue, identifier) => {
                 dispatch(changeLoginField(newValue, identifier));
-              }}
-              handleLogout={() => {
-                dispatch(leaveSession());
               }}
               handleLogin={() => {
                 dispatch(submitLogin());
