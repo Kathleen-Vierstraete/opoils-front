@@ -23,7 +23,7 @@ import Loading from './Loading';
 
 import { fetchProfiles } from '../../actions/profiles';
 import { fetchRegions, fetchDepartements } from '../../actions/location';
-import { changeLoginField, submitLogin, keepSession } from '../../actions/user';
+import { changeLoginField, submitLogin } from '../../actions/user';
 
 function App() {
   const dispatch = useDispatch();
@@ -32,6 +32,7 @@ function App() {
   const passwordValue = useSelector((state) => state.user.password);
   const isLogged = useSelector((state) => state.user.isLogged);
   const nickname = useSelector((state) => state.user.nickname);
+  const favorites = useSelector((state) => state.profiles.favorites);
 
   const isProfilesLoaded = useSelector((state) => state.profiles.isProfilesLoaded);
 
@@ -71,12 +72,12 @@ function App() {
               }
         />
         <Route path="/inscription" element={<Signin isLogged={isLogged} />} />
-        <Route path="/mon-compte" element={<Account isLogged={isLogged} />} />
+        <Route path="/mon-compte" element={<Account favorites={favorites} isLogged={isLogged} />} />
         <Route path="/:slug" element={<DogProfile isLogged={isLogged} />} />
         <Route path="/dogedit" element={<DogEdit isLogged={isLogged} />} />
         <Route path="/ajouter-un-chien" element={<DogAdd isLogged={isLogged} />} />
         <Route path="/useredit" element={<UserEdit isLogged={isLogged} />} />
-        <Route path="/vicky" element={<UserProfile isLogged={isLogged} />} />
+        <Route path="/:slug" element={<UserProfile isLogged={isLogged} />} />
         <Route path="/recherche-de-chien" element={<DogSearch profiles={profiles} isLogged={isLogged} />} />
         <Route path="/recherche-de-proprietaire" element={<UserSearch profiles={profiles} isLogged={isLogged} />} />
       </Routes>
