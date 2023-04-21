@@ -1,7 +1,8 @@
-import { SAVE_PROFILES } from '../actions/profiles';
+import { SAVE_PROFILES, SAVE_ACCOUNT_PROFILES } from '../actions/profiles';
 
 export const initialState = {
   list: [],
+  favorites: [],
   isProfilesLoaded: false,
 };
 
@@ -12,6 +13,12 @@ const reducer = (state = initialState, action = {}) => {
         ...state,
         list: action.profiles,
         isProfilesLoaded: true,
+      };
+
+    case SAVE_ACCOUNT_PROFILES:
+      return {
+        ...state,
+        favorites: action.accountProfiles,
       };
 
     default:
