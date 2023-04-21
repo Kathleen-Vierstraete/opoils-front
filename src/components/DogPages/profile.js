@@ -4,7 +4,6 @@ import { useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { findProfile } from 'src/selectors/profiles';
 
-import firstimage from '../../assets/img/first-image.png';
 import secondimage from '../../assets/img/second-image.png';
 import thirdimage from '../../assets/img/third-image.png';
 import fourthimage from '../../assets/img/fourth-image.png';

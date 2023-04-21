@@ -1,10 +1,18 @@
 import './styles.scss';
-import firstimage from '../../assets/img/first-image.png';
-import userimage from '../../assets/img/user.jpg';
+import PropTypes from 'prop-types';
+import { useParams } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { findProfile } from 'src/selectors/profiles';
+
 import AppHeader from '../AppHeader';
 import AppFooter from '../AppFooter';
 
-function UserProfile({isLogged}) {
+const UserProfile =({
+  isLogged,
+}) => {
+  const { slug } = useParams();
+  const profile = useSelector((state) => findProfile(state.profiles.list, slug));
+
   return (
     <><AppHeader isLogged={isLogged} />
       <div className="user-profile">
@@ -12,27 +20,24 @@ function UserProfile({isLogged}) {
           <div className="user-part">
             <div className="user-images">
               <div className="main-image">
-                <img src={userimage} alt="main-image" />
+                <img src={profile.thumbnail} alt="main-image" />
               </div>
             </div>
             <div className="user-description">
-              <h1>Vicky</h1>
-              <p>Phasellus vitae elementum nulla, vel tincidunt lectus. Phasellus cursus id mauris eget vulputate. Suspendisse efficitur tellus vel leo aliquam dapibus id sed erat.
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur diam eros, porta sed dui eget, porta aliquet sapien. Aliquam sollicitudin metus nec consequat fermentum. Phasellus vitae elementum nulla, vel tincidunt lectus. Phasellus cursus id mauris eget vulputate. Suspendisse efficitur tellus vel leo aliquam dapibus id sed erat.
-              Curabitur diam eros, porta sed dui eget, porta aliquet sapien.Curabitur diam eros, porta sed dui eget, porta aliquet sapien. Curabitur diam eros, porta sed dui eget, porta aliquet sapien.
-              </p>
+              <h1>{profile.title}</h1>
+              <p>{profile.instructions}</p>
               <h1 className="contact"> <span>Contacter le propriétaire</span> </h1>
             </div>
           </div>
           <div className="dog-part">
             <div className="dog-images">
               <div className="main-image">
-                <img src={firstimage} alt="main-image" />
+                <img src={profile.thumbnail} alt="main-image" />
               </div>
             </div>
             <div className="dog-infos">
               <div className="dog-description">
-                <h1><a href="/snoopy">Snoopy &#8592; </a></h1>
+                <h1><a href="/snoopy">{profile.title} &#8592; </a></h1>
                 <p>Phasellus vitae elementum nulla, vel tincidunt lectus. Phasellus cursus id mauris eget vulputate. Suspendisse efficitur tellus vel leo aliquam dapibus id sed erat.
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur diam eros, porta sed dui eget, porta aliquet sapien. Aliquam sollicitudin metus nec consequat fermentum. Phasellus vitae elementum nulla, vel tincidunt lectus. Phasellus cursus id mauris eget vulputate. Suspendisse efficitur tellus vel leo aliquam dapibus id sed erat. 
                 </p>
@@ -69,5 +74,12 @@ function UserProfile({isLogged}) {
     </>
   );
 }
+UserProfile.propTypes = {
+  isLogged: PropTypes.bool,
+};
+
+UserProfile.defaultProps = {
+  isLogged: false,
+};
 
 export default UserProfile;
