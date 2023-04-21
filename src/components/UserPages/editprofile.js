@@ -3,8 +3,9 @@ import firstimage from '../../assets/img/first-image.png';
 import userimage from '../../assets/img/user.jpg';
 import AppHeader from '../AppHeader';
 import AppFooter from '../AppFooter';
+import SelectLocation from '../SearchPages/SelectLocation';
 
-function UserEdit({isLogged}) {
+function UserEdit({isLogged, location}) {
   return (
     <><AppHeader isLogged={isLogged} />
       <div className="user-profile">
@@ -24,23 +25,7 @@ function UserEdit({isLogged}) {
                 <input type="description" placeholder="Texte de description" />
                 <button type="submit">Modifier la description</button>
                   <label>Départements</label>
-                  <select name="location">
-                    <option value="">--Choisir un département--</option>
-                      <optgroup label="Hauts-de-France">
-                        <option value="1">Aisne</option>
-                        <option value="2">Nord</option>
-                        <option value="3">Oise</option>
-                        <option value="4">Pas-de-Calais</option>
-                        <option value="5">Somme</option>
-                      </optgroup>
-                      <optgroup label="Centre-Val de Loire">
-                        <option value="6">Cher</option>
-                        <option value="7">Indre</option>
-                        <option value="8">Indre-et-Loire</option>
-                        <option value="8">Loir-et-Cher</option>
-                        <option value="8">Loiret</option>
-                      </optgroup>
-                  </select>
+                  <SelectLocation location={location} />
               </form>
             </div>
           </div>

@@ -42,13 +42,13 @@ function HomePage( {isLogged} ) {
             <div className="nav-section" id="nav-bottom">
               <ul>
                 <li>
-                  <NavLink to="/#"><img src={facebook} alt="facebook-logo" /></NavLink>
+                  <NavLink to=""><img src={facebook} alt="facebook-logo" /></NavLink>
                 </li>
                 <li>
-                  <NavLink to="/#"><img src={youtube} alt="youtube-logo" /></NavLink>
+                  <NavLink to=""><img src={youtube} alt="youtube-logo" /></NavLink>
                 </li>
                 <li>
-                  <NavLink to="/#"><img src={instagram} alt="instagram-logo" /></NavLink>
+                  <NavLink to=""><img src={instagram} alt="instagram-logo" /></NavLink>
                 </li>
               </ul>
             </div>

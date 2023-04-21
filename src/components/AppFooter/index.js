@@ -24,20 +24,20 @@ function AppFooter() {
               <NavLink to="/mentions-legales">Mentions légales</NavLink>
             </li>
             <li>
-              <NavLink to="/termes-de-confidentialite">Confidentialité</NavLink>
+              <NavLink to="/politique-de-confidentialite">Politique de Confidentialité</NavLink>
             </li>
           </ul>
         </div>
         <div className="nav-section" id="nav-right">
           <ul>
-            <li><NavLink to="/#">
+            <li><NavLink to="">
               <img src={facebook} alt="facebook-logo"></img></NavLink>
             </li>
             <li>
-              <NavLink to="/#"><img src={youtube} alt="youtube-logo"></img></NavLink>
+              <NavLink to=""><img src={youtube} alt="youtube-logo"></img></NavLink>
             </li>
             <li>
-              <NavLink to="/#"><img src={instagram} alt="instagram-logo"></img></NavLink>
+              <NavLink to=""><img src={instagram} alt="instagram-logo"></img></NavLink>
             </li>
           </ul>
         </div>
