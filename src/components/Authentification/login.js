@@ -1,18 +1,19 @@
 import PropTypes from 'prop-types';
+import { leaveSession } from 'src/actions/user';
+import { useDispatch } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import AppHeader from '../AppHeader';
 import AppFooter from '../AppFooter';
 import Field from './Field';
 
+
 import './styles.scss';
-import { leaveSession } from '../../actions/user';
 
 const Login = ({
   email,
   password,
   changeField,
   handleLogin,
-  handleLogout,
   isLogged,
   loggedMessage,
 }) => {
@@ -20,10 +21,14 @@ const Login = ({
     evt.preventDefault();
     handleLogin();
   };
+  const dispatch = useDispatch();
 
-  const handleClick = () => {
+  const handleClick = (evt) => {
     console.log('appuyé');
-    handleLogout();
+    evt.preventDefault();
+    dispatch(leaveSession());
+    localStorage.removeItem('authToken');
+    console.log('appuyé 2 fois');
   };
   return (
     <><AppHeader isLogged={isLogged} />
@@ -80,7 +85,6 @@ Login.propTypes = {
   password: PropTypes.string.isRequired,
   changeField: PropTypes.func.isRequired,
   handleLogin: PropTypes.func.isRequired,
-  handleLogout: PropTypes.func.isRequired,
   isLogged: PropTypes.bool,
   loggedMessage: PropTypes.string,
 };

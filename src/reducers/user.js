@@ -36,7 +36,11 @@ const reducer = (state = initialState, action = {}) => {
     case LEAVE_SESSION:
       return {
         ...state,
-        user: {},
+        isLogged: false,
+        email: '',
+        password: '',
+        nickname: '',
+        token: '',
       };
 
     default:

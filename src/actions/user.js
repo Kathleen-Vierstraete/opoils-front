@@ -25,9 +25,6 @@ export const keepSession = (authToken) => ({
   authToken: authToken,
 });
 
-export const leaveSession = () => {
-  console.log('dispatching disconnect action');
-  return {
-    type: 'LEAVE_SESSION',
-  };
-};
+export const leaveSession = () => ({
+  type: LEAVE_SESSION,
+});
