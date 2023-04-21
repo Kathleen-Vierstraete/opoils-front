@@ -59,6 +59,7 @@
     "react-router-dom": "^6.10.0",
     "redux": "^4.2.1",
     "redux-devtools": "^3.7.0",
+    "redux-persist": "^6.0.0",
     "router-dom": "^2.2.10"
   },
   "jest": {

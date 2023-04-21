@@ -27,9 +27,11 @@ const Login = ({
     console.log('appuyé');
     evt.preventDefault();
     dispatch(leaveSession());
-    localStorage.removeItem('authToken');
+    sessionStorage.removeItem('authToken');
+    sessionStorage.removeItem('persist:root');
     console.log('appuyé 2 fois');
   };
+
   return (
     <><AppHeader isLogged={isLogged} />
       <div className="authentification-form">

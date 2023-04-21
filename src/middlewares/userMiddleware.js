@@ -15,7 +15,7 @@ const userMiddleware = (store) => (next) => (action) => {
         .then((response) => {
           store.dispatch(saveAuthData(response.data.pseudo, response.data.token));
           store.dispatch(fetchAccountProfiles());
-          localStorage.setItem('authToken', response.data.token);
+          sessionStorage.setItem('authToken', response.data.token);
         })
         .catch((error) => {
           console.warn(error);
