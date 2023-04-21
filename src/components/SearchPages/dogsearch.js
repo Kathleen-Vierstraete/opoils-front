@@ -44,7 +44,7 @@ const SearchDog = ({ profiles, isLogged }) => {
                 value={searchInput}
                 onChange={(e) => setSearchInput(e.target.value)}
               />
-              <NavLink to="/#">
+              <NavLink to="/recherche-de-chien">
                 <img src={search} alt="search-image" />
               </NavLink>
             </div>

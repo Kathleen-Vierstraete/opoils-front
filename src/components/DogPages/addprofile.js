@@ -18,9 +18,15 @@ function AddDog({isLogged}) {
               <img src={profile} alt="main-image" />
             </div>
             <div className="other-images">
-              <img src={profile} alt="second-image" />
-              <img src={profile} alt="third-image" />
-              <img src={profile} alt="fourth-image" />
+              <div className="images">
+                <img src={profile} alt="second-image" />
+              </div>
+              <div className="images">
+                <img src={profile} alt="third-image" />
+              </div>
+              <div className="images">
+                <img src={profile} alt="fourth-image" />
+              </div>
             </div>
             <button type="submit">Ajouter les photos</button>
           </div>

@@ -1,9 +1,15 @@
 @use 'src/styles/vars';
 @use 'src/styles/index';
 
+@font-face {
+  font-family: 'Enthusiastic';
+  src: url('../../assets/fonts/Enthusiastic\ Free.ttf');
+}
+
 @media (max-width: 1200px) {
 
   #website-description{
+    font-family: 'Enthusiastic';
     display: flex;
     justify-content: center;
     align-items: center;
@@ -84,6 +90,7 @@
           color:vars.$primaryLightColor;
           text-shadow: 2px 2px 7px #f2cc96c0;
           margin-top: 8%;
+          color: rgb(129, 206, 176);
             & a{
               display: flex;
               width: 100%;
@@ -93,15 +100,6 @@
               height:calc(var(--index) *2);
             }
           }
-        }
-
-        & #nav-up li:hover{
-          text-align: center;
-          padding: 5%;
-          background-color: #f2cc9671;
-          width: 100%;
-          border-radius: 10px;
-          box-shadow: 3px 3px 10px black;
         }
         & #nav-bottom{
           & ul{
@@ -128,8 +126,10 @@
 @media (min-width: 1200px){
 
 #website-description{
+  font-family: 'Enthusiastic';
   display: flex;
   justify-content: center;
+  align-items: center;
   flex-direction: column;
   background-image: url(../../assets/img/pexels-matthias-zomer-103533.jpg);
   padding-top: calc(var(--index) * 14.3 );
@@ -137,6 +137,7 @@
   background-size: cover;
   background-repeat: no-repeat;
   height: 95vh;
+  
 
   & #main-text{
     width: 40%;
@@ -144,11 +145,11 @@
   & p{
     text-shadow: 3px 3px 10px rgb(0, 0, 0);
     padding-top:5%;
-    font-size: calc(var(--index) / 2 );
+    font-size: calc(var(--index) / 1.3);
   }
   & h1 {
     text-shadow: 3px 3px 10px rgb(0, 0, 0);
-    font-size: calc(var(--index) / 1.2 );
+    font-size: calc(var(--index) / 0.9 );
     color:vars.$primaryLightColor;
   }
   }
@@ -158,11 +159,11 @@
   & p{
     text-shadow: 3px 3px 10px rgb(0, 0, 0);
     padding-top:5%;
-    font-size: calc(var(--index) / 2 );
+    font-size: calc(var(--index) / 1.3 );
   }
   & h1 {
     text-shadow: 3px 3px 10px rgb(0, 0, 0);
-    font-size: calc(var(--index) / 1.2 );
+    font-size: calc(var(--index) / 0.9 );
     color:vars.$primaryLightColor;
   }
   }
@@ -175,7 +176,7 @@
     padding: 5%;
     z-index: 1;
     box-shadow: 3px 10px 30px black;
-    font-size: calc(var(--index) / 1.8 );
+    font-size: calc(var(--index) / 1.6 );
     & .nav {
       display: flex;
       flex-direction: column;
@@ -196,7 +197,7 @@
         width: 100%;
         & li{
         text-align: center;
-        color:vars.$primaryLightColor;
+        color: rgb(129, 206, 176);
         text-shadow: 2px 2px 7px #f2cc96c0;
         margin-top: 8%;
         & a{
@@ -212,7 +213,8 @@
     & #nav-up li:hover{
       text-align: center;
       padding: 5%;
-      background-color: #f2cc9671;
+      background-color: vars.$secondaryLightColor;
+      color: rgb(28, 46, 39);
       width: 100%;
       border-radius: 10px;
       box-shadow: 3px 3px 10px black;

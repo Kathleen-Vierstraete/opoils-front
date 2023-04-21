@@ -21,9 +21,15 @@ function DogEdit({isLogged}) {
               <img src={firstimage} alt="main-image" />
             </div>
             <div className="other-images">
-              <img src={secondimage} alt="second-image" />
-              <img src={thirdimage} alt="third-image" />
-              <img src={fourthimage} alt="fourth-image" />
+              <div className="images">
+                <img src={secondimage} alt="second-image" />
+              </div>
+              <div className="images">
+                <img src={thirdimage} alt="third-image" />
+              </div>
+              <div className="images">
+                <img src={fourthimage} alt="fourth-image" />
+              </div>
             </div>
           </div>
           <div className="dog-infos">

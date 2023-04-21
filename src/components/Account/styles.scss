@@ -93,10 +93,11 @@
           }
 
           & .account-card-image{
-            height:35%;
+            max-width: 20vh;
+            max-height: 20vh;
             & img {
-              width: calc(var(--index) * 7);
-              height: calc(var(--index) * 7);   
+              width: calc(var(--index) * 6);
+              height: calc(var(--index) * 6);   
               border: calc(var(--index) / 12) solid vars.$primaryLightColor;  
               box-shadow: 2px 2px 10px black;
               border-radius: 10px;
@@ -192,7 +193,7 @@
           height: 80%;
           border-radius: 20px;
           overflow: hidden;
-          padding: 2%;
+          padding: 1.5%;
           position: relative;
           color: vars.$primaryLightColor;
           box-shadow: 3px 3px 10px #f2cc9660;
@@ -200,14 +201,17 @@
           & .account-card-header {
             display: flex;
             justify-content: flex-end;
+            align-items: center;
             width: 100%;
+            height: 15%;
 
             & .account-title {
+              color: rgb(80, 180, 105);
               padding: 2%;
               border-radius: 6px;
               background-color: #031b0a83;
-              font-size:calc(var(--index) / 1.2);
-              width: 70%;
+              font-size: 1em;
+              width: 75%;
               text-align: center;
               box-shadow: 0px 0px 8px rgba(1, 110, 37, 0.39);
             }
@@ -216,7 +220,7 @@
               display: flex;
               align-items: center;
               justify-content: flex-end;
-              width: 15%;
+              width: 10%;
 
               & button{
                 color:vars.$primaryLightColor;
@@ -225,8 +229,8 @@
                 align-items: center;
                 justify-content: center;
                 text-transform: capitalize;
-                height: 65%;
-                width: 55%;
+                height: calc(var(--index) / 1.2);
+                width: 80%;
                 border-radius: 3px;
                 font-size:calc(var(--index) / 1.7);
                 background-color: rgb(56, 85, 60);
@@ -239,12 +243,14 @@
           }
 
           & .account-card-image{
-            height:35%;
+            max-width: calc(var(--index) * 6);
+            max-height: calc(var(--index) * 6); 
+            
 
             & img {
               width: calc(var(--index) * 5);
-              height: calc(var(--index) * 5.5);   
-              border: calc(var(--index) / 12) solid vars.$primaryLightColor;  
+              height: calc(var(--index) * 5);   
+              border: calc(var(--index) / 12) solid rgb(95, 143, 124);;  
               box-shadow: 2px 2px 10px black;
               border-radius: 40%;
               margin-top: 20%;

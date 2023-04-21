@@ -2,7 +2,7 @@ import AppHeader from '../AppHeader';
 import AppFooter from '../AppFooter';
 import './styles.scss';
 
-function Signin() {
+function Signin( {isLogged}) {
   return (
     <><AppHeader isLogged={isLogged} />
       <div className="authentification-form">

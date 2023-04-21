@@ -25,9 +25,15 @@ const DogProfile = ({
               <img src={profile.thumbnail} alt="main-image" />
             </div>
             <div className="other-images">
-              <img src={secondimage} alt="second-image" />
-              <img src={thirdimage} alt="third-image" />
-              <img src={fourthimage} alt="fourth-image" />
+              <div className="images">
+                <img src={secondimage} alt="second-image" />
+              </div>
+              <div className="images">
+                <img src={thirdimage} alt="third-image" />
+              </div>
+              <div className="images">
+                <img src={fourthimage} alt="fourth-image" />
+              </div>
             </div>
           </div>
           <div className="dog-infos">
@@ -64,7 +70,7 @@ const DogProfile = ({
             </ul>
           </div>
           <div className="dog-description">
-            <h1>Présentation</h1>
+            <h1>Presentation</h1>
             <p>{profile.instructions}</p>
           </div>
         </div>

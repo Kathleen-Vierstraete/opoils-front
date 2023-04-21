@@ -43,7 +43,7 @@ const SearchUser = ({ profiles, isLogged }) => {
                 value={searchInput}
                 onChange={(e) => setSearchInput(e.target.value)}
               />
-              <NavLink to="/#">
+              <NavLink to="/recherche-de-proprietaire">
                 <img src={search} alt="search-image" />
               </NavLink>
             </div>

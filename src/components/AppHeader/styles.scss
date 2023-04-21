@@ -232,7 +232,7 @@
     
     li:active {
       background: vars.$primaryDarkColor;
-      color: #000000;
+      color: vars.$primaryLightColor;
     }
   }
 }
