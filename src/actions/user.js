@@ -28,4 +28,3 @@ export const keepSession = (authToken) => ({
 export const leaveSession = () => ({
   type: LEAVE_SESSION,
 });
-

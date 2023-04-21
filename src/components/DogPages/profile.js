@@ -1,5 +1,9 @@
 import './styles.scss';
 import PropTypes from 'prop-types';
+import { useParams } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { findProfile } from 'src/selectors/profiles';
+
 import firstimage from '../../assets/img/first-image.png';
 import secondimage from '../../assets/img/second-image.png';
 import thirdimage from '../../assets/img/third-image.png';
@@ -7,20 +11,19 @@ import fourthimage from '../../assets/img/fourth-image.png';
 import AppHeader from '../AppHeader';
 import AppFooter from '../AppFooter';
 
-function DogProfile({
+const DogProfile = ({
   isLogged,
-  thumbnail,
-  title,
-  instructions,
-}) {
+}) => {
+  const { slug } = useParams();
+  const profile = useSelector((state) => findProfile(state.profiles.list, slug));
   return (
     <><AppHeader isLogged={isLogged} />
       <div className="dog-profile">
         <div className="infos">
           <div className="dog-images">
-            <h1>{title}</h1>
+            <h1>{profile.title}</h1>
             <div className="main-image">
-              <img src={thumbnail} alt="main-image" />
+              <img src={profile.thumbnail} alt="main-image" />
             </div>
             <div className="other-images">
               <img src={secondimage} alt="second-image" />
@@ -63,7 +66,7 @@ function DogProfile({
           </div>
           <div className="dog-description">
             <h1>Présentation</h1>
-            <p>{instructions}</p>
+            <p>{profile.instructions}</p>
           </div>
         </div>
       </div>
@@ -73,10 +76,10 @@ function DogProfile({
 }
 
 DogProfile.propTypes = {
-  thumbnail: PropTypes.string.isRequired,
-  title: PropTypes.string.isRequired,
-  instructions: PropTypes.string.isRequired,
-  slug: PropTypes.string.isRequired,
+  isLogged: PropTypes.bool,
 };
 
+DogProfile.defaultProps = {
+  isLogged: false,
+};
 export default DogProfile;

@@ -181,14 +181,14 @@
       flex-direction: column;
       justify-content: center;
       width: 10%;
-      & .dogimg{
+    /*   & .dogimg{
         position: relative;
         bottom: calc(var(--index) *12.55 );
         right: calc(var(--index) *10 );
         position: absolute;
         width:  calc(var(--index) *7 );
         height: calc(var(--index) *10.1 );
-      }
+      } */
 
       & ul{
         padding-top:1%;
