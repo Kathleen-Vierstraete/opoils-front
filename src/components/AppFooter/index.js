@@ -30,14 +30,16 @@ function AppFooter() {
         </div>
         <div className="nav-section" id="nav-right">
           <ul>
-            <li><NavLink to="">
-              <img src={facebook} alt="facebook-logo"></img></NavLink>
+            <li>
+              <NavLink to="">
+                <img src={facebook} alt="facebook-logo" />
+              </NavLink>
             </li>
             <li>
-              <NavLink to=""><img src={youtube} alt="youtube-logo"></img></NavLink>
+              <NavLink to=""><img src={youtube} alt="youtube-logo" /></NavLink>
             </li>
             <li>
-              <NavLink to=""><img src={instagram} alt="instagram-logo"></img></NavLink>
+              <NavLink to=""><img src={instagram} alt="instagram-logo" /></NavLink>
             </li>
           </ul>
         </div>

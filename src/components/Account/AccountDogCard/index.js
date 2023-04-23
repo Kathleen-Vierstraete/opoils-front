@@ -6,15 +6,16 @@ const AccountDogCard = ({
   thumbnail,
   title,
   slug,
+  id,
 }) => (
   <div className="account-card">
     <div className="account-card-header">
       <div className="account-title">
         <h1 href="/vicky">{title}</h1>
       </div>
-        <div className="account-delete-button">
-          <button>x</button>
-        </div>
+      <div className="account-delete-button">
+        <button>x</button>
+      </div>
     </div>
     <div className="account-card-image">
       <img src={thumbnail} alt="main-image" />
@@ -32,7 +33,7 @@ const AccountDogCard = ({
     </div>
     <div className="account-modification-link">
       <NavLink
-        to="/dogedit"
+        to={`/dogedit/${slug}`}
       >
         Modifier la fiche
       </NavLink>
@@ -49,6 +50,7 @@ AccountDogCard.propTypes = {
   thumbnail: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   slug: PropTypes.string.isRequired,
+  id: PropTypes.number.isRequired,
 };
 
 export default AccountDogCard;

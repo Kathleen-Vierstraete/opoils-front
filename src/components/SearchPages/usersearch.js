@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 import { FETCH_PROFILES } from '../../actions/profiles';
-import Card from '../Card';
+import DogCard from './DogCard';
 import search from '../../assets/img/search.png';
 import AppHeader from '../AppHeader';
 import AppFooter from '../AppFooter';
@@ -56,7 +56,7 @@ const SearchUser = ({ profiles, isLogged }) => {
             {filteredProfiles && (
               <div className="cards">
                 {filteredProfiles.map((profile) => (
-                  <Card key={profile.id} {...profile} />
+                  <DogCard key={profile.id} {...profile} />
                 ))}
               </div>
             )}
@@ -67,18 +67,14 @@ const SearchUser = ({ profiles, isLogged }) => {
   );
 };
 
-/* added here the word prop for the filter, I only need this with Object but if I get rid of it I should remember to add what's needed here */
-
 SearchUser.propTypes = {
   profiles: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.number.isRequired,
-      word: PropTypes.string.isRequired,
     }),
   ),
 };
 
-/* avoid some errors by messing around while working, profiles is never empty this way it doesn't need any value to work*/
 
 SearchUser.defaultProps = {
   profiles: null,

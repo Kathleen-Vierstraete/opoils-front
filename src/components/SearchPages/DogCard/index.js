@@ -1,8 +1,8 @@
 import PropTypes from 'prop-types';
 import { NavLink } from 'react-router-dom';
-import '../SearchPages/styles.scss';
+import '../styles.scss';
 
-const Card = ({
+const DogCard = ({
   thumbnail,
   title,
   instructions,
@@ -21,11 +21,11 @@ const Card = ({
   </div>
 );
 
-Card.propTypes = {
+DogCard.propTypes = {
   thumbnail: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   instructions: PropTypes.string.isRequired,
   slug: PropTypes.string.isRequired,
 };
 
-export default Card;
+export default DogCard;

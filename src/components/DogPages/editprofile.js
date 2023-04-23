@@ -1,13 +1,20 @@
 import './styles.scss';
-import firstimage from '../../assets/img/first-image.png';
+import PropTypes from 'prop-types';
+import { useParams } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { findProfile } from 'src/selectors/profiles';
 import secondimage from '../../assets/img/second-image.png';
 import thirdimage from '../../assets/img/third-image.png';
 import fourthimage from '../../assets/img/fourth-image.png';
 import AppHeader from '../AppHeader';
 import AppFooter from '../AppFooter';
 
+const DogEdit = ({
+  isLogged,
+}) => {
+  const { slug } = useParams();
+  const profile = useSelector((state) => findProfile(state.profiles.list, slug));
 
-function DogEdit({isLogged}) {
   return (
     <><AppHeader isLogged={isLogged} />
       <div className="dog-profile">
@@ -15,10 +22,10 @@ function DogEdit({isLogged}) {
           <div className="dog-images">
             <h1>Nom</h1>
             <form>
-              <input type="nom" placeholder="Nom" value="Snoopy" />
+              <input type="nom" placeholder="Nom" value={`${profile.title}`} />
             </form>
             <div className="main-image">
-              <img src={firstimage} alt="main-image" />
+              <img src={profile.thumbnail} alt="main-image" />
             </div>
             <div className="other-images">
               <div className="images">
@@ -77,7 +84,10 @@ function DogEdit({isLogged}) {
           <div className="dog-description">
             <form>
               <label>Présentation</label>
-              <input type="description" value="Texte de description" />
+              <input 
+                type="description" 
+                value={`${profile.instructions}`}
+              />
               <button type="submit">Modifier la description</button>
             </form>
           </div>
@@ -86,6 +96,12 @@ function DogEdit({isLogged}) {
       <AppFooter />
     </>
   );
-}
+};
 
+DogEdit.propTypes = {
+  isLogged: PropTypes.bool,
+};
+DogEdit.defaultProps = {
+  isLogged: false,
+};
 export default DogEdit;

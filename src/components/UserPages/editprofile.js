@@ -1,11 +1,15 @@
 import './styles.scss';
-import firstimage from '../../assets/img/first-image.png';
+import { useSelector } from 'react-redux';
+import PropTypes from 'prop-types';
 import userimage from '../../assets/img/user.jpg';
 import AppHeader from '../AppHeader';
 import AppFooter from '../AppFooter';
 import SelectLocation from '../SearchPages/SelectLocation';
+import UsersDogsPart from './UsersDogsPart';
 
-function UserEdit({isLogged, location}) {
+function UserEdit({isLogged, location, favorites }) {
+  const user = useSelector((state) => state.user);
+
   return (
     <><AppHeader isLogged={isLogged} />
       <div className="user-profile">
@@ -21,55 +25,32 @@ function UserEdit({isLogged, location}) {
             </div>
             <div className="user-description">
               <form>
-                <label>Vicky</label>
+                <label>{user.nickname}</label>
                 <input type="description" placeholder="Texte de description" />
-                <button type="submit">Modifier la description</button>
                   <label>Départements</label>
-                  <SelectLocation location={location} />
+                    <SelectLocation location={location} />
+                <button type="submit">Modifier les modifications</button>
               </form>
             </div>
           </div>
-          <div className="dog-part">
-            <div className="dog-images">
-              <div className="main-image">
-                <img src={firstimage} alt="main-image" />
-              </div>
-            </div>
-            <div className="dog-infos">
-              <div className="dog-description">
-              <h1><a href="/snoopy">Snoopy &#8592; </a></h1>
-                <p>Phasellus vitae elementum nulla, vel tincidunt lectus. Phasellus cursus id mauris eget vulputate. Suspendisse efficitur tellus vel leo aliquam dapibus id sed erat.
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur diam eros, porta sed dui eget, porta aliquet sapien. Aliquam sollicitudin metus nec consequat fermentum. Phasellus vitae elementum nulla, vel tincidunt lectus. Phasellus cursus id mauris eget vulputate. Suspendisse efficitur tellus vel leo aliquam dapibus id sed erat. 
-                </p>
-              </div>
-                <ul>
-                  <li>
-                    <h2>Age</h2>
-                    <p>2 ans</p>
-                  </li>
-                  <li>
-                    <h2>Race</h2>
-                    <p>West Highland white terrier</p>
-                  </li>
-                  <li>
-                    <h2>Hobbies</h2>
-                    <ul className="hobbies">
-                      <li>Voler des chaussettes</li>
-                      <li>Aboyer sur le facteur</li>
-                      <li>Courir dans tous les sens</li>
-                      <li>Se déguiser en Idefix</li>
-                    </ul>
-                  </li>
-                  <li><h2>Département</h2></li>
-                  <p>Loiret</p>
-                </ul>
-            </div>
-          </div>
+          {favorites.map((favorite) => (
+            <UsersDogsPart key={favorite.id} {...favorite} />
+          ))}
         </div>
       </div>
       <AppFooter />
     </>
   );
 }
+UserEdit.propTypes = {
+  favorites: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+    }),
+  ),
+};
+UserEdit.defaultProps = {
+  favorites: null,
+};
 
 export default UserEdit;

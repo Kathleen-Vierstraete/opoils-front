@@ -69,7 +69,6 @@ const UserProfile =({
           </div>
         </div>
       </div>
-{/*         <img src={dog} alt="logo" /> */}
       <AppFooter />
     </>
   );
