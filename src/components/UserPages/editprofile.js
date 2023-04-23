@@ -25,7 +25,7 @@ function UserEdit({isLogged, location, favorites }) {
             </div>
             <div className="user-description">
               <form>
-                <label>{user.nickname}</label>
+                <label>{user.pseudo}</label>
                 <input type="description" placeholder="Texte de description" />
                   <label>Départements</label>
                     <SelectLocation location={location} />

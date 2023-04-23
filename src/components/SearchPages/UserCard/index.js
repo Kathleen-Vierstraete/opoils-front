@@ -3,18 +3,18 @@ import { NavLink } from 'react-router-dom';
 import '../styles.scss';
 
 const UserCard = ({
-  thumbnail,
-  title,
-  instructions,
-  slug,
+  username,
+  city,
+  picture,
+  id,
 }) => (
   <div className="card">
-    <img src={thumbnail} alt={title} />
+    <img src={`http://caroline-georges.vpnuser.lan:8090/uploads/pictures/${picture}`} alt={username} />
     <div className="card-content">
-      <h1>{title}</h1>
-      <p>{instructions}</p>
+      <h1>{username}</h1>
+      <p>{city}</p>
       <NavLink
-        to={`/${slug}`}
+        to={`/${id}`}
         className="card-link"
       />
     </div>
@@ -22,10 +22,10 @@ const UserCard = ({
 );
 
 UserCard.propTypes = {
-  thumbnail: PropTypes.string.isRequired,
-  title: PropTypes.string.isRequired,
-  instructions: PropTypes.string.isRequired,
-  slug: PropTypes.string.isRequired,
+  picture: PropTypes.string.isRequired,
+  username: PropTypes.string.isRequired,
+  city: PropTypes.string.isRequired,
+  id: PropTypes.string.isRequired,
 };
 
 export default UserCard;

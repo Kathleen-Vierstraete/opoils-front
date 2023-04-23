@@ -21,24 +21,26 @@ import UserSearch from '../SearchPages/usersearch';
 import DogSearch from '../SearchPages/dogsearch';
 import Loading from './Loading';
 
-import { fetchProfiles } from '../../actions/profiles';
+import { fetchMembersProfiles,fetchDogsProfiles } from '../../actions/profiles';
 import { fetchRegions, fetchDepartements } from '../../actions/location';
 import { changeLoginField, submitLogin } from '../../actions/user';
 
 function App() {
   const dispatch = useDispatch();
-  const profiles = useSelector((state) => state.profiles.list);
+  const dogs = useSelector((state) => state.profiles.dogs);
+  const members = useSelector((state) => state.profiles.members);
   const emailValue = useSelector((state) => state.user.email);
   const passwordValue = useSelector((state) => state.user.password);
   const isLogged = useSelector((state) => state.user.isLogged);
-  const nickname = useSelector((state) => state.user.nickname);
+  const pseudo = useSelector((state) => state.user.pseudo);
   const favorites = useSelector((state) => state.profiles.favorites);
   const user = useSelector((state) => state.user);
 
   const isProfilesLoaded = useSelector((state) => state.profiles.isProfilesLoaded);
 
   useEffect(() => {
-    dispatch(fetchProfiles());
+    dispatch(fetchMembersProfiles());
+    dispatch(fetchDogsProfiles());
     dispatch(fetchRegions());
     dispatch(fetchDepartements());
   }, []);
@@ -68,19 +70,19 @@ function App() {
                 dispatch(submitLogin());
               }}
               isLogged={isLogged}
-              loggedMessage={`Au revoir ${nickname}!`}
+              loggedMessage={`Au revoir ${pseudo}!`}
             />
           )}
         />
         <Route path="/inscription" element={<Signin isLogged={isLogged} />} />
         <Route path="/mon-compte" element={<Account favorites={favorites} isLogged={isLogged} user={user} />} />
-        <Route path="/:slug" element={<DogProfile isLogged={isLogged} />} />
+        <Route path="/:id" element={<DogProfile isLogged={isLogged} profiles={dogs} />} />
         <Route path="/dogedit/:slug" element={<DogEdit isLogged={isLogged} />} />
         <Route path="/ajouter-un-chien" element={<DogAdd isLogged={isLogged} />} />
         <Route path="/useredit" element={<UserEdit isLogged={isLogged} favorites={favorites} />} />
-        <Route path={`/${user.nickname}`} element={<UserProfile isLogged={isLogged} />} />
-        <Route path="/recherche-de-chien" element={<DogSearch profiles={profiles} isLogged={isLogged} />} />
-        <Route path="/recherche-de-proprietaire" element={<UserSearch profiles={profiles} isLogged={isLogged} />} />
+        <Route path="/:id " element={<UserProfile isLogged={isLogged} profiles={members} />} />
+        <Route path="/recherche-de-chien" element={<DogSearch dogs={dogs} isLogged={isLogged} />} />
+        <Route path="/recherche-de-proprietaire" element={<UserSearch members={members} isLogged={isLogged} />} />
       </Routes>
     </div>
   );

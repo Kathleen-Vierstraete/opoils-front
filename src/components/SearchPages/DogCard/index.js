@@ -3,18 +3,18 @@ import { NavLink } from 'react-router-dom';
 import '../styles.scss';
 
 const DogCard = ({
-  thumbnail,
-  title,
-  instructions,
-  slug,
+  name,
+  presentation,
+  picture,
+  id,
 }) => (
   <div className="card">
-    <img src={thumbnail} alt={title} />
+    <img src={`http://caroline-georges.vpnuser.lan:8090/uploads/pictures/${picture}`} alt={name} />
     <div className="card-content">
-      <h1>{title}</h1>
-      <p>{instructions}</p>
+      <h1>{name}</h1>
+      <p>{presentation}</p>
       <NavLink
-        to={`/${slug}`}
+        to={`/${id}`}
         className="card-link"
       />
     </div>
@@ -22,10 +22,10 @@ const DogCard = ({
 );
 
 DogCard.propTypes = {
-  thumbnail: PropTypes.string.isRequired,
-  title: PropTypes.string.isRequired,
-  instructions: PropTypes.string.isRequired,
-  slug: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  picture: PropTypes.string.isRequired,
+  presentation: PropTypes.string.isRequired,
+  id: PropTypes.number.isRequired,
 };
 
 export default DogCard;

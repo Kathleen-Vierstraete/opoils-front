@@ -14,13 +14,13 @@ const DogProfile = ({
   isLogged,
 }) => {
   const { slug } = useParams();
-  const profile = useSelector((state) => findProfile(state.profiles.list, slug));
+  const profile = useSelector((state) => findProfile(state.profiles.dogs, slug));
   return (
     <><AppHeader isLogged={isLogged} />
       <div className="dog-profile">
         <div className="infos">
           <div className="dog-images">
-            <h1>{profile.title}</h1>
+            <h1>{profile.name}</h1>
             <div className="main-image">
               <img src={profile.thumbnail} alt="main-image" />
             </div>
@@ -71,7 +71,7 @@ const DogProfile = ({
           </div>
           <div className="dog-description">
             <h1>Presentation</h1>
-            <p>{profile.instructions}</p>
+            <p>{profile.presentation}</p>
           </div>
         </div>
       </div>

@@ -3,14 +3,14 @@ import { NavLink } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
-import { FETCH_PROFILES } from '../../actions/profiles';
+import { FETCH_DOGS_PROFILES } from '../../actions/profiles';
 import DogCard from './DogCard';
 import search from '../../assets/img/search.png';
 import AppHeader from '../AppHeader';
 import AppFooter from '../AppFooter';
 import SelectLocation from './SelectLocation';
 
-const SearchDog = ({ profiles, isLogged }) => {
+const SearchDog = ({ dogs, isLogged }) => {
   const dispatch = useDispatch();
   const [searchInput, setSearchInput] = useState('');
   const [selectedSize, setSelectedSize] = useState('');
@@ -18,7 +18,7 @@ const SearchDog = ({ profiles, isLogged }) => {
   const location = useSelector((state) => state.location);
 
   useEffect(() => {
-    dispatch({ type: FETCH_PROFILES });
+    dispatch({ type: FETCH_DOGS_PROFILES });
   }, []);
 
   /* I used Object here because it's global and it takes all the content of the fetched array but I don't think global is a good thing for security a little bit like var instead of let and const but it helps to get results from profiles array instead of checking index by index, I added toLowerCase so uppercase doesn't mess up the filter, without this the filter wouldn't find the right words if there's an uppercase mismatch */
@@ -26,15 +26,15 @@ const SearchDog = ({ profiles, isLogged }) => {
   /* https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Global_Objects/Object */
   /* https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Global_Objects/Array/some */
 
-  const filteredProfiles = profiles.filter((profile) => {
+  const filteredProfiles = dogs.filter((profile) => {
     const matchesSearchInput = Object.values(profile).some((value) =>
       typeof value === 'string' && value.toLowerCase().includes(searchInput.toLowerCase())
     );
     // need to connect by dogs informations on dogprofile size and personality when I switch API
     const matchedSize = !selectedSize || profile.size === selectedSize;
-    const matchesCharacter = !selectedPersonality || profile.character === selectedPersonality;
+    const matchesPersonality = !selectedPersonality || profile.personality === selectedPersonality;
     // need to think adding filter location too if I have time
-    return matchesSearchInput && matchedSize && matchesCharacter;
+    return matchesSearchInput && matchedSize && matchesPersonality;
   });
 
   return (
@@ -91,7 +91,7 @@ const SearchDog = ({ profiles, isLogged }) => {
 };
 
 SearchDog.propTypes = {
-  profiles: PropTypes.arrayOf(
+  dogs: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.number.isRequired,
     }),

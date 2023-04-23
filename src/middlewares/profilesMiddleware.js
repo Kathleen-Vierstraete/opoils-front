@@ -1,12 +1,22 @@
 import axios from 'axios';
-import { FETCH_PROFILES, saveProfiles, FETCH_ACCOUNT_PROFILES, saveAccountProfiles, fetchAccountProfiles } from '../actions/profiles';
+import { FETCH_DOGS_PROFILES, saveDogsProfiles, FETCH_MEMBERS_PROFILES,saveMembersProfiles, FETCH_ACCOUNT_PROFILES, saveAccountProfiles, fetchAccountProfiles } from '../actions/profiles';
 
 const profilesMiddleware = (store) => (next) => (action) => {
   switch (action.type) {
-    case FETCH_PROFILES:
-      axios.get('http://localhost:3001/recipes')
+    case FETCH_MEMBERS_PROFILES:
+      axios.get('http://caroline-georges.vpnuser.lan:8090/api/members')
         .then((response) => {
-          store.dispatch(saveProfiles(response.data));
+          store.dispatch(saveMembersProfiles(response.data));
+        })
+        .catch((error) => {
+          console.warn(error);
+        });
+      break;
+
+      case FETCH_DOGS_PROFILES:
+      axios.get('http://caroline-georges.vpnuser.lan:8090/api/dogs ')
+        .then((response) => {
+          store.dispatch(saveDogsProfiles(response.data));
         })
         .catch((error) => {
           console.warn(error);

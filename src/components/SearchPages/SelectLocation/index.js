@@ -26,7 +26,7 @@ const SelectLocation = ({location}) => {
 
   return (
     <select>
-      <option value="">Localisation</option>
+      <option>Localisation</option>
       {Object.keys(departementsByRegions).map((region) => (
         <optgroup label={region} key={region}>
           {departementsByRegions[region].map((departement) => (

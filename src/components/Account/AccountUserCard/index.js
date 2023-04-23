@@ -10,7 +10,7 @@ const AccountUserCard = () => {
     <div className="account-card">
       <div className="account-card-header">
         <div className="account-title">
-          <h1>{user.nickname}</h1>
+          <h1>{user.pseudo}</h1>
         </div>
         <div className="account-delete-button">
           <button>x</button>

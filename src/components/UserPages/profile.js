@@ -11,7 +11,7 @@ const UserProfile =({
   isLogged,
 }) => {
   const { slug } = useParams();
-  const profile = useSelector((state) => findProfile(state.profiles.list, slug));
+  const profile = useSelector((state) => findProfile(state.profiles.members, slug));
 
   return (
     <><AppHeader isLogged={isLogged} />

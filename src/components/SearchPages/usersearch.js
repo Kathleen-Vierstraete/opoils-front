@@ -3,20 +3,21 @@ import { NavLink } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
-import { FETCH_PROFILES } from '../../actions/profiles';
-import DogCard from './DogCard';
+import { FETCH_MEMBERS_PROFILES } from '../../actions/profiles';
+import UserCard from './UserCard';
 import search from '../../assets/img/search.png';
 import AppHeader from '../AppHeader';
 import AppFooter from '../AppFooter';
 import SelectLocation from './SelectLocation';
 
-const SearchUser = ({ profiles, isLogged }) => {
+const SearchUser = ({ members, isLogged }) => {
   const dispatch = useDispatch();
   const [searchInput, setSearchInput] = useState('');
+  const [selectedDepartement, setDepartement] = useState('');
   const location = useSelector((state) => state.location);
 
   useEffect(() => {
-    dispatch({ type: FETCH_PROFILES });
+    dispatch({ type: FETCH_MEMBERS_PROFILES });
   }, []);
 
   /* I used Object here because it's global and it takes all the content of the fetched array but I don't think global is a good thing for security a little bit like var instead of let and const but it helps to get results from profiles array instead of checking index by index, I added toLowerCase so uppercase doesn't mess up the filter, without this the filter wouldn't find the right words if there's an uppercase mismatch*/
@@ -24,12 +25,15 @@ const SearchUser = ({ profiles, isLogged }) => {
   /* https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Global_Objects/Object */
   /* https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Global_Objects/Array/some */
 
-  const filteredProfiles = profiles.filter((profile) =>
-    Object.values(profile).some(
-      (value) =>
-        typeof value === 'string' &&
-        value.toLowerCase().includes(searchInput.toLowerCase()),
-    ));
+  const filteredProfiles = members.filter((profile) => {
+    const matchesSearchInput = Object.values(profile).some((value) =>
+      typeof value === 'string' && value.toLowerCase().includes(searchInput.toLowerCase())
+    );
+    // need to connect by dogs informations on dogprofile size and personality when I switch API
+    const matchesDepartement = !selectedDepartement || profile.postal_code === selectedDepartement;
+    // need to think adding filter location too if I have time
+    return matchesSearchInput && matchesDepartement;
+  });
   return (
     <>
       <AppHeader isLogged={isLogged} />
@@ -56,7 +60,7 @@ const SearchUser = ({ profiles, isLogged }) => {
             {filteredProfiles && (
               <div className="cards">
                 {filteredProfiles.map((profile) => (
-                  <DogCard key={profile.id} {...profile} />
+                  <UserCard key={profile.id} {...profile} />
                 ))}
               </div>
             )}
@@ -68,7 +72,7 @@ const SearchUser = ({ profiles, isLogged }) => {
 };
 
 SearchUser.propTypes = {
-  profiles: PropTypes.arrayOf(
+  members: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.number.isRequired,
     }),

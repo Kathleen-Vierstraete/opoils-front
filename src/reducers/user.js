@@ -4,7 +4,7 @@ export const initialState = {
   isLogged: false,
   email: '',
   password: '',
-  nickname: '',
+  pseudo: '',
   token: '',
   authToken: localStorage.getItem('authToken'),
 };
@@ -21,7 +21,7 @@ const reducer = (state = initialState, action = {}) => {
       return {
         ...state,
         isLogged: true,
-        nickname: action.nickname,
+        pseudo: action.pseudo,
         token: action.token,
         email: '',
         password: '',
@@ -39,7 +39,7 @@ const reducer = (state = initialState, action = {}) => {
         isLogged: false,
         email: '',
         password: '',
-        nickname: '',
+        pseudo: '',
         token: '',
       };
 
