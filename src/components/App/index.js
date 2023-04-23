@@ -33,6 +33,7 @@ function App() {
   const isLogged = useSelector((state) => state.user.isLogged);
   const nickname = useSelector((state) => state.user.nickname);
   const favorites = useSelector((state) => state.profiles.favorites);
+  const user = useSelector((state) => state.user);
 
   const isProfilesLoaded = useSelector((state) => state.profiles.isProfilesLoaded);
 
@@ -56,7 +57,7 @@ function App() {
         <Route path="/mentions-legales" element={<Mentions isLogged={isLogged} />} />
         <Route
           path="/connexion"
-          element={
+          element={(
             <Login
               email={emailValue}
               password={passwordValue}
@@ -69,15 +70,15 @@ function App() {
               isLogged={isLogged}
               loggedMessage={`Au revoir ${nickname}!`}
             />
-              }
+          )}
         />
         <Route path="/inscription" element={<Signin isLogged={isLogged} />} />
-        <Route path="/mon-compte" element={<Account favorites={favorites} isLogged={isLogged} />} />
+        <Route path="/mon-compte" element={<Account favorites={favorites} isLogged={isLogged} user={user} />} />
         <Route path="/:slug" element={<DogProfile isLogged={isLogged} />} />
-        <Route path="/dogedit" element={<DogEdit isLogged={isLogged} />} />
+        <Route path="/dogedit/:slug" element={<DogEdit isLogged={isLogged} />} />
         <Route path="/ajouter-un-chien" element={<DogAdd isLogged={isLogged} />} />
-        <Route path="/useredit" element={<UserEdit isLogged={isLogged} />} />
-        <Route path="/:slug" element={<UserProfile isLogged={isLogged} />} />
+        <Route path="/useredit" element={<UserEdit isLogged={isLogged} favorites={favorites} />} />
+        <Route path={`/${user.nickname}`} element={<UserProfile isLogged={isLogged} />} />
         <Route path="/recherche-de-chien" element={<DogSearch profiles={profiles} isLogged={isLogged} />} />
         <Route path="/recherche-de-proprietaire" element={<UserSearch profiles={profiles} isLogged={isLogged} />} />
       </Routes>

@@ -22,7 +22,7 @@ function HomePage( {isLogged} ) {
             </p>
           </div>
           <div className="nav">
-{/*             <img className="dogimg" src={dog} alt="dog-image" /> */}
+              {/*<img className="dogimg" src={dog} alt="dog-image" /> */}
             <div className="nav-section" id="nav-up">
               <ul>
                 <li>

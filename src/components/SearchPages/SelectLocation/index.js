@@ -49,4 +49,7 @@ SelectLocation.propTypes = {
   ),
 };
 
+SelectLocation.defaultProps = {
+  location: null,
+};
 export default SelectLocation;

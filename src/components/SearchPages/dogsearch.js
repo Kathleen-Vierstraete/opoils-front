@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 import { FETCH_PROFILES } from '../../actions/profiles';
-import Card from '../Card';
+import DogCard from './DogCard';
 import search from '../../assets/img/search.png';
 import AppHeader from '../AppHeader';
 import AppFooter from '../AppFooter';
@@ -13,6 +13,8 @@ import SelectLocation from './SelectLocation';
 const SearchDog = ({ profiles, isLogged }) => {
   const dispatch = useDispatch();
   const [searchInput, setSearchInput] = useState('');
+  const [selectedSize, setSelectedSize] = useState('');
+  const [selectedPersonality, setSelectedPersonality] = useState('');
   const location = useSelector((state) => state.location);
 
   useEffect(() => {
@@ -24,12 +26,16 @@ const SearchDog = ({ profiles, isLogged }) => {
   /* https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Global_Objects/Object */
   /* https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Global_Objects/Array/some */
 
-  const filteredProfiles = profiles.filter((profile) =>
-    Object.values(profile).some(
-      (value) =>
-        typeof value === 'string' &&
-        value.toLowerCase().includes(searchInput.toLowerCase()),
-    ));
+  const filteredProfiles = profiles.filter((profile) => {
+    const matchesSearchInput = Object.values(profile).some((value) =>
+      typeof value === 'string' && value.toLowerCase().includes(searchInput.toLowerCase())
+    );
+    // need to connect by dogs informations on dogprofile size and personality when I switch API
+    const matchedSize = !selectedSize || profile.size === selectedSize;
+    const matchesCharacter = !selectedPersonality || profile.character === selectedPersonality;
+    // need to think adding filter location too if I have time
+    return matchesSearchInput && matchedSize && matchesCharacter;
+  });
 
   return (
     <>
@@ -50,19 +56,19 @@ const SearchDog = ({ profiles, isLogged }) => {
             </div>
             <div className="select-div">
               <div className="select-elem">
-              <select name="Taille">
+                <select name="Taille" value={selectedSize} onChange={(e) => setSelectedSize(e.target.value)}>
                   <option value="">Choisir un gabarit</option>
-                    <option value="1">Petit</option>
-                    <option value="2">Moyen</option>
-                    <option value="2">Grand</option>
+                  <option value="Petit">Petit</option>
+                  <option value="Moyen">Moyen</option>
+                  <option value="Grand">Grand</option>
                 </select>
               </div>
               <div className="select-elem">
-                <select name="Caractère">
+                <select name="Caractère" value={selectedPersonality} onChange={(e) => setSelectedPersonality(e.target.value)}>
                   <option value="">Choisir un caractère</option>
-                      <option value="1">Calme</option>
-                      <option value="2">Adaptable</option>
-                      <option value="2">Energique</option>
+                  <option value="Calme">Calme</option>
+                  <option value="Adaptable">Adaptable</option>
+                  <option value="Energique">Energique</option>
                 </select>
               </div>
               <div className="select-elem location">
@@ -73,7 +79,7 @@ const SearchDog = ({ profiles, isLogged }) => {
           {filteredProfiles && (
             <div className="cards">
               {filteredProfiles.map((profile) => (
-                <Card key={profile.id} {...profile} />
+                <DogCard key={profile.id} {...profile} />
               ))}
             </div>
           )}
@@ -84,18 +90,13 @@ const SearchDog = ({ profiles, isLogged }) => {
   );
 };
 
-/* added here the word prop for the filter, I only need this with Object but if I get rid of it I should remember to add what's needed here */
-
 SearchDog.propTypes = {
   profiles: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.number.isRequired,
-      word: PropTypes.string.isRequired,
     }),
   ),
 };
-
-/* avoid some errors by messing around while working, profiles is never empty this way it doesn't need any value to work*/
 
 SearchDog.defaultProps = {
   profiles: null,
