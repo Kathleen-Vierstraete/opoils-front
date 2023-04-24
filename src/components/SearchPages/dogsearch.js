@@ -26,13 +26,13 @@ const SearchDog = ({ dogs, isLogged }) => {
   /* https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Global_Objects/Object */
   /* https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Global_Objects/Array/some */
 
-  const filteredProfiles = dogs.filter((profile) => {
-    const matchesSearchInput = Object.values(profile).some((value) =>
+  const filteredProfiles = dogs.filter((dog) => {
+    const matchesSearchInput = Object.values(dog).some((value) =>
       typeof value === 'string' && value.toLowerCase().includes(searchInput.toLowerCase())
     );
     // need to connect by dogs informations on dogprofile size and personality when I switch API
-    const matchedSize = !selectedSize || profile.size === selectedSize;
-    const matchesPersonality = !selectedPersonality || profile.personality === selectedPersonality;
+    const matchedSize = !selectedSize || dog.size === selectedSize;
+    const matchesPersonality = !selectedPersonality || dog.personality === selectedPersonality;
     // need to think adding filter location too if I have time
     return matchesSearchInput && matchedSize && matchesPersonality;
   });

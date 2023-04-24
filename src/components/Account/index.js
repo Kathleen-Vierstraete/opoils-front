@@ -6,7 +6,7 @@ import AccountDogCard from './AccountDogCard';
 import AccountUserCard from './AccountUserCard';
 import profile from '../../assets/img/profile.png';
 
-function Account({ isLogged, favorites, id }) {
+function Account({ isLogged, accountDogs, id }) {
   return (
     <>
       <AppHeader isLogged={isLogged} />
@@ -14,8 +14,8 @@ function Account({ isLogged, favorites, id }) {
         <div id="account-div">
           <div className="account-cards">
             <AccountUserCard />
-            {favorites.map((favorite) => (
-              <AccountDogCard key={favorite.id} {...favorite} />
+            {accountDogs.map((accountDog) => (
+              <AccountDogCard key={accountDog.id} {...accountDog} />
             ))}
             <div className="account-card">
               <div className="account-card-header">
@@ -41,13 +41,13 @@ function Account({ isLogged, favorites, id }) {
 }
 
 Account.propTypes = {
-  favorites: PropTypes.arrayOf(
+  accountDogs: PropTypes.arrayOf(
     PropTypes.shape({
-      id: PropTypes.number.isRequired,
+      id: PropTypes.number,
     }),
   ),
 };
 Account.defaultProps = {
-  favorites: null,
+  accountDogs: null,
 };
 export default Account;

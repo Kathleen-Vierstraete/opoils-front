@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { fetchAccountProfiles } from '../actions/profiles';
+import { fetchAccountDogsProfiles, fetchAccountMemberProfile } from '../actions/profiles';
 import { saveAuthData, SUBMIT_LOGIN } from '../actions/user';
 
 const userMiddleware = (store) => (next) => (action) => {
@@ -14,7 +14,8 @@ const userMiddleware = (store) => (next) => (action) => {
       )
         .then((response) => {
           store.dispatch(saveAuthData(response.data.pseudo, response.data.token));
-          store.dispatch(fetchAccountProfiles());
+          store.dispatch(fetchAccountDogsProfiles());
+          store.dispatch(fetchAccountMemberProfile());
           sessionStorage.setItem('authToken', response.data.token);
         })
         .catch((error) => {

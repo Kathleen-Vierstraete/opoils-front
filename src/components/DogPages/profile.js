@@ -2,7 +2,7 @@ import './styles.scss';
 import PropTypes from 'prop-types';
 import { useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import { findProfile } from 'src/selectors/profiles';
+import { findDog } from 'src/selectors/dogs';
 
 import secondimage from '../../assets/img/second-image.png';
 import thirdimage from '../../assets/img/third-image.png';
@@ -14,15 +14,15 @@ const DogProfile = ({
   isLogged,
 }) => {
   const { slug } = useParams();
-  const profile = useSelector((state) => findProfile(state.profiles.dogs, slug));
+  const dog = useSelector((state) => findDog(state.profiles.dogs, slug));
   return (
     <><AppHeader isLogged={isLogged} />
       <div className="dog-profile">
         <div className="infos">
           <div className="dog-images">
-            <h1>{profile.name}</h1>
+            <h1>{dog.name}</h1>
             <div className="main-image">
-              <img src={profile.thumbnail} alt="main-image" />
+              <img src="" alt="main-image" />
             </div>
             <div className="other-images">
               <div className="images">
@@ -40,19 +40,19 @@ const DogProfile = ({
             <ul>
               <li>
                 <h2>Taille</h2>
-                <p>Petit</p>
+                <p>{dog.size}</p>
               </li>
               <li>
                 <h2>Tempérament</h2>
-                <p>Adaptable</p>
+                <p>{dog.personality}</p>
               </li>
               <li>
                 <h2>Age</h2>
-                <p>2 ans</p>
+                <p>{dog.age} ans</p>
               </li>
               <li>
                 <h2>Race</h2>
-                <p>West Highland white terrier</p>
+                <p>{dog.race}</p>
               </li>
               <li>
                 <h2>Hobbies</h2>
@@ -71,7 +71,7 @@ const DogProfile = ({
           </div>
           <div className="dog-description">
             <h1>Presentation</h1>
-            <p>{profile.presentation}</p>
+            <p>{dog.presentation}</p>
           </div>
         </div>
       </div>

@@ -4,6 +4,7 @@ export const SAVE_AUTH_DATA = 'SAVE_AUTH_DATA';
 export const KEEP_SESSION = 'KEEP_SESSION';
 export const LEAVE_SESSION = 'LEAVE_SESSION';
 
+
 export const changeLoginField = (newValue, identifier) => ({
   type: CHANGE_LOGIN_FIELD,
   newValue: newValue,
@@ -28,3 +29,5 @@ export const keepSession = (authToken) => ({
 export const leaveSession = () => ({
   type: LEAVE_SESSION,
 });
+
+

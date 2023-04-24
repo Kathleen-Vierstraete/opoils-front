@@ -2,16 +2,16 @@ import './styles.scss';
 import PropTypes from 'prop-types';
 import { useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import { findProfile } from 'src/selectors/profiles';
+import { findMember } from 'src/selectors/members';
 
 import AppHeader from '../AppHeader';
 import AppFooter from '../AppFooter';
 
-const UserProfile =({
+const UserProfile=({
   isLogged,
 }) => {
   const { slug } = useParams();
-  const profile = useSelector((state) => findProfile(state.profiles.members, slug));
+  const member = useSelector((state) => findMember(state.profiles.members, slug));
 
   return (
     <><AppHeader isLogged={isLogged} />
@@ -20,24 +20,24 @@ const UserProfile =({
           <div className="user-part">
             <div className="user-images">
               <div className="main-image">
-                <img src={profile.thumbnail} alt="main-image" />
+                <img src={`http://caroline-georges.vpnuser.lan:8090/uploads/pictures/${member.picture}`} alt="main-image" />
               </div>
             </div>
             <div className="user-description">
-              <h1>{profile.title}</h1>
-              <p>{profile.instructions}</p>
+              <h1>{member.username}</h1>
+              <p>{member.presentation}</p>
               <h1 className="contact"> <span>Contacter le propriétaire</span> </h1>
             </div>
           </div>
           <div className="dog-part">
             <div className="dog-images">
               <div className="main-image">
-                <img src={profile.thumbnail} alt="main-image" />
+                <img src="" alt="main-image" />
               </div>
             </div>
             <div className="dog-infos">
               <div className="dog-description">
-                <h1><a href="/snoopy">{profile.title} &#8592; </a></h1>
+                <h1><a href="/snoopy">{member.username} &#8592; </a></h1>
                 <p>Phasellus vitae elementum nulla, vel tincidunt lectus. Phasellus cursus id mauris eget vulputate. Suspendisse efficitur tellus vel leo aliquam dapibus id sed erat.
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur diam eros, porta sed dui eget, porta aliquet sapien. Aliquam sollicitudin metus nec consequat fermentum. Phasellus vitae elementum nulla, vel tincidunt lectus. Phasellus cursus id mauris eget vulputate. Suspendisse efficitur tellus vel leo aliquam dapibus id sed erat. 
                 </p>

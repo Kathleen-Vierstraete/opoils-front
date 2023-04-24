@@ -6,7 +6,7 @@ const UserCard = ({
   username,
   city,
   picture,
-  id,
+  slug,
 }) => (
   <div className="card">
     <img src={`http://caroline-georges.vpnuser.lan:8090/uploads/pictures/${picture}`} alt={username} />
@@ -14,7 +14,7 @@ const UserCard = ({
       <h1>{username}</h1>
       <p>{city}</p>
       <NavLink
-        to={`/${id}`}
+        to={`/${slug}`}
         className="card-link"
       />
     </div>
@@ -25,7 +25,7 @@ UserCard.propTypes = {
   picture: PropTypes.string.isRequired,
   username: PropTypes.string.isRequired,
   city: PropTypes.string.isRequired,
-  id: PropTypes.string.isRequired,
+  slug: PropTypes.string.isRequired,
 };
 
 export default UserCard;

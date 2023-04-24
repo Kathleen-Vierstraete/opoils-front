@@ -21,7 +21,7 @@ import UserSearch from '../SearchPages/usersearch';
 import DogSearch from '../SearchPages/dogsearch';
 import Loading from './Loading';
 
-import { fetchMembersProfiles,fetchDogsProfiles } from '../../actions/profiles';
+import { fetchMembersProfiles, fetchDogsProfiles } from '../../actions/profiles';
 import { fetchRegions, fetchDepartements } from '../../actions/location';
 import { changeLoginField, submitLogin } from '../../actions/user';
 
@@ -33,7 +33,8 @@ function App() {
   const passwordValue = useSelector((state) => state.user.password);
   const isLogged = useSelector((state) => state.user.isLogged);
   const pseudo = useSelector((state) => state.user.pseudo);
-  const favorites = useSelector((state) => state.profiles.favorites);
+  const accountDogs = useSelector((state) => state.profiles.accountDogs);
+  const accountMember = useSelector((state) => state.profiles.accountMember);
   const user = useSelector((state) => state.user);
 
   const isProfilesLoaded = useSelector((state) => state.profiles.isProfilesLoaded);
@@ -75,12 +76,12 @@ function App() {
           )}
         />
         <Route path="/inscription" element={<Signin isLogged={isLogged} />} />
-        <Route path="/mon-compte" element={<Account favorites={favorites} isLogged={isLogged} user={user} />} />
-        <Route path="/:id" element={<DogProfile isLogged={isLogged} profiles={dogs} />} />
+        <Route path="/mon-compte" element={<Account accountDogs={accountDogs} accountMember={accountMember} isLogged={isLogged} user={user} />} />
+        <Route path="/chien/:slug" element={<DogProfile isLogged={isLogged} dogs={dogs} />} />
         <Route path="/dogedit/:slug" element={<DogEdit isLogged={isLogged} />} />
         <Route path="/ajouter-un-chien" element={<DogAdd isLogged={isLogged} />} />
-        <Route path="/useredit" element={<UserEdit isLogged={isLogged} favorites={favorites} />} />
-        <Route path="/:id " element={<UserProfile isLogged={isLogged} profiles={members} />} />
+        <Route path="/useredit" element={<UserEdit isLogged={isLogged} />} />
+        <Route path="/:slug" element={<UserProfile isLogged={isLogged} members={members} />} />
         <Route path="/recherche-de-chien" element={<DogSearch dogs={dogs} isLogged={isLogged} />} />
         <Route path="/recherche-de-proprietaire" element={<UserSearch members={members} isLogged={isLogged} />} />
       </Routes>

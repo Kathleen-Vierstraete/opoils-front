@@ -2,7 +2,7 @@ import './styles.scss';
 import PropTypes from 'prop-types';
 import { useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import { findProfile } from 'src/selectors/profiles';
+import { findDog } from 'src/selectors/dogs';
 import secondimage from '../../assets/img/second-image.png';
 import thirdimage from '../../assets/img/third-image.png';
 import fourthimage from '../../assets/img/fourth-image.png';
@@ -13,7 +13,7 @@ const DogEdit = ({
   isLogged,
 }) => {
   const { slug } = useParams();
-  const profile = useSelector((state) => findProfile(state.profiles.dogs, slug));
+  const dog = useSelector((state) => findDog(state.profiles.dogs, slug));
 
   return (
     <><AppHeader isLogged={isLogged} />
@@ -22,10 +22,10 @@ const DogEdit = ({
           <div className="dog-images">
             <h1>Nom</h1>
             <form>
-              <input type="nom" placeholder="Nom" value={`${profile.title}`} />
+              <input type="nom" placeholder="Nom" value={`${dog.name}`} />
             </form>
             <div className="main-image">
-              <img src={profile.thumbnail} alt="main-image" />
+              <img src="" alt="main-image" />
             </div>
             <div className="other-images">
               <div className="images">
@@ -86,7 +86,7 @@ const DogEdit = ({
               <label>Présentation</label>
               <input 
                 type="description" 
-                value={`${profile.instructions}`}
+                value={`${dog.presentation}`}
               />
               <button type="submit">Modifier la description</button>
             </form>

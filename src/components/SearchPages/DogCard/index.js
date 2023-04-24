@@ -5,16 +5,15 @@ import '../styles.scss';
 const DogCard = ({
   name,
   presentation,
-  picture,
-  id,
+  slug,
 }) => (
   <div className="card">
-    <img src={`http://caroline-georges.vpnuser.lan:8090/uploads/pictures/${picture}`} alt={name} />
+    <img src="" alt={name} />
     <div className="card-content">
       <h1>{name}</h1>
       <p>{presentation}</p>
       <NavLink
-        to={`/${id}`}
+        to={`/chien/${slug}`}
         className="card-link"
       />
     </div>
@@ -23,9 +22,8 @@ const DogCard = ({
 
 DogCard.propTypes = {
   name: PropTypes.string.isRequired,
-  picture: PropTypes.string.isRequired,
   presentation: PropTypes.string.isRequired,
-  id: PropTypes.number.isRequired,
+  slug: PropTypes.string.isRequired,
 };
 
 export default DogCard;

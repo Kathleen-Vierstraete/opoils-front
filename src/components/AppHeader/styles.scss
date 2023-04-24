@@ -97,8 +97,7 @@
     }
 
     & label input:checked + .menu{
-      box-shadow: 0 0 0 10vw vars.$primaryLightColor, 0 calc(var(--index) * 3 ) 0 calc(var(--index) * 15 ) vars.$primaryLightColor;
-      border-radius: 20px;
+      box-shadow: 0 0 0 10vw vars.$primaryLightColor, 0 calc(var(--index) * 8 ) 0 calc(var(--index) * 17 ) vars.$primaryLightColor;
       opacity: 0.8;
     } 
 

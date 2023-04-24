@@ -4,14 +4,13 @@ import '../styles.scss';
 
 const AccountDogCard = ({
   thumbnail,
-  title,
+  name,
   slug,
-  id,
 }) => (
   <div className="account-card">
     <div className="account-card-header">
       <div className="account-title">
-        <h1 href="/vicky">{title}</h1>
+        <h1 href="">{name}</h1>
       </div>
       <div className="account-delete-button">
         <button>x</button>
@@ -38,7 +37,7 @@ const AccountDogCard = ({
         Modifier la fiche
       </NavLink>
       <NavLink
-        to={`/${slug}`}
+        to={`/chien/${slug}`}
       >
         Consulter
       </NavLink>
@@ -48,9 +47,8 @@ const AccountDogCard = ({
 
 AccountDogCard.propTypes = {
   thumbnail: PropTypes.string.isRequired,
-  title: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
   slug: PropTypes.string.isRequired,
-  id: PropTypes.number.isRequired,
 };
 
 export default AccountDogCard;
