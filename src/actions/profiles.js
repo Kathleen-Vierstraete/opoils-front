@@ -38,6 +38,6 @@ export const fetchAccountMemberProfile = () => ({
 });
 
 export const saveAccountMemberProfile = (accountMemberProfile) => ({
-  type: SAVE_ACCOUNT_MEMBER_PROFILES,
-  accountMemberProfiles: accountMemberProfile,
+  type: SAVE_ACCOUNT_MEMBER_PROFILE,
+  accountMemberProfile: accountMemberProfile,
 });

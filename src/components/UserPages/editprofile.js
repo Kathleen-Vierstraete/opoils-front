@@ -7,8 +7,7 @@ import AppFooter from '../AppFooter';
 import SelectLocation from '../SearchPages/SelectLocation';
 import UsersDogsPart from './UsersDogsPart';
 
-function UserEdit({isLogged, location, favorites }) {
-  const user = useSelector((state) => state.user);
+function UserEdit({isLogged, location, accountDogs, accountMember }) {
 
   return (
     <><AppHeader isLogged={isLogged} />
@@ -18,14 +17,14 @@ function UserEdit({isLogged, location, favorites }) {
             <div className="user-images">
               <div className="main-image">
                 <form>
-                  <img src={userimage} alt="main-image" />
+                  <img src={`http://caroline-georges.vpnuser.lan:8090/uploads/pictures/${accountMember.picture}`} alt="main-image" />
                   <button type="submit">Modifier la photo</button>
                 </form>
               </div>
             </div>
             <div className="user-description">
               <form>
-                <label>{user.pseudo}</label>
+                <label></label>
                 <input type="description" placeholder="Texte de description" />
                   <label>Départements</label>
                     <SelectLocation location={location} />
@@ -33,8 +32,8 @@ function UserEdit({isLogged, location, favorites }) {
               </form>
             </div>
           </div>
-          {favorites.map((favorite) => (
-            <UsersDogsPart key={favorite.id} {...favorite} />
+          {accountDogs.map((dogs) => (
+            <UsersDogsPart key={dogs.id} {...dogs} />
           ))}
         </div>
       </div>

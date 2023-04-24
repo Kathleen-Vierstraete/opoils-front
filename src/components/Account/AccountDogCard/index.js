@@ -3,7 +3,6 @@ import { NavLink } from 'react-router-dom';
 import '../styles.scss';
 
 const AccountDogCard = ({
-  thumbnail,
   name,
   slug,
 }) => (
@@ -17,7 +16,7 @@ const AccountDogCard = ({
       </div>
     </div>
     <div className="account-card-image">
-      <img src={thumbnail} alt="main-image" />
+      <img src="" alt="main-image" />
     </div>
     <div className="account-card-content">
       <ul className="account-infos">
@@ -32,7 +31,7 @@ const AccountDogCard = ({
     </div>
     <div className="account-modification-link">
       <NavLink
-        to={`/dogedit/${slug}`}
+        to={`/dogedit/chien/${slug}`}
       >
         Modifier la fiche
       </NavLink>
@@ -46,7 +45,6 @@ const AccountDogCard = ({
 );
 
 AccountDogCard.propTypes = {
-  thumbnail: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   slug: PropTypes.string.isRequired,
 };

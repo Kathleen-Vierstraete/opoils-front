@@ -155,7 +155,7 @@
           }
         }
 
-        & p{
+        & p {
           margin-top: 3%;
           line-height: 1.5em;
           font-size: calc(var(--index) *1.2);
@@ -336,9 +336,12 @@
           display:flex;
           justify-content: center;
           flex-direction: column;
+          align-items: center;
           width:85%;
+          text-align: center;
 
           & form {
+            width: 100%;
             margin-top: 5%;
             display: flex;
             justify-content: center;
@@ -412,10 +415,10 @@
           }
 
           & p{
+            width: 100%;
             margin-top: 5%;
             line-height: 1.5em;
             font-size: calc(var(--index) / 1.7);
-            padding-right: 15%;
           }
 
           & .contact{

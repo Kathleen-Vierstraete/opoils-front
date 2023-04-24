@@ -1,38 +1,49 @@
 import PropTypes from 'prop-types';
 import { NavLink } from 'react-router-dom';
+import { saveMembersProfiles } from '../../../actions/profiles';
 import '../styles.scss';
 
 const UserDogsPart = ({
-  thumbnail,
-  title,
+  name,
   slug,
+  age,
+  race,
+  size,
+  personality,
+  presentation,
 }) => (
   <div className="dog-part">
     <div className="dog-images">
       <div className="main-image">
-        <img src={thumbnail} alt="main-image" />
+        <img src="" alt="main-image" />
       </div>
     </div>
     <div className="dog-infos">
       <div className="dog-description">
         <h1>
           <NavLink
-            to={`/${slug}`}>
-              {title} &#8592;
+            to={`/chien/${slug}`}>
+              {name} &#8592;
           </NavLink> 
         </h1>
-        <p>Phasellus vitae elementum nulla, vel tincidunt lectus. Phasellus cursus id mauris eget vulputate. Suspendisse efficitur tellus vel leo aliquam dapibus id sed erat.
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur diam eros, porta sed dui eget, porta aliquet sapien. Aliquam sollicitudin metus nec consequat fermentum. Phasellus vitae elementum nulla, vel tincidunt lectus. Phasellus cursus id mauris eget vulputate. Suspendisse efficitur tellus vel leo aliquam dapibus id sed erat. 
-        </p>
+        <p>{presentation}</p>
       </div>
         <ul>
           <li>
+            <h2>Taille</h2>
+            <p>{size}</p>
+          </li>
+          <li>
+            <h2>Tempérament</h2>
+            <p>{personality}</p>
+          </li>
+          <li>
             <h2>Age</h2>
-            <p>2 ans</p>
+            <p>{age} ans</p>
           </li>
           <li>
             <h2>Race</h2>
-            <p>West Highland white terrier</p>
+            <p>{race}</p>
           </li>
           <li>
             <h2>Hobbies</h2>
@@ -43,17 +54,19 @@ const UserDogsPart = ({
               <li>Se déguiser en Idefix</li>
             </ul>
           </li>
-          <li><h2>Département</h2></li>
-          <p>Loiret</p>
         </ul>
     </div>
   </div>
 );
 
 UserDogsPart.propTypes = {
-  thumbnail: PropTypes.string.isRequired,
-  title: PropTypes.string.isRequired,
-  slug: PropTypes.string.isRequired,
+  name:PropTypes.string.isRequired,
+  slug:PropTypes.string.isRequired,
+  age:PropTypes.number.isRequired,
+  race:PropTypes.string.isRequired,
+  size:PropTypes.string.isRequired,
+  personality:PropTypes.string.isRequired,
+  presentation:PropTypes.string.isRequired,
 };
 
 export default UserDogsPart;

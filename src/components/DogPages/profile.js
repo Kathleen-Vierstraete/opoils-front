@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { findDog } from 'src/selectors/dogs';
+import { NavLink } from 'react-router-dom';
 
 import secondimage from '../../assets/img/second-image.png';
 import thirdimage from '../../assets/img/third-image.png';
@@ -64,9 +65,12 @@ const DogProfile = ({
                   </ul>
               </li>
               <li><h2>Département</h2></li>
-              <p>Loiret</p>
+              <p>{dog.member.postal_code}</p>
               <li><h2>Propriétaire</h2></li>
-              <a href="/vicky">Vicky &#8592; </a>
+              <NavLink
+                to={`/${dog.member.slug}`}>
+                  {dog.member.slug} &#8592;
+              </NavLink> 
             </ul>
           </div>
           <div className="dog-description">
