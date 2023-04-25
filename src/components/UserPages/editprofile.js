@@ -1,15 +1,23 @@
 import './styles.scss';
+
+import { useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+import { findMember } from 'src/selectors/members';
+
 import PropTypes from 'prop-types';
-import userimage from '../../assets/img/user.jpg';
 import AppHeader from '../AppHeader';
 import AppFooter from '../AppFooter';
 import SelectLocation from '../SearchPages/SelectLocation';
 import UsersDogsPart from './UsersDogsPart';
 
-function UserEdit({isLogged, location, favorites }) {
-  const user = useSelector((state) => state.user);
-
+const UserEdit = ({
+  isLogged,
+  location,
+  accountDogs,
+}) => {
+  const { slug } = useParams();
+  const member = useSelector((state) => findMember(state.profiles.members, slug));
+  console.log(member);
   return (
     <><AppHeader isLogged={isLogged} />
       <div className="user-profile">
@@ -18,23 +26,26 @@ function UserEdit({isLogged, location, favorites }) {
             <div className="user-images">
               <div className="main-image">
                 <form>
-                  <img src={userimage} alt="main-image" />
+                  <img src="" alt="main-image" />
                   <button type="submit">Modifier la photo</button>
                 </form>
               </div>
             </div>
             <div className="user-description">
               <form>
-                <label>{user.pseudo}</label>
-                <input type="description" placeholder="Texte de description" />
+                <label>Description</label>
+                <input type="description" placeholder="Texte de description" required />
+                <button type="submit">Modifier la description</button>
+                </form>
+                <form>
                   <label>Départements</label>
                     <SelectLocation location={location} />
-                <button type="submit">Modifier les modifications</button>
+                <button type="submit">Modifier le département</button>
               </form>
             </div>
           </div>
-          {favorites.map((favorite) => (
-            <UsersDogsPart key={favorite.id} {...favorite} />
+          {accountDogs.map((dogs) => (
+            <UsersDogsPart key={dogs.id} {...dogs} />
           ))}
         </div>
       </div>
@@ -42,15 +53,13 @@ function UserEdit({isLogged, location, favorites }) {
     </>
   );
 }
+
 UserEdit.propTypes = {
-  favorites: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.number.isRequired,
-    }),
-  ),
+  isLogged: PropTypes.bool,
 };
+
 UserEdit.defaultProps = {
-  favorites: null,
+  isLogged: false,
 };
 
 export default UserEdit;

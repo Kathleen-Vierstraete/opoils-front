@@ -1,34 +1,35 @@
 import { NavLink } from 'react-router-dom';
-import { useSelector } from 'react-redux';
-import userimage from '../../../assets/img/user.jpg';
+import PropTypes from 'prop-types';
 import '../styles.scss';
 
-const AccountUserCard = () => {
-  const user = useSelector((state) => state.user);
-
-  return (
+const AccountUserCard = ({
+  username,
+  memberPicture,
+  postalCode,
+  slug,
+}) => (
     <div className="account-card">
       <div className="account-card-header">
         <div className="account-title">
-          <h1>{user.pseudo}</h1>
+          <h1>{username}</h1>
         </div>
         <div className="account-delete-button">
           <button>x</button>
         </div>
       </div>
       <div className="account-card-image">
-        <img src={userimage} alt="user-image" />
+        <img src={`http://caroline-georges.vpnuser.lan:8090/uploads/pictures/${memberPicture}`} alt="user-image" />
       </div>
       <div className="account-card-content">
         <ul className="account-infos">
           <li>Image</li>
-          <li>Nom</li>
+          <li>{username}</li>
           <li>Description</li>
-          <li>Département</li>
+          <li>{postalCode}</li>
         </ul>
       </div>
       <div className="account-modification-link">
-        <NavLink to="/useredit">
+        <NavLink to={`/useredit/${slug}`}>
           Modifier la fiche
         </NavLink>
 {/*         <NavLink to={`/${user.nickname}`}>
@@ -36,7 +37,13 @@ const AccountUserCard = () => {
         </NavLink> */}
       </div>
     </div>
-  );
-};
+);
 
+
+AccountUserCard.propTypes = {
+  postalCode: PropTypes.string.isRequired,
+  username: PropTypes.string.isRequired,
+  slug: PropTypes.string.isRequired,
+  memberPicture:PropTypes.string.isRequired,
+};
 export default AccountUserCard;

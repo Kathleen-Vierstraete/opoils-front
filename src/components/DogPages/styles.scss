@@ -79,7 +79,7 @@
           & input{
             margin-top: 5%;
             height: 100% !important;
-            width:100%;
+            width:60%;
             text-transform: none;
             text-align: center;
             color:vars.$primaryLightColor;
@@ -88,6 +88,9 @@
             font-size: calc(var(--index) / 1.5);
             border-radius: 3px;
             box-shadow: inset 6px 6px 6px #070605, inset -6px -6px 6px #473a33;
+          }
+          & button {
+            width: 50%;
           }
         }
 
@@ -131,10 +134,12 @@
         }
       } 
 
-      & .dog-infos{
+      & .dog-infos, form{
         width:100%;
         display:flex;
         flex-direction: column;
+        align-items: center;
+        justify-content: center;
         font-size: calc(var(--index) *1.2);
         text-align: center;
 
@@ -146,12 +151,13 @@
           text-shadow: 3px 3px 15px #f2cc9688;
         }
 
+
         & select, option{ 
           text-align: center;
           box-shadow: inset 6px 6px 6px #070605, inset -6px -6px 6px #473a33;
           background-color: vars.$primaryDarkColor;
           color: vars.$primaryLightColor;
-          width: 50%;
+          width: 100%;
           height: 8%;
           font-size: calc(var(--index) / 1);
           border-radius: 3px;
@@ -159,8 +165,8 @@
 
         & input{
           margin-top:2% ;
-          height: 12% !important;
-          width: 50%;
+          height: 20%;
+          width: 100%;
           text-transform: none;
           text-align: center;
           color:vars.$primaryLightColor;
@@ -173,7 +179,7 @@
 
         & button {
           padding: 2%;
-          width: 50%;
+          width: 60%;
           border: none;
           outline: none;
           box-sizing: border-box;
@@ -192,6 +198,14 @@
         & ul ul li{
           text-align: center;
           line-height: 1.5em;
+        }
+        & li{
+          justify-content: center;
+          align-items: center;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          margin-bottom: 3% ;
         }
       }
 
@@ -296,25 +310,34 @@
         height: 100%;
         width:30%;
         display: flex;
-        justify-content: space-around;
+        justify-content: center;
+        align-items: center;
         flex-direction: column;
 
-        & h1{
+        & h1, label{
+          color:vars.$primaryDarkColor;
           font-weight: 400;
           text-align: center;
           font-size: calc(var(--index) * 1.3);
           padding: 2%;
         }
 
+
         & form{
+          height:30%;
           display: flex;
           justify-content: center;
           flex-direction: column;
           align-items: center;
-          margin-bottom: 3% ;
+          width: 100%;
+
+          & .button-name{
+            width: 40%;
+            height:18%;
+          } 
 
           & input{
-            height: 100% !important;
+            height: 20% !important;
             width:50%;
             text-transform: none;
             text-align: center;
@@ -325,36 +348,42 @@
             border-radius: 3px;
             box-shadow: inset 6px 6px 6px #070605, inset -6px -6px 6px #473a33;
           }
+          & input::placeholder{
+            color: #f2cc9694;
+          }
         }
 
         & .main-image{
           display: flex;
+          flex-direction: column;
           justify-content: center;
+          align-items: center;
           border-radius: 10px;
-          height:40%;
+          height:50%;
+          width: 50%;
+
           & img{
-            max-height:calc(var(--index) * 12);
+            max-height:calc(var(--index) * 10);
             max-width: calc(var(--index) * 10);
+            height: 90%;
+            width:90%;
             box-shadow: 2px 2px 10px black;
             border-radius: 10px;
             border: calc(var(--index) / 10) solid vars.$primaryDarkColor;
           }
 
-
-
-          & input{
-            margin-top:2% ;
-            height: 35% !important;
-            margin-left: 15%;
-            width: 70%;
-            text-transform: none;
-            text-align: center;
-            color:vars.$primaryLightColor;
-            background: vars.$primaryDarkColor;
-            height: calc(var(--index) * 1.5);
-            font-size: calc(var(--index) / 1.5);
-            border-radius: 3px;
-            box-shadow: inset 6px 6px 6px #070605, inset -6px -6px 6px #473a33;
+          & form {
+            height: 100%;
+            width: 100%;
+            & img{
+              max-height:20vh;
+              max-width: 20vh;
+              height: 90%;
+              width:90%;
+              box-shadow: 2px 2px 10px black;
+              border-radius: 10px;
+              border: calc(var(--index) / 10) solid vars.$primaryDarkColor;
+            }
           }
         }
 
@@ -374,7 +403,6 @@
           border-radius: 10px;
           object-fit: fill;
 
-
           & img{
             max-height:calc(var(--index) * 5);
             max-width: calc(var(--index) * 5);
@@ -387,15 +415,15 @@
         } 
 
         & form{
-
           & button {
             padding: 1%;
-            width: 50%;
+            height: 10%;
+            width: 70%;
             border: none;
             outline: none;
             box-sizing: border-box;
             text-align: center;
-            margin-top: 2%;
+            margin-top: 3%;
             color: vars.$primaryDarkColor;
             background: vars.$primaryLightColor;
             border-radius: 20px;
@@ -405,72 +433,51 @@
             transition: 0.5s;
             font-size: calc(var(--index) / 2)
           }
-        }
-
-        & button {
-            padding: 1%;
-            width: 100%;
-            border: none;
-            outline: none;
-            box-sizing: border-box;
-            text-align: center;
-            margin-top: 2%;
-            color: vars.$primaryDarkColor;
-            background: vars.$primaryLightColor;
-            border-radius: 20px;
-            cursor: pointer;
-            font-weight: bolder;
-            box-shadow: 6px 6px 6px #473a33, -6px -5px 6px #070605;
-            transition: 0.5s;
-            font-size: calc(var(--index) / 2)
-          }
+        }  
       }
 
-      & .dog-infos{
-        width:21%;
+      & .dog-infos, form {
+        height: 100%;
+        width:25%;
         display:flex;
-        justify-content: center;
         flex-direction: column;
         align-items: center;
+        justify-content: center;
         font-size: calc(var(--index) / 1.7);
         text-align: center;
-
-        & h2, label{
+        
+        & h2{
           display: flex;
           justify-content: center;
           color: #1F1916;
-          padding-top: 8%;
-          padding-bottom: 3%;
+          padding-top: 5%;
+          padding-bottom: 0.5%;
           font-size: calc(var(--index) / 1.5);
           text-shadow: 3px 3px 15px #f2cc9688;
         }
-
-        & form{
-          display: flex;
-          justify-content: center;
-          flex-direction: column;
+        & label{
+          color: #1F1916;
         }
 
         & select, option{ 
+          padding: 2.5%;
           text-align: center;
           box-shadow: inset 6px 6px 6px #070605, inset -6px -6px 6px #473a33;
           background-color: vars.$primaryDarkColor;
           color: vars.$primaryLightColor;
           width: 100%;
-          height: 8%;
           font-size: calc(var(--index) / 1.7);
           border-radius: 3px;
         }
 
         & input{
-          margin-top:2% ;
-          height: 12% !important;
+          margin-top:3% ;
           width: 100%;
           text-transform: none;
           text-align: center;
           color:vars.$primaryLightColor;
           background: vars.$primaryDarkColor;
-          height: calc(var(--index) * 1.5);
+          height: calc(var(--index) * 1.2);
           font-size: calc(var(--index) / 1.5);
           border-radius: 3px;
           box-shadow: inset 6px 6px 6px #070605, inset -6px -6px 6px #473a33;
@@ -482,13 +489,14 @@
         }
 
         & button {
-          padding: 3%;
-          width: 100%;
+          margin-top: 2%;
+          height: 5%;
+          padding: 1%;
+          width: 70%;
           border: none;
           outline: none;
           box-sizing: border-box;
           text-align: center;
-          margin-top: 28%;
           color: vars.$primaryDarkColor;
           background: vars.$primaryLightColor;
           border-radius: 20px;
@@ -496,7 +504,7 @@
           font-weight: bolder;
           box-shadow: 6px 6px 6px #473a33, -6px -5px 6px #070605;
           transition: 0.5s;
-          font-size: calc(var(--index) / 2)
+          font-size: calc(var(--index) / 2.3)
         }
 
         & button:hover {
@@ -504,6 +512,7 @@
         }
 
         & ul ul li{
+          margin: 1%;
           line-height: 1.5em;
           font-size: calc(var(--index) / 1.6);
         }
@@ -560,6 +569,7 @@
         & button {
           padding: 1%;
           display: block;
+          height: 10%;
           width: 60%;
           border: none;
           outline: none;

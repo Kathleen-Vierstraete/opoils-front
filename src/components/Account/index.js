@@ -6,14 +6,16 @@ import AccountDogCard from './AccountDogCard';
 import AccountUserCard from './AccountUserCard';
 import profile from '../../assets/img/profile.png';
 
-function Account({ isLogged, accountDogs, id }) {
+function Account({ isLogged, accountDogs,accountMember, id }) {
   return (
     <>
       <AppHeader isLogged={isLogged} />
       <div id="account-page">
         <div id="account-div">
           <div className="account-cards">
-            <AccountUserCard />
+            {accountMember.map((member) => (
+              <AccountUserCard key={member.id} {...member} />
+            ))}
             {accountDogs.map((accountDog) => (
               <AccountDogCard key={accountDog.id} {...accountDog} />
             ))}

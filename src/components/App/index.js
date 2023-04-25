@@ -32,7 +32,7 @@ function App() {
   const emailValue = useSelector((state) => state.user.email);
   const passwordValue = useSelector((state) => state.user.password);
   const isLogged = useSelector((state) => state.user.isLogged);
-  const pseudo = useSelector((state) => state.user.pseudo);
+  const name = useSelector((state) => state.user.name);
   const accountDogs = useSelector((state) => state.profiles.accountDogs);
   const accountMember = useSelector((state) => state.profiles.accountMember);
   const user = useSelector((state) => state.user);
@@ -71,16 +71,16 @@ function App() {
                 dispatch(submitLogin());
               }}
               isLogged={isLogged}
-              loggedMessage={`Au revoir ${pseudo}!`}
+              loggedMessage={`Au revoir ${name}!`}
             />
           )}
         />
         <Route path="/inscription" element={<Signin isLogged={isLogged} />} />
         <Route path="/mon-compte" element={<Account accountDogs={accountDogs} accountMember={accountMember} isLogged={isLogged} user={user} />} />
         <Route path="/chien/:slug" element={<DogProfile isLogged={isLogged} dogs={dogs} />} />
-        <Route path="/dogedit/:slug" element={<DogEdit isLogged={isLogged} />} />
+        <Route path="/dogedit/chien/:slug" element={<DogEdit isLogged={isLogged} />} />
         <Route path="/ajouter-un-chien" element={<DogAdd isLogged={isLogged} />} />
-        <Route path="/useredit" element={<UserEdit isLogged={isLogged} />} />
+        <Route path="/useredit/:slug" element={<UserEdit isLogged={isLogged} accountDogs={accountDogs} accountMember={accountMember} />} />
         <Route path="/:slug" element={<UserProfile isLogged={isLogged} members={members} />} />
         <Route path="/recherche-de-chien" element={<DogSearch dogs={dogs} isLogged={isLogged} />} />
         <Route path="/recherche-de-proprietaire" element={<UserSearch members={members} isLogged={isLogged} />} />

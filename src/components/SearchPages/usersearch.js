@@ -57,13 +57,13 @@ const SearchUser = ({ members, isLogged }) => {
               </div>
             </div>
             </div>
-            {filteredProfiles && (
-              <div className="cards">
-                {filteredProfiles.map((profile) => (
-                  <UserCard key={profile.id} {...profile} />
-                ))}
-              </div>
-            )}
+          {filteredProfiles && (
+            <div className="cards">
+              {filteredProfiles.map((profile) => (
+                <UserCard key={profile.id} {...profile} />
+              ))}
+            </div>
+          )}
           </div>
         </div>
       <AppFooter />

@@ -23,23 +23,6 @@ const profilesMiddleware = (store) => (next) => (action) => {
         });
       break;
 
-    case FETCH_ACCOUNT_DOGS_PROFILES:
-      axios.get('http://caroline-georges.vpnuser.lan:8090/api/member',
-        {
-          headers: {
-            Authorization: `Bearer ${store.getState().user.token}`,
-          },
-        },
-      )
-        .then((response) => {
-          console.log(response);
-          store.dispatch(saveAccountDogsProfiles(response.data.dogs));
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-      break;
-    
     case FETCH_ACCOUNT_MEMBER_PROFILE:
       axios.get('http://caroline-georges.vpnuser.lan:8090/api/member',
         {
@@ -49,13 +32,31 @@ const profilesMiddleware = (store) => (next) => (action) => {
         },
       )
         .then((response) => {
-          console.log(response);
-          store.dispatch(saveAccountMemberProfile(response.data));
+          console.log(response.data, 'member');
+          store.dispatch(saveAccountMemberProfile(response.data.memberData));
         })
         .catch((error) => {
           console.log(error);
         });
       break;
+
+    case FETCH_ACCOUNT_DOGS_PROFILES:
+      axios.get('http://caroline-georges.vpnuser.lan:8090/api/member',
+        {
+          headers: {
+            Authorization: `Bearer ${store.getState().user.token}`,
+          },
+        },
+      )
+        .then((response) => {
+          console.log(response.data);
+          store.dispatch(saveAccountDogsProfiles(response.data.dogs));
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+      break;
+    
     default:
   }
   next(action);
