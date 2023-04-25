@@ -5,10 +5,11 @@ import '../styles.scss';
 const DogCard = ({
   name,
   presentation,
+  main_picture,
   slug,
 }) => (
   <div className="card">
-    <img src="" alt={name} />
+    <img src={`http://caroline-georges.vpnuser.lan:8090/uploads/pictures/${main_picture}`} alt={name} />
     <div className="card-content">
       <h1>{name}</h1>
       <p>{presentation}</p>
@@ -22,6 +23,7 @@ const DogCard = ({
 
 DogCard.propTypes = {
   name: PropTypes.string.isRequired,
+  main_picture: PropTypes.string.isRequired,
   presentation: PropTypes.string.isRequired,
   slug: PropTypes.string.isRequired,
 };

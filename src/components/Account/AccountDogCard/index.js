@@ -4,6 +4,9 @@ import '../styles.scss';
 
 const AccountDogCard = ({
   name,
+  age,
+  race,
+  main_picture,
   slug,
 }) => (
   <div className="account-card">
@@ -16,14 +19,14 @@ const AccountDogCard = ({
       </div>
     </div>
     <div className="account-card-image">
-      <img src="" alt="main-image" />
+      <img src={`http://caroline-georges.vpnuser.lan:8090/uploads/pictures/${main_picture}`} alt="main-image" />
     </div>
     <div className="account-card-content">
       <ul className="account-infos">
         <li>Images</li>
-        <li>Nom</li>
-        <li>Age</li>
-        <li>Race</li>
+        <li>{name}</li>
+        <li>{age} ans</li>
+        <li>{race}</li>
         <li>Hobbies</li>
         <li>Tempérament</li>
         <li>Description</li>
@@ -46,6 +49,9 @@ const AccountDogCard = ({
 
 AccountDogCard.propTypes = {
   name: PropTypes.string.isRequired,
+  race: PropTypes.string.isRequired,
+  age: PropTypes.number.isRequired,
+  main_picture: PropTypes.array.isRequired,
   slug: PropTypes.string.isRequired,
 };
 

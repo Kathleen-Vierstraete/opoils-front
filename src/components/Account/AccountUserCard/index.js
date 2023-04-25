@@ -1,12 +1,11 @@
 import { NavLink } from 'react-router-dom';
-import { useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
-import userimage from '../../../assets/img/user.jpg';
 import '../styles.scss';
 
 const AccountUserCard = ({
   username,
-  picture,
+  memberPicture,
+  postalCode,
 }) => (
     <div className="account-card">
       <div className="account-card-header">
@@ -18,14 +17,14 @@ const AccountUserCard = ({
         </div>
       </div>
       <div className="account-card-image">
-        <img src={`http://caroline-georges.vpnuser.lan:8090/uploads/pictures/${picture}`} alt="user-image" />
+        <img src={`http://caroline-georges.vpnuser.lan:8090/uploads/pictures/${memberPicture}`} alt="user-image" />
       </div>
       <div className="account-card-content">
         <ul className="account-infos">
           <li>Image</li>
-          <li>Nom</li>
+          <li>{username}</li>
           <li>Description</li>
-          <li>Département</li>
+          <li>{postalCode}</li>
         </ul>
       </div>
       <div className="account-modification-link">
@@ -41,7 +40,8 @@ const AccountUserCard = ({
 
 
 AccountUserCard.propTypes = {
+  postalCode: PropTypes.string.isRequired,
   username: PropTypes.string.isRequired,
-  picture:PropTypes.string.isRequired,
+  memberPicture:PropTypes.string.isRequired,
 };
 export default AccountUserCard;

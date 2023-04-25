@@ -16,6 +16,10 @@ const DogProfile = ({
 }) => {
   const { slug } = useParams();
   const dog = useSelector((state) => findDog(state.profiles.dogs, slug));
+  const hobbies = dog.hobbies;
+  const pictures = dog.pictures;
+  console.log(hobbies);
+
   return (
     <><AppHeader isLogged={isLogged} />
       <div className="dog-profile">
@@ -23,18 +27,14 @@ const DogProfile = ({
           <div className="dog-images">
             <h1>{dog.name}</h1>
             <div className="main-image">
-              <img src="" alt="main-image" />
+              <img src={`http://caroline-georges.vpnuser.lan:8090/uploads/pictures/${dog.main_picture}`} alt="main-image" />
             </div>
             <div className="other-images">
-              <div className="images">
-                <img src={secondimage} alt="second-image" />
-              </div>
-              <div className="images">
-                <img src={thirdimage} alt="third-image" />
-              </div>
-              <div className="images">
-                <img src={fourthimage} alt="fourth-image" />
-              </div>
+              {pictures.map((picture) => (
+                <div className="images" key={picture.id}>
+                  <img src={`http://caroline-georges.vpnuser.lan:8090/uploads/pictures/${picture.picture}`} alt="second-image" />
+                </div>
+              ))}
             </div>
           </div>
           <div className="dog-infos">
@@ -58,10 +58,9 @@ const DogProfile = ({
               <li>
                 <h2>Hobbies</h2>
                   <ul className="hobbies">
-                    <li>Voler des chaussettes</li>
-                    <li>Aboyer sur le facteur</li>
-                    <li>Courir dans tous les sens</li>
-                    <li>Se déguiser en Idefix</li>
+                    {hobbies.map((hobbie) => (
+                      <li key={hobbie.id}>{hobbie.hobby}</li>
+                    ))}
                   </ul>
               </li>
               <li><h2>Département</h2></li>
@@ -69,7 +68,7 @@ const DogProfile = ({
               <li><h2>Propriétaire</h2></li>
               <NavLink
                 to={`/${dog.member.slug}`}>
-                  {dog.member.slug} &#8592;
+                {dog.member.slug} &#8592;
               </NavLink> 
             </ul>
           </div>

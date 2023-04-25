@@ -13,7 +13,7 @@ function Account({ isLogged, accountDogs,accountMember, id }) {
       <div id="account-page">
         <div id="account-div">
           <div className="account-cards">
-          {accountMember.map((member) => (
+            {accountMember.map((member) => (
               <AccountUserCard key={member.id} {...member} />
             ))}
             {accountDogs.map((accountDog) => (

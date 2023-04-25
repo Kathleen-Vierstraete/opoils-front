@@ -11,11 +11,13 @@ const UserDogsPart = ({
   size,
   personality,
   presentation,
+  main_picture,
+  
 }) => (
   <div className="dog-part">
     <div className="dog-images">
       <div className="main-image">
-        <img src="" alt="main-image" />
+        <img src={`http://caroline-georges.vpnuser.lan:8090/uploads/pictures/${main_picture}`} alt="main-image" />
       </div>
     </div>
     <div className="dog-infos">
@@ -65,6 +67,7 @@ UserDogsPart.propTypes = {
   age:PropTypes.number.isRequired,
   race:PropTypes.string.isRequired,
   size:PropTypes.string.isRequired,
+  main_picture:PropTypes.string.isRequired,
   personality:PropTypes.string.isRequired,
   presentation:PropTypes.string.isRequired,
 };
