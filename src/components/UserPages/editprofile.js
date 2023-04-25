@@ -2,23 +2,22 @@ import './styles.scss';
 
 import { useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import { findDog } from 'src/selectors/dogs';
+import { findMember } from 'src/selectors/members';
 
 import PropTypes from 'prop-types';
-import userimage from '../../assets/img/user.jpg';
 import AppHeader from '../AppHeader';
 import AppFooter from '../AppFooter';
 import SelectLocation from '../SearchPages/SelectLocation';
 import UsersDogsPart from './UsersDogsPart';
 
 const UserEdit = ({
-  isLogged, 
-  location, 
-  accountDogs,  
+  isLogged,
+  location,
+  accountDogs,
 }) => {
   const { slug } = useParams();
-  const member = useSelector((state) => findDog(state.profiles.members, slug));
-
+  const member = useSelector((state) => findMember(state.profiles.members, slug));
+  console.log(member);
   return (
     <><AppHeader isLogged={isLogged} />
       <div className="user-profile">

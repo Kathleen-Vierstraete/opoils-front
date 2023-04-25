@@ -6,6 +6,7 @@ const AccountUserCard = ({
   username,
   memberPicture,
   postalCode,
+  slug,
 }) => (
     <div className="account-card">
       <div className="account-card-header">
@@ -28,7 +29,7 @@ const AccountUserCard = ({
         </ul>
       </div>
       <div className="account-modification-link">
-        <NavLink to={`/useredit/${username}`}>
+        <NavLink to={`/useredit/${slug}`}>
           Modifier la fiche
         </NavLink>
 {/*         <NavLink to={`/${user.nickname}`}>
@@ -42,6 +43,7 @@ const AccountUserCard = ({
 AccountUserCard.propTypes = {
   postalCode: PropTypes.string.isRequired,
   username: PropTypes.string.isRequired,
+  slug: PropTypes.string.isRequired,
   memberPicture:PropTypes.string.isRequired,
 };
 export default AccountUserCard;

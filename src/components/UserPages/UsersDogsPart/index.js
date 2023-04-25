@@ -12,7 +12,7 @@ const UserDogsPart = ({
   personality,
   presentation,
   main_picture,
-  
+
 }) => (
   <div className="dog-part">
     <div className="dog-images">
@@ -30,46 +30,37 @@ const UserDogsPart = ({
         </h1>
         <p>{presentation}</p>
       </div>
-        <ul>
-          <li>
-            <h2>Taille</h2>
-            <p>{size}</p>
-          </li>
-          <li>
-            <h2>Tempérament</h2>
-            <p>{personality}</p>
-          </li>
-          <li>
-            <h2>Age</h2>
-            <p>{age} ans</p>
-          </li>
-          <li>
-            <h2>Race</h2>
-            <p>{race}</p>
-          </li>
-          <li>
-            <h2>Hobbies</h2>
-            <ul className="hobbies">
-              <li>Voler des chaussettes</li>
-              <li>Aboyer sur le facteur</li>
-              <li>Courir dans tous les sens</li>
-              <li>Se déguiser en Idefix</li>
-            </ul>
-          </li>
-        </ul>
+      <ul>
+        <li>
+          <h2>Taille</h2>
+          <p>{size}</p>
+        </li>
+        <li>
+          <h2>Tempérament</h2>
+          <p>{personality}</p>
+        </li>
+        <li>
+          <h2>Age</h2>
+          <p>{age} ans</p>
+        </li>
+        <li>
+          <h2>Race</h2>
+          <p>{race}</p>
+        </li>
+      </ul>
     </div>
   </div>
 );
 
 UserDogsPart.propTypes = {
-  name:PropTypes.string.isRequired,
-  slug:PropTypes.string.isRequired,
-  age:PropTypes.number.isRequired,
-  race:PropTypes.string.isRequired,
-  size:PropTypes.string.isRequired,
-  main_picture:PropTypes.string.isRequired,
-  personality:PropTypes.string.isRequired,
-  presentation:PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  slug: PropTypes.string.isRequired,
+  age: PropTypes.number.isRequired,
+  race: PropTypes.string.isRequired,
+  size: PropTypes.string.isRequired,
+  main_picture: PropTypes.string.isRequired,
+  personality: PropTypes.string.isRequired,
+  presentation: PropTypes.string.isRequired,
 };
 
 export default UserDogsPart;

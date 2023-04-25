@@ -7,6 +7,7 @@ const AccountDogCard = ({
   age,
   race,
   main_picture,
+  personality,
   slug,
 }) => (
   <div className="account-card">
@@ -28,7 +29,7 @@ const AccountDogCard = ({
         <li>{age} ans</li>
         <li>{race}</li>
         <li>Hobbies</li>
-        <li>Tempérament</li>
+        <li>{personality}</li>
         <li>Description</li>
       </ul>
     </div>
@@ -52,6 +53,7 @@ AccountDogCard.propTypes = {
   race: PropTypes.string.isRequired,
   age: PropTypes.number.isRequired,
   main_picture: PropTypes.array.isRequired,
+  personality: PropTypes.string.isRequired,
   slug: PropTypes.string.isRequired,
 };
 

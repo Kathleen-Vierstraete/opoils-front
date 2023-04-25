@@ -26,7 +26,7 @@ const UserProfile=({
             </div>
             <div className="user-description">
               <h1>{member.username}</h1>
-              <p>{member.presentation}</p>
+              <p>{member.presentation_member}</p>
               <h1 className="contact"> <span>Contacter le propriétaire</span> </h1>
               <h1>Département</h1>
               <p>{member.postal_code}</p>
