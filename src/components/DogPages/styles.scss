@@ -417,8 +417,8 @@
         & form{
           & button {
             padding: 1%;
-            height: 10%;
-            width: 70%;
+            height: 15%;
+            width: 60%;
             border: none;
             outline: none;
             box-sizing: border-box;
@@ -506,7 +506,9 @@
           transition: 0.5s;
           font-size: calc(var(--index) / 2.3)
         }
-
+        & form{
+          width: 100%;
+        }
         & button:hover {
           box-shadow: none;
         }

@@ -26,7 +26,7 @@ const UserEdit = ({
             <div className="user-images">
               <div className="main-image">
                 <form>
-                  <img src="" alt="main-image" />
+                  <img src={`http://caroline-georges.vpnuser.lan:8090/uploads/pictures/${member.picture}`} alt="main-image" />
                   <button type="submit">Modifier la photo</button>
                 </form>
               </div>

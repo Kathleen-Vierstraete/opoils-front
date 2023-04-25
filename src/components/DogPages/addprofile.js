@@ -2,6 +2,7 @@ import './styles.scss';
 import profile from '../../assets/img/profile.png';
 import AppHeader from '../AppHeader';
 import AppFooter from '../AppFooter';
+import InfosField from './InfosField';
 
 function AddDog({isLogged}) {
   return (
@@ -9,68 +10,48 @@ function AddDog({isLogged}) {
       <div className="dog-profile">
         <div className="infos">
           <div className="dog-images">
-            <h1>Nom</h1>
-            <form className="name-form">
+            <form>
+              <h1>Nom</h1>
               <input type="nom" placeholder="Nom" value="Snoopy" />
               <button type="submit">Ajouter</button>
             </form>
             <div className="main-image">
-              <img src={profile} alt="main-image" />
+              <form>
+                <img src={profile} alt="main-image" />
+                <button type="submit">Enregistrer</button>
+              </form>
             </div>
             <div className="other-images">
               <div className="images">
-                <img src={profile} alt="second-image" />
+                <form>
+                  <img src={profile} alt="second-image" />
+                  <button type="submit">Enregistrer</button>
+                </form>
               </div>
               <div className="images">
-                <img src={profile} alt="third-image" />
+                <form>
+                  <img src={profile} alt="third-image" />
+                  <button type="submit">Enregistrer</button>
+                </form>
               </div>
               <div className="images">
-                <img src={profile} alt="fourth-image" />
+                <form>
+                  <img src={profile} alt="fourth-image" />
+                  <button type="submit">Enregistrer</button>
+                </form>
               </div>
             </div>
-            <button type="submit">Ajouter les photos</button>
           </div>
           <div className="dog-infos">
-            <form>
-              <ul>
-                <li>
-                  <label>Taille</label>
-                </li>
-                <select name="Taille">
-                  <option value="">--Choisir un gabarit--</option>
-                  <option value="1">Petit</option>
-                  <option value="2">Moyen</option>
-                  <option value="2">Grand</option>
-                </select>
-                <li>
-                  <label>Tempérament</label>
-                </li>
-                <select name="Taille">
-                  <option value="">--Choisir un caractère--</option>
-                  <option value="1">Calme</option>
-                  <option value="2">Adaptable</option>
-                  <option value="2">Energique</option>
-                </select>
-                <li>
-                  <label>Age</label>
-                </li>
-                <input type="age" placeholder="Age" value="2" />
-                <li>
-                  <label>Race</label>
-                </li>
-                <input type="race" placeholder="Race" value="West Highland white terrier" />
-                <li>
-                  <label>Hobbies</label>
-                  <ul className="hobbies">
-                    <li><input type="Obi-wan" placeholder="Obi-wan" value="Obi-wan" /></li>
-                    <li><input type="Hobbie2" placeholder="Hobbie2" value="Hobbie2" /></li>
-                    <li><input type="Hobbie3" placeholder="Hobbie3" value="Hobbie3" /></li>
-                    <li><input type="Hobbie4" placeholder="Hobbie4" value="Hobbie4" /></li>
-                  </ul>
-                </li>
-              </ul>
-              <button type="submit">Ajouter les informations</button>
-            </form>
+          <form>
+            <InfosField
+            />
+            <button
+              type="submit"
+            >
+              Enregistrer les modifications
+            </button>
+          </form> 
           </div>
           <div className="dog-description">
             <form>
