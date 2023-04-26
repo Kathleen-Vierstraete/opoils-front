@@ -8,7 +8,7 @@ import AppHeader from '../AppHeader';
 import AppFooter from '../AppFooter';
 import UsersDogsPart from './UsersDogsPart';
 
-const UserProfile=({
+const UserProfile = ({
   isLogged,
 }) => {
   const { slug } = useParams();

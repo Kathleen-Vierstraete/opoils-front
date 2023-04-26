@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { FETCH_DOGS_PROFILES, saveDogsProfiles, FETCH_MEMBERS_PROFILES,saveMembersProfiles, FETCH_ACCOUNT_DOGS_PROFILES, saveAccountDogsProfiles, FETCH_ACCOUNT_MEMBER_PROFILE, saveAccountMemberProfile, fetchAccountProfiles } from '../actions/profiles';
+import { FETCH_DOGS_PROFILES, saveDogsProfiles, FETCH_MEMBERS_PROFILES,saveMembersProfiles, FETCH_ACCOUNT_DOGS_PROFILES, saveAccountDogsProfiles, FETCH_ACCOUNT_MEMBER_PROFILE, saveAccountMemberProfile, fetchAccountProfiles, SEND_NEW_ACCOUNT, sendNewAccount} from '../actions/profiles';
 
 const profilesMiddleware = (store) => (next) => (action) => {
   switch (action.type) {
@@ -56,11 +56,25 @@ const profilesMiddleware = (store) => (next) => (action) => {
           console.log(error);
         });
       break;
-    
+    case SEND_NEW_ACCOUNT:
+      axios.post('http://caroline-georges.vpnuser.lan:8090/api/secure/members',
+        {
+          username: store.getState().user.email,
+          password: store.getState().user.password,
+          email: store.getState().user.email,
+        },
+      )
+        .then((response) => {
+          store.dispatch(sendNewAccount(response.data));
+          console.log(response.data);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+      break;
     default:
   }
   next(action);
-
 };
 
 export default profilesMiddleware;

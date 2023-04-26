@@ -6,6 +6,8 @@ export const FETCH_ACCOUNT_DOGS_PROFILES = 'FETCH_ACCOUNT_DOGS_PROFILES';
 export const SAVE_ACCOUNT_DOGS_PROFILES = 'SAVE_ACCOUNT_DOGS_PROFILES';
 export const FETCH_ACCOUNT_MEMBER_PROFILE = 'FETCH_ACCOUNT_MEMBER_PROFILE';
 export const SAVE_ACCOUNT_MEMBER_PROFILE = 'SAVE_ACCOUNT_MEMBER_PROFILE';
+export const SEND_NEW_ACCOUNT = 'SEND_NEW_ACCOUNT';
+export const CREATE_NEW_ACCOUNT = 'SEND_NEW_ACCOUNT';
 
 export const fetchMembersProfiles = () => ({
   type: FETCH_MEMBERS_PROFILES,
@@ -40,4 +42,14 @@ export const fetchAccountMemberProfile = () => ({
 export const saveAccountMemberProfile = (accountMemberProfile) => ({
   type: SAVE_ACCOUNT_MEMBER_PROFILE,
   accountMemberProfile: accountMemberProfile,
+});
+
+export const createNewAccount = (email, username, password) => ({
+  type: CREATE_NEW_ACCOUNT,
+  payload: { email, username, password },
+});
+
+export const sendNewAccount = (email, username, password) => ({
+  type: SEND_NEW_ACCOUNT,
+  payload: { email, username, password },
 });

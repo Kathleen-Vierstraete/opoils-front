@@ -70,7 +70,6 @@
         }
 
         & label, input, button {
-          text-transform: capitalize;
           display: block;
           width: 100%;
           padding: 0;
@@ -81,6 +80,7 @@
         }
 
         & label {
+          text-transform: capitalize;
           margin-bottom: 3%;
           font-size: calc(var(--index) * 1.2);
           text-shadow: 2px 2px 3px #000000;

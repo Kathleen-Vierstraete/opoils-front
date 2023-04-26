@@ -4,8 +4,8 @@ export const initialState = {
   members: [],
   dogs: [],
   isProfilesLoaded: false,
-  accountDogs:[],
-  accountMember:[],
+  accountDogs: [],
+  accountMember: [],
 };
 
 const reducer = (state = initialState, action = {}) => {
@@ -24,16 +24,17 @@ const reducer = (state = initialState, action = {}) => {
         isProfilesLoaded: true,
       };
 
-      case SAVE_ACCOUNT_DOGS_PROFILES:
-        return {
-          ...state,
-          accountDogs: action.accountDogsProfiles,
-        };
-      case SAVE_ACCOUNT_MEMBER_PROFILE:
-        return {
-          ...state,
-          accountMember: action.accountMemberProfile,
-        };
+    case SAVE_ACCOUNT_DOGS_PROFILES:
+      return {
+        ...state,
+        accountDogs: action.accountDogsProfiles,
+      };
+
+    case SAVE_ACCOUNT_MEMBER_PROFILE:
+      return {
+        ...state,
+        accountMember: action.accountMemberProfile,
+      };
 
     default:
       return state;

@@ -1,5 +1,8 @@
 import './styles.scss';
 import PropTypes from 'prop-types';
+import { useParams } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { findDog } from 'src/selectors/dogs'
 import AppHeader from '../AppHeader';
 import AppFooter from '../AppFooter';
 import InfosField from './InfosField';
@@ -8,8 +11,10 @@ import Hobbies from './InfosField/hobbies';
 
 const DogEdit = ({
   isLogged,
-}) =>
-(
+}) => {
+  const { slug } = useParams();
+  const dog = useSelector((state) => findDog(state.profiles.dogs, slug));
+  return (
   <><AppHeader isLogged={isLogged} />
     <div className="dog-profile">
       <div className="infos">
@@ -49,7 +54,7 @@ const DogEdit = ({
     <AppFooter />
   </>
   );
-
+};
 DogEdit.propTypes = {
   isLogged: PropTypes.bool,
 };

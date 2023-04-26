@@ -23,7 +23,7 @@ import Loading from './Loading';
 
 import { fetchMembersProfiles, fetchDogsProfiles } from '../../actions/profiles';
 import { fetchRegions, fetchDepartements } from '../../actions/location';
-import { changeLoginField, submitLogin } from '../../actions/user';
+import { changeLoginField, submitLogin, submitSignin } from '../../actions/user';
 
 function App() {
   const dispatch = useDispatch();
@@ -40,13 +40,16 @@ function App() {
   const isProfilesLoaded = useSelector((state) => state.profiles.isProfilesLoaded);
 
   useEffect(() => {
-    dispatch(fetchMembersProfiles());
-    dispatch(fetchDogsProfiles());
     dispatch(fetchRegions());
     dispatch(fetchDepartements());
-  }, []);
 
-  if (!isProfilesLoaded) {
+    if (isLogged) {
+      dispatch(fetchMembersProfiles());
+      dispatch(fetchDogsProfiles());
+    }
+  }, [dispatch, isLogged]);
+
+  if (!isProfilesLoaded && isLogged) {
     return <Loading />;
   }
 
@@ -54,10 +57,6 @@ function App() {
     <div className="wrapper">
       <Routes>
         <Route path="/accueil" element={<HomePage isLogged={isLogged} />} />
-        <Route path="/faq" element={<Faq isLogged={isLogged} />} />
-        <Route path="/politique-de-confidentialite" element={<Confidentiality isLogged={isLogged} />} />
-        <Route path="/contact" element={<Contact isLogged={isLogged} />} />
-        <Route path="/mentions-legales" element={<Mentions isLogged={isLogged} />} />
         <Route
           path="/connexion"
           element={(
@@ -75,7 +74,23 @@ function App() {
             />
           )}
         />
-        <Route path="/inscription" element={<Signin isLogged={isLogged} />} />
+        <Route path="/faq" element={<Faq isLogged={isLogged} />} />
+        <Route path="/politique-de-confidentialite" element={<Confidentiality isLogged={isLogged} />} />
+        <Route path="/contact" element={<Contact isLogged={isLogged} />} />
+        <Route path="/mentions-legales" element={<Mentions isLogged={isLogged} />} />
+        <Route
+          path="/inscription"
+          element={(
+            <Signin
+              isLogged={isLogged}
+              handleSignin={(newValue, identifier) => {
+                dispatch(submitSignin());
+                dispatch(changeLoginField(newValue, identifier));
+              }}
+            />
+          )}
+        />
+
         <Route path="/mon-compte" element={<Account accountDogs={accountDogs} accountMember={accountMember} isLogged={isLogged} user={user} />} />
         <Route path="/chien/:slug" element={<DogProfile isLogged={isLogged} dogs={dogs} />} />
         <Route path="/dogedit/chien/:slug" element={<DogEdit isLogged={isLogged} />} />

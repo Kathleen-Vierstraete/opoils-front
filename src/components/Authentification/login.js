@@ -6,7 +6,6 @@ import AppHeader from '../AppHeader';
 import AppFooter from '../AppFooter';
 import Field from './Field';
 
-
 import './styles.scss';
 
 const Login = ({
@@ -41,7 +40,7 @@ const Login = ({
             <div className="authentification-side-text">
               <h1>Bonjour !</h1>
               <div className="authentification-inputs">
-                <form autoComplete="off" onSubmit={handleSubmit}>
+                <form onSubmit={handleSubmit}>
                   <Field
                     name="email"
                     placeholder="Adresse Email"
