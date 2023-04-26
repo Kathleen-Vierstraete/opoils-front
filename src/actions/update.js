@@ -1,16 +1,14 @@
-export const UPDATE_DOG_NAME = 'UPDATE_DOG_NAME';
 export const UPDATE_DOG_INFOS = 'UPDATE_DOG_INFOS';
 export const UPDATE_DOG_MAIN_PICTURE = 'UPDATE_DOG_MAIN_PICTURE';
 export const UPDATE_DOG_SECOND_PICTURE = 'UPDATE_DOG_SECOND_PICTURE';
 export const UPDATE_DOG_THIRD_PICTURE = 'UPDATE_DOG_THIRD_PICTURE';
 export const UPDATE_DOG_FOURTH_PICTURE = 'UPDATE_DOG_FOURTH_PICTURE';
+export const UPDATE_DOG_PRESENTATION = 'UPDATE_DOG_PRESENTATION';
+export const UPDATE_DOG_HOBBIES = 'UPDATE_DOG_HOBBIES';
 export const UPDATE_MEMBER_PRESENTATION = 'UPDATE_MEMBER_PRESENTATION';
 export const UPDATE_MEMBER_LOCATION = 'UPDATE_MEMBER_LOCATION';
 export const UPDATE_MEMBER_PICTURE = 'UPDATE_MEMBER_PICTURE';
 
-export const updateDogName = () => ({
-  type: UPDATE_DOG_NAME,
-});
 
 export const updateDogInfos = () => ({
   type: UPDATE_DOG_INFOS,
@@ -30,6 +28,14 @@ export const updateDogThirdPicture = () => ({
 
 export const updateDogFourthPicture = () => ({
   type: UPDATE_DOG_FOURTH_PICTURE,
+});
+
+export const updateDogPresentation = () => ({
+  type: UPDATE_DOG_PRESENTATION,
+});
+
+export const updateDogHobbies = () => ({
+  type: UPDATE_DOG_PRESENTATION,
 });
 
 export const updateMemberPresentation = () => ({

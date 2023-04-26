@@ -4,6 +4,7 @@ import AppHeader from '../AppHeader';
 import AppFooter from '../AppFooter';
 import InfosField from './InfosField';
 import ImagesField from './ImagesField';
+import Hobbies from './InfosField/hobbies';
 
 const DogEdit = ({
   isLogged,
@@ -13,15 +14,26 @@ const DogEdit = ({
     <div className="dog-profile">
       <div className="infos">
         <ImagesField />
-        <form>
-          <InfosField
-          />
-          <button
-            type="submit"
-          >
-            Enregistrer les modifications
-          </button>
-        </form>
+        <div className="dog-infos">
+          <form>
+            <InfosField
+            />
+            <button
+              type="submit"
+            >
+              Enregistrer les modifications
+            </button>
+          </form>
+          <form>
+            <Hobbies
+            />
+            <button
+              type="submit"
+            >
+              Enregistrer
+            </button>
+          </form>
+        </div>
         <div className="dog-description">
           <form>
             <label>Présentation</label>

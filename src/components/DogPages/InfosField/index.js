@@ -15,6 +15,10 @@ const InfosField = ({
 }) => (
   <ul>
     <li>
+      <label>Nom</label>
+        <input type="nom" placeholder="Nom" required />
+    </li>
+    <li>
       <label>Taille</label>
       <select 
         name="Taille"
@@ -51,35 +55,6 @@ const InfosField = ({
         type={race}
         placeholder="race"
       />
-    </li>
-    <li>
-      <label>Hobbies</label>
-      <ul className="hobbies">
-        <li>
-          <input 
-            type={hobbie1}
-            placeholder="hobbie1"
-          />
-        </li>
-        <li>
-          <input
-            type={hobbie2}
-            placeholder="hobbie2"
-          />
-        </li>
-        <li>
-          <input
-            type={hobbie3}
-            placeholder="hobbie3"
-          />
-        </li>
-        <li>
-          <input
-            type={hobbie4}
-            placeholder="hobbie4"
-          />
-        </li>
-      </ul>
     </li>
   </ul>
 );

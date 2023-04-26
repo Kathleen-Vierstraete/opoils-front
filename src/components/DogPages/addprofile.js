@@ -2,7 +2,8 @@ import './styles.scss';
 import profile from '../../assets/img/profile.png';
 import AppHeader from '../AppHeader';
 import AppFooter from '../AppFooter';
-import InfosField from './InfosField';
+import InfosField from './InfosField/index';
+import Hobbies from './InfosField/hobbies';
 
 function AddDog({isLogged}) {
   return (
@@ -10,34 +11,29 @@ function AddDog({isLogged}) {
       <div className="dog-profile">
         <div className="infos">
           <div className="dog-images">
-            <form>
-              <h1>Nom</h1>
-              <input type="nom" placeholder="Nom" value="Snoopy" />
-              <button type="submit">Ajouter</button>
-            </form>
             <div className="main-image">
               <form>
                 <img src={profile} alt="main-image" />
-                <button type="submit">Enregistrer</button>
+                <button type="submit">Ajouter la photo</button>
               </form>
             </div>
             <div className="other-images">
               <div className="images">
                 <form>
                   <img src={profile} alt="second-image" />
-                  <button type="submit">Enregistrer</button>
+                  <button type="submit">Ajouter la photo</button>
                 </form>
               </div>
               <div className="images">
                 <form>
                   <img src={profile} alt="third-image" />
-                  <button type="submit">Enregistrer</button>
+                  <button type="submit">Ajouter la photo</button>
                 </form>
               </div>
               <div className="images">
                 <form>
                   <img src={profile} alt="fourth-image" />
-                  <button type="submit">Enregistrer</button>
+                  <button type="submit">Ajouter la photo</button>
                 </form>
               </div>
             </div>
@@ -49,9 +45,18 @@ function AddDog({isLogged}) {
             <button
               type="submit"
             >
-              Enregistrer les modifications
+              Ajouter les informations
             </button>
-          </form> 
+          </form>
+          <form>
+            <Hobbies
+            />
+            <button
+              type="submit"
+            >
+              Ajouter les hobbies
+            </button>
+          </form>
           </div>
           <div className="dog-description">
             <form>

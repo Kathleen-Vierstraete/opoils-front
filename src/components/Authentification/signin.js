@@ -2,9 +2,10 @@ import AppHeader from '../AppHeader';
 import AppFooter from '../AppFooter';
 import './styles.scss';
 
-function Signin( {isLogged}) {
+function Signin() {
   return (
-    <><AppHeader isLogged={isLogged} />
+    <>
+      <AppHeader />
       <div className="authentification-form">
         <div className="authentification-form-div">
           <div className="authentification-image" id="signin-image" />
@@ -13,11 +14,11 @@ function Signin( {isLogged}) {
             <div className="authentification-inputs">
               <form>
                 <label>email</label>
-                <input type="email" placeholder="example@test.com" />
+                <input type="email" placeholder="example@test.com" required />
                 <label>pseudo</label>
-                <input type="email" placeholder="vanilledu33" />
+                <input type="email" placeholder="vanilledu33" required />
                 <label>mot de passe</label>
-                <input type="password" placeholder="Min 6 caractères de long" />
+                <input type="password" placeholder="Min 6 caractères de long" required />
                 <button type="submit">inscription</button>
               </form>
             </div>

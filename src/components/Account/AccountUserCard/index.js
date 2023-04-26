@@ -32,13 +32,12 @@ const AccountUserCard = ({
         <NavLink to={`/useredit/${slug}`}>
           Modifier la fiche
         </NavLink>
-{/*         <NavLink to={`/${user.nickname}`}>
+        <NavLink to={`/${slug}`}>
           Consulter
-        </NavLink> */}
+        </NavLink>
       </div>
     </div>
 );
-
 
 AccountUserCard.propTypes = {
   postalCode: PropTypes.string.isRequired,
