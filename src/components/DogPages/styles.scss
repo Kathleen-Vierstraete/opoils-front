@@ -342,6 +342,7 @@
         justify-content: center;
         align-items: center;
         flex-direction: column;
+        padding:1%;
 
         & h1, label{
           color:vars.$primaryDarkColor;
@@ -529,6 +530,7 @@
         flex-direction: column;
         align-items: center;
         width:40%;
+        padding: 3%;
 
         & form{
           width: 80%;

@@ -3,10 +3,10 @@ import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 
 import App from 'src/components/App';
-import store, { persistor } from 'src/store';
+import { store, persistor } from 'src/store';
 
 const rootReactElement = (
-  <Provider store={store} >
+  <Provider store={store}>
     <BrowserRouter>
       <App />
     </BrowserRouter>

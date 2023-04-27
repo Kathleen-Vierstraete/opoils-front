@@ -21,9 +21,9 @@ import UserSearch from '../SearchPages/usersearch';
 import DogSearch from '../SearchPages/dogsearch';
 import Loading from './Loading';
 
-import { fetchMembersProfiles, fetchDogsProfiles } from '../../actions/profiles';
+import { fetchMembersProfiles, fetchDogsProfiles, sendNewAccount } from '../../actions/profiles';
 import { fetchRegions, fetchDepartements } from '../../actions/location';
-import { changeLoginField, submitLogin, submitSignin } from '../../actions/user';
+import { changeLoginField, submitLogin } from '../../actions/user';
 
 function App() {
   const dispatch = useDispatch();
@@ -31,6 +31,7 @@ function App() {
   const members = useSelector((state) => state.profiles.members);
   const emailValue = useSelector((state) => state.user.email);
   const passwordValue = useSelector((state) => state.user.password);
+  const usernameValue = useSelector((state) => state.user.username);
   const isLogged = useSelector((state) => state.user.isLogged);
   const name = useSelector((state) => state.user.name);
   const accountDogs = useSelector((state) => state.profiles.accountDogs);
@@ -82,10 +83,15 @@ function App() {
           path="/inscription"
           element={(
             <Signin
+              email={emailValue}
+              password={passwordValue}
+              username={usernameValue}
               isLogged={isLogged}
-              handleSignin={(newValue, identifier) => {
-                dispatch(submitSignin());
+              changeField={(newValue, identifier) => {
                 dispatch(changeLoginField(newValue, identifier));
+              }}
+              handleSignin={() => {
+                dispatch(sendNewAccount(emailValue, usernameValue, passwordValue));
               }}
             />
           )}

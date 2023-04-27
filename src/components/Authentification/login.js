@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 import { leaveSession } from 'src/actions/user';
 import { useDispatch } from 'react-redux';
 import { NavLink } from 'react-router-dom';
+import { persistor } from '../../store/index';
 import AppHeader from '../AppHeader';
 import AppFooter from '../AppFooter';
 import Field from './Field';
@@ -27,7 +28,7 @@ const Login = ({
     evt.preventDefault();
     dispatch(leaveSession());
     sessionStorage.removeItem('authToken');
-    sessionStorage.removeItem('persist:root');
+    persistor.purge();
     console.log('appuyé 2 fois');
   };
 

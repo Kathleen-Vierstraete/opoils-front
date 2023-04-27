@@ -21,7 +21,7 @@ const reducer = (state = initialState, action = {}) => {
       return {
         ...state,
         isLogged: true,
-        pseudo: action.pseudo,
+        username: action.username,
         token: action.token,
         email: '',
         password: '',

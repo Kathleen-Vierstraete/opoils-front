@@ -30,8 +30,3 @@ export const keepSession = (authToken) => ({
 export const leaveSession = () => ({
   type: LEAVE_SESSION,
 });
-
-export const submitSignin = () => ({
-  type: SUBMIT_SIGNIN,
-});
-

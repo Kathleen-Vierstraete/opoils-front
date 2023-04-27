@@ -1,80 +1,74 @@
 import PropTypes from 'prop-types';
-import { sendNewAccount, createNewAccount} from 'src/actions/profiles';
-import { changeLoginField } from 'src/actions/user';
-import { useDispatch } from 'react-redux';
+import { NavLink } from 'react-router-dom';
+import { useState } from 'react';
 import AppHeader from '../AppHeader';
 import AppFooter from '../AppFooter';
+import Field from './Field';
 import './styles.scss';
 
 const Signin = ({
-  handleSignin,
-  isLogged,
+  email,
+  password,
   changeField,
+  handleSignin,
+  username,
+  isLogged,
 }) => {
-  const dispatch = useDispatch();
+  const [isSuccess, setIsSuccess] = useState(false);
+
   const handleSubmitSignin = (evt) => {
     evt.preventDefault();
     handleSignin();
-    const email = evt.target.email.value;
-    const username = evt.target.username.value;
-    const password = evt.target.password.value;
-    dispatch((createNewAccount(email, username, password)))
-    dispatch(sendNewAccount(email, username, password));
-    console.log('envoyé');
+    setIsSuccess(true);
   };
 
   return (
-  <>
-    <AppHeader isLogged={isLogged} />
-    <div className="authentification-form">
-      <div className="authentification-form-div">
-        <div className="authentification-image" id="signin-image" />
-        <div className="authentification-side-text">
-          <h1>Bienvenue !</h1>
-          <div className="authentification-inputs">
-            <form autoComplete="off" onSubmit={handleSubmitSignin}>
-              <label>email</label>
-              <input
-                onChange={changeField}
-                type="email"
-                name="email"
-                placeholder="example@test.com"
-                required
-              />
-              <label>pseudo</label>
-              <input 
-                onChange={changeField}
-                type="username"
-                name="username"
-                placeholder="vanilledu33"
-                required
-              />
-              <label>mot de passe</label>
-              <input
-                onChange={changeField}
-                type="password"
-                name="password"
-                placeholder="Min 6 caractères de long"
-                required
-              />
-              <button type="submit">inscription</button>
-            </form>
+    <><AppHeader isLogged={isLogged} />
+      <div className="authentification-form">
+        <div className="authentification-form-div">
+          <div className="authentification-image" id="signin-image" />
+          <div className="authentification-side-text">
+            <h1>Bienvenue !</h1>
+            {/* {isSuccess && <NavLink to="/connexion"><h1>Compte créé! Tu peux aller ici pour te connecter</h1></NavLink>} */}
+            <div className="authentification-inputs">
+                <form autoComplete="off" onSubmit={handleSubmitSignin}>
+                  <Field
+                    name="username"
+                    type="username"
+                    placeholder="Pseudo"
+                    onChange={changeField}
+                    value={username}
+                  />
+                  <Field
+                    name="email"
+                    placeholder="Adresse Email"
+                    value={email}
+                    onChange={changeField}
+                  />
+                  <Field
+                    name="password"
+                    type="password"
+                    placeholder="Mot de Passe"
+                    onChange={changeField}
+                    value={password}
+                  />
+                  <button type="submit">Créer un compte</button>
+                </form>
+              </div>
           </div>
         </div>
       </div>
-    </div>
-    <AppFooter />
-  </>
+      <AppFooter />
+    </>
   );
 };
-Signin.propTypes = {
-  handleSignin: PropTypes.func.isRequired,
-  changeField: PropTypes.func.isRequired,
-};
 
-Signin.defaultProps = {
-  isLogged: false,
-  loggedMessage: 'Connecté',
+Signin.propTypes = {
+  email: PropTypes.string.isRequired,
+  password: PropTypes.string.isRequired,
+  username: PropTypes.string.isRequired,
+  changeField: PropTypes.func.isRequired,
+  handleSignin: PropTypes.func.isRequired,
 };
 
 export default Signin;

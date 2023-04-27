@@ -59,13 +59,12 @@ const profilesMiddleware = (store) => (next) => (action) => {
     case SEND_NEW_ACCOUNT:
       axios.post('http://caroline-georges.vpnuser.lan:8090/api/secure/members',
         {
-          username: store.getState().user.email,
+          username: store.getState().user.username,
           password: store.getState().user.password,
           email: store.getState().user.email,
         },
       )
         .then((response) => {
-          store.dispatch(sendNewAccount(response.data));
           console.log(response.data);
         })
         .catch((error) => {
