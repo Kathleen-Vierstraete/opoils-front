@@ -21,7 +21,7 @@ import UserSearch from '../SearchPages/usersearch';
 import DogSearch from '../SearchPages/dogsearch';
 import Loading from './Loading';
 
-import { fetchMembersProfiles, fetchDogsProfiles, sendNewAccount, submitNewDog } from '../../actions/profiles';
+import { fetchMembersProfiles, fetchDogsProfiles, sendNewAccount, submitNewDog, fetchAccountDogsProfiles } from '../../actions/profiles';
 import { fetchRegions, fetchDepartements } from '../../actions/location';
 import { changeLoginField, submitLogin } from '../../actions/user';
 
@@ -48,6 +48,7 @@ function App() {
     if (isLogged) {
       dispatch(fetchMembersProfiles());
       dispatch(fetchDogsProfiles());
+      dispatch(fetchAccountDogsProfiles());
     }
   }, [dispatch, isLogged]);
 

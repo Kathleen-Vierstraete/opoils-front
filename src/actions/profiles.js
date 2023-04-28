@@ -9,6 +9,7 @@ export const SAVE_ACCOUNT_MEMBER_PROFILE = 'SAVE_ACCOUNT_MEMBER_PROFILE';
 export const SEND_NEW_ACCOUNT = 'SEND_NEW_ACCOUNT';
 export const ADD_NEW_DOG = 'ADD_NEW_DOG';
 export const SUBMIT_NEW_DOG = 'SUBMIT_NEW_DOG';
+export const DELETE_DOG = 'DELETE_DOG';
 
 export const fetchMembersProfiles = () => ({
   type: FETCH_MEMBERS_PROFILES,
@@ -59,4 +60,9 @@ export const addNewDog = (dog) => ({
 
 export const submitNewDog = () => ({
   type: SUBMIT_NEW_DOG,
+});
+
+export const deleteDog = (slug) => ({
+  type: 'DELETE_DOG',
+  slug,
 });

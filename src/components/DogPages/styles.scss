@@ -232,6 +232,10 @@
           justify-content: center;
           margin-bottom: 3% ;
         }
+        .presentation{
+          height: calc(var(--index) * 13);
+          width: calc(var(--index) * 25)
+        }
       }
 
       & .dog-description{
@@ -267,8 +271,8 @@
         }
 
         & input{
-          height: calc(var(--index) * 10);
-          width: 80%;
+          height: calc(var(--index) * 2.5);
+          width: calc(var(--index) * 20);
           text-transform: none;
           text-align: center;
           color:vars.$primaryLightColor;
@@ -459,6 +463,7 @@
           text-shadow: 3px 3px 15px #f2cc9688;
         }
         & label{
+          font-weight: 600;
           color: #1F1916;
         }
 
@@ -521,6 +526,10 @@
           width: calc(var(--index) * 14);
           line-height: 1.5em;
           font-size: calc(var(--index) / 1.6);
+        }
+        .presentation{
+          height: calc(var(--index) * 8);
+          width: calc(var(--index) * 13)
         }
       }
 

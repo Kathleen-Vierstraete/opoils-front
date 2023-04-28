@@ -1,8 +1,7 @@
 import './styles.scss';
-import { NavLink } from 'react-router-dom';
 import { useDispatch} from 'react-redux';
 import { useState } from 'react';
-import { addNewDog } from '../../actions/profiles';
+import { addNewDog, fetchAccountDogsProfiles } from '../../actions/profiles';
 import PropTypes from 'prop-types';
 import AppHeader from '../AppHeader';
 import AppFooter from '../AppFooter';
@@ -35,6 +34,7 @@ const Account = ({
   const handleSubmitDog = (evt) => {
     evt.preventDefault();
     handleNewDog();
+    dispatch(fetchAccountDogsProfiles());
   };
   return (
     <>
@@ -43,7 +43,7 @@ const Account = ({
         <div id="account-div">
           <div className="account-cards">
             {accountMember.map((member) => (
-              <AccountUserCard key={member.id} {...member} />
+              <AccountUserCard key={member.id} {...member}/>
             ))}
             {accountDogs.map((accountDog) => (
               <AccountDogCard key={accountDog.id} {...accountDog} />
@@ -95,7 +95,7 @@ const Account = ({
       <AppFooter />
     </>
   );
-}
+};
 
 Account.propTypes = {
   accountDogs: PropTypes.arrayOf(
