@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { FETCH_DEPARTEMENTS, FETCH_REGIONS } from '../../../actions/location';
 
-const SelectLocation = ({location}) => {
+const SelectLocation = ({location, onSelect}) => {
   const dispatch = useDispatch();
   const departements = useSelector((state) => state.location.departements);
   const regions = useSelector((state) => state.location.regions);
@@ -24,9 +24,14 @@ const SelectLocation = ({location}) => {
     });
   });
 
+  const handleChange = (e) => {
+    const selectedDepartement = e.target.value;
+    onSelect(selectedDepartement);
+  };
+
   return (
-    <select>
-      <option>Localisation</option>
+    <select onChange={handleChange}>
+      <option value="">Localisation</option>
       {Object.keys(departementsByRegions).map((region) => (
         <optgroup label={region} key={region}>
           {departementsByRegions[region].map((departement) => (

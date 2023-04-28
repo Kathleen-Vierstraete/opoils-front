@@ -24,12 +24,10 @@ const Login = ({
   const dispatch = useDispatch();
 
   const handleClick = (evt) => {
-    console.log('appuyé');
     evt.preventDefault();
     dispatch(leaveSession());
     sessionStorage.removeItem('authToken');
     persistor.purge();
-    console.log('appuyé 2 fois');
   };
 
   return (
@@ -64,6 +62,7 @@ const Login = ({
           {isLogged && (
             <div className="authentification-side-text">
               <h1>{loggedMessage}</h1>
+              <h3>Si vous venez de créer votre compte pensez à remplir votre profil</h3>
               <div className="authentification-inputs">
                 <button
                   type="button"

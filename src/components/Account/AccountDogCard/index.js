@@ -13,7 +13,11 @@ const AccountDogCard = ({
   <div className="account-card">
     <div className="account-card-header">
       <div className="account-title">
-        <h1 href="">{name}</h1>
+        {name ? (
+          <h1>{name}</h1>
+        ) : (
+          <h1>Nom non renseigné</h1>
+        )}
       </div>
       <div className="account-delete-button">
         <button>x</button>
@@ -24,13 +28,37 @@ const AccountDogCard = ({
     </div>
     <div className="account-card-content">
       <ul className="account-infos">
-        <li>Images</li>
-        <li>{name}</li>
-        <li>{age} ans</li>
-        <li>{race}</li>
-        <li>Hobbies</li>
-        <li>{personality}</li>
-        <li>Description</li>
+        <li><h1>Images</h1></li>
+        <li>
+          {name ? (
+            <h1>{name}</h1>
+          ) : (
+            <h1>Nom</h1>
+          )}
+        </li>
+        <li>
+          {age ? (
+            <h1>{age} ans</h1>
+          ) : (
+            <h1>Age</h1>
+          )}
+        </li>
+        <li>
+          {race ? (
+            <h1>{race}</h1>
+          ) : (
+            <h1>Race</h1>
+          )}
+        </li>
+        <li><h1>Hobbies</h1></li>
+        <li>
+          {personality ? (
+            <h1>{personality}</h1>
+          ) : (
+            <h1>Personnalité</h1>
+          )}
+        </li>
+        <li><h1>Description</h1></li>
       </ul>
     </div>
     <div className="account-modification-link">

@@ -1,4 +1,4 @@
-import { SAVE_DOGS_PROFILES, SAVE_MEMBERS_PROFILES, SAVE_ACCOUNT_DOGS_PROFILES, SAVE_ACCOUNT_MEMBER_PROFILE } from '../actions/profiles';
+import { SAVE_DOGS_PROFILES, SAVE_MEMBERS_PROFILES, SAVE_ACCOUNT_DOGS_PROFILES, SAVE_ACCOUNT_MEMBER_PROFILE, ADD_NEW_DOG, SUBMIT_NEW_DOG } from '../actions/profiles';
 
 export const initialState = {
   members: [],
@@ -8,7 +8,7 @@ export const initialState = {
   accountMember: [],
 };
 
-const reducer = (state = initialState, action = {}) => {
+const profilesReducer = (state = initialState, action = {}) => {
   switch (action.type) {
     case SAVE_DOGS_PROFILES:
       return {
@@ -36,9 +36,21 @@ const reducer = (state = initialState, action = {}) => {
         accountMember: action.accountMemberProfile,
       };
 
+
+    case ADD_NEW_DOG:
+      return {
+        ...state,
+        dogs: [...state.dogs, action.payload],
+      };
+
+    case SUBMIT_NEW_DOG:
+    return {
+      ...state,
+    };
+
     default:
       return state;
   }
 };
 
-export default reducer;
+export default profilesReducer;

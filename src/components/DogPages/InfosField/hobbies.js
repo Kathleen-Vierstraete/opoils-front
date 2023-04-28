@@ -11,9 +11,6 @@ const Hobbies = ({
   hobbie3,
   hobbie4,
 }) => {
-  const { slug } = useParams();
-  const dog = useSelector((state) => findDog(state.profiles.dogs, slug));
-  const hobbies = dog.hobbies;
   return (
     <ul>
       <li>

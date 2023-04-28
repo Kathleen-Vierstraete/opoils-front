@@ -21,7 +21,7 @@ import UserSearch from '../SearchPages/usersearch';
 import DogSearch from '../SearchPages/dogsearch';
 import Loading from './Loading';
 
-import { fetchMembersProfiles, fetchDogsProfiles, sendNewAccount } from '../../actions/profiles';
+import { fetchMembersProfiles, fetchDogsProfiles, sendNewAccount, submitNewDog } from '../../actions/profiles';
 import { fetchRegions, fetchDepartements } from '../../actions/location';
 import { changeLoginField, submitLogin } from '../../actions/user';
 
@@ -34,6 +34,7 @@ function App() {
   const usernameValue = useSelector((state) => state.user.username);
   const isLogged = useSelector((state) => state.user.isLogged);
   const name = useSelector((state) => state.user.name);
+  const dogName = useSelector((state) => [...state.profiles.accountDogs, dogName]);
   const accountDogs = useSelector((state) => state.profiles.accountDogs);
   const accountMember = useSelector((state) => state.profiles.accountMember);
   const user = useSelector((state) => state.user);
@@ -97,7 +98,19 @@ function App() {
           )}
         />
 
-        <Route path="/mon-compte" element={<Account accountDogs={accountDogs} accountMember={accountMember} isLogged={isLogged} user={user} />} />
+        <Route 
+          path="/mon-compte" 
+          element={(
+            <Account
+              accountDogs={accountDogs}
+              accountMember={accountMember}
+              isLogged={isLogged} 
+              handleNewDog={() => {
+                dispatch(submitNewDog());
+              }}
+            />
+            )}
+            />
         <Route path="/chien/:slug" element={<DogProfile isLogged={isLogged} dogs={dogs} />} />
         <Route path="/dogedit/chien/:slug" element={<DogEdit isLogged={isLogged} />} />
         <Route path="/ajouter-un-chien" element={<DogAdd isLogged={isLogged} />} />

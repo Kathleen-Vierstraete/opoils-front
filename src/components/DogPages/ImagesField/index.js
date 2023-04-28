@@ -17,8 +17,15 @@ const ImagesField = ({
     <div className="dog-images">
       <div className="main-image">
         <form>
-          <img src={`http://caroline-georges.vpnuser.lan:8090/uploads/pictures/${dog.main_picture}`} alt="main-image" />
-          <button type="submit">Enregistrer</button>
+          {pictures && pictures[0] && pictures[0].picture ? (
+            <img src={`http://caroline-georges.vpnuser.lan:8090/uploads/pictures/${dog.main_picture}`} alt="main-image" />
+          ) : (
+            <div className="empty-image-div">
+              <img src={profile} alt="fourth-image"/>
+              <p>Ajouter votre photo</p>
+            </div>
+          )}
+        <button type="submit">Enregistrer</button>
         </form>
       </div>
       <div className="other-images">

@@ -7,7 +7,8 @@ export const SAVE_ACCOUNT_DOGS_PROFILES = 'SAVE_ACCOUNT_DOGS_PROFILES';
 export const FETCH_ACCOUNT_MEMBER_PROFILE = 'FETCH_ACCOUNT_MEMBER_PROFILE';
 export const SAVE_ACCOUNT_MEMBER_PROFILE = 'SAVE_ACCOUNT_MEMBER_PROFILE';
 export const SEND_NEW_ACCOUNT = 'SEND_NEW_ACCOUNT';
-export const CREATE_NEW_ACCOUNT = 'SEND_NEW_ACCOUNT';
+export const ADD_NEW_DOG = 'ADD_NEW_DOG';
+export const SUBMIT_NEW_DOG = 'SUBMIT_NEW_DOG';
 
 export const fetchMembersProfiles = () => ({
   type: FETCH_MEMBERS_PROFILES,
@@ -44,12 +45,18 @@ export const saveAccountMemberProfile = (accountMemberProfile) => ({
   accountMemberProfile: accountMemberProfile,
 });
 
-export const createNewAccount = (email, username, password) => ({
-  type: CREATE_NEW_ACCOUNT,
-  payload: { email, username, password },
-});
-
 export const sendNewAccount = (email, username, password) => ({
   type: SEND_NEW_ACCOUNT,
-  payload: { email, username, password },
+  email: email,
+  username: username,
+  password: password,
+});
+
+export const addNewDog = (dog) => ({
+  type: ADD_NEW_DOG,
+  payload: dog,
+});
+
+export const submitNewDog = () => ({
+  type: SUBMIT_NEW_DOG,
 });

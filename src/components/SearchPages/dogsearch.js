@@ -30,7 +30,7 @@ const SearchDog = ({ dogs, isLogged }) => {
     const matchesSearchInput = Object.values(dog).some((value) =>
       typeof value === 'string' && value.toLowerCase().includes(searchInput.toLowerCase())
     );
-    // need to connect by dogs informations on dogprofile size and personality when I switch API
+
     const matchedSize = !selectedSize || dog.size === selectedSize;
     const matchesPersonality = !selectedPersonality || dog.personality === selectedPersonality;
     // need to think adding filter location too if I have time

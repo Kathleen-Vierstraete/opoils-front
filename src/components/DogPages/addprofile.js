@@ -14,56 +14,29 @@ function AddDog({isLogged}) {
             <div className="main-image">
               <form>
                 <img src={profile} alt="main-image" />
-                <button type="submit">Ajouter la photo</button>
               </form>
             </div>
             <div className="other-images">
               <div className="images">
-                <form>
-                  <img src={profile} alt="second-image" />
-                  <button type="submit">Ajouter la photo</button>
-                </form>
               </div>
               <div className="images">
-                <form>
-                  <img src={profile} alt="third-image" />
-                  <button type="submit">Ajouter la photo</button>
-                </form>
               </div>
               <div className="images">
-                <form>
-                  <img src={profile} alt="fourth-image" />
-                  <button type="submit">Ajouter la photo</button>
-                </form>
               </div>
             </div>
           </div>
           <div className="dog-infos">
-          <form>
-            <InfosField
-            />
-            <button
-              type="submit"
-            >
-              Ajouter les informations
-            </button>
-          </form>
-          <form>
-            <Hobbies
-            />
-            <button
-              type="submit"
-            >
-              Ajouter les hobbies
-            </button>
-          </form>
+            <form>
+              <InfosField
+              />
+              <button
+                type="submit"
+              >
+                Ajouter les informations
+              </button>
+            </form>
           </div>
           <div className="dog-description">
-            <form>
-              <label>Présentation</label>
-              <input type="description" value="Texte de description" />
-              <button type="submit">Ajouter une description</button>
-            </form>
           </div>
         </div>
       </div>

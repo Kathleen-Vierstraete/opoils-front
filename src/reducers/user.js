@@ -2,14 +2,14 @@ import { CHANGE_LOGIN_FIELD, SAVE_AUTH_DATA, KEEP_SESSION, LEAVE_SESSION } from 
 import { SEND_NEW_ACCOUNT } from '../actions/profiles';
 export const initialState = {
   isLogged: false,
-  email: null,
-  password: null,
-  username: null,
+  email: '',
+  password: '',
+  username: '',
   token: '',
   authToken: localStorage.getItem('authToken'),
 };
 
-const reducer = (state = initialState, action = {}) => {
+const userReducer = (state = initialState, action = {}) => {
   switch (action.type) {
     case CHANGE_LOGIN_FIELD:
       return {
@@ -46,7 +46,9 @@ const reducer = (state = initialState, action = {}) => {
     case SEND_NEW_ACCOUNT:
       return {
         ...state,
-        user: [...state.user, action.payload],
+        email: action.email,
+        password: action.password,
+        username: action.username,
       };
 
     default:
@@ -54,4 +56,4 @@ const reducer = (state = initialState, action = {}) => {
   }
 };
 
-export default reducer;
+export default userReducer;
