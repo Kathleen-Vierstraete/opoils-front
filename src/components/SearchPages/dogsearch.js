@@ -15,6 +15,7 @@ const SearchDog = ({ dogs, isLogged }) => {
   const [searchInput, setSearchInput] = useState('');
   const [selectedSize, setSelectedSize] = useState('');
   const [selectedPersonality, setSelectedPersonality] = useState('');
+  const [selectedDepartement, setDepartement] = useState('');
   const location = useSelector((state) => state.location);
 
   useEffect(() => {
@@ -33,9 +34,13 @@ const SearchDog = ({ dogs, isLogged }) => {
 
     const matchedSize = !selectedSize || dog.size === selectedSize;
     const matchesPersonality = !selectedPersonality || dog.personality === selectedPersonality;
-    // need to think adding filter location too if I have time
-    return matchesSearchInput && matchedSize && matchesPersonality;
+    const matchesDepartement = !selectedDepartement || dog.member.postal_code === selectedDepartement;
+    return matchesSearchInput && matchedSize && matchesPersonality && matchesDepartement;
   });
+
+  const handleSelectDepartement = (departement) => {
+    setDepartement(departement);
+  };
 
   return (
     <>
@@ -72,7 +77,7 @@ const SearchDog = ({ dogs, isLogged }) => {
                 </select>
               </div>
               <div className="select-elem location">
-                <SelectLocation location={location} />
+                <SelectLocation onSelect={handleSelectDepartement} location={location} />
               </div>
             </div>
           </div>

@@ -30,12 +30,12 @@ const SelectLocation = ({location, onSelect}) => {
   };
 
   return (
-    <select onChange={handleChange}>
+    <select onChange={handleChange} >
       <option value="">Localisation</option>
       {Object.keys(departementsByRegions).map((region) => (
         <optgroup label={region} key={region}>
           {departementsByRegions[region].map((departement) => (
-            <option value={departement.code} key={departement.code}>
+            <option value={departement.name} key={departement.code}>
               {departement.nom}
             </option>
           ))}

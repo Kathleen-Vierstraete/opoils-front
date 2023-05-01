@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 import { NavLink } from 'react-router-dom';
 import { deleteDog } from '../../../actions/profiles';
 import { useDispatch} from 'react-redux';
+import dogprofile from '../../../assets/img/dogprofile.png';
 import '../styles.scss';
 
 const AccountDogCard = ({
@@ -33,8 +34,12 @@ const AccountDogCard = ({
         </div>
       </div>
       <div className="account-card-image">
-        <img src={`http://caroline-georges.vpnuser.lan:8090/uploads/pictures/${main_picture}`} alt="main-image" />
-      </div>
+        {main_picture ? (
+          <img src={`http://caroline-georges.vpnuser.lan:8090/uploads/pictures/${main_picture}`} alt="main-image" />
+        ) : (
+          <img src={dogprofile} alt="fourth-image"/>
+          )}
+        </div>
       <div className="account-card-content">
         <ul className="account-infos">
           <li><h1>Images</h1></li>
@@ -90,7 +95,7 @@ AccountDogCard.propTypes = {
   name: PropTypes.string.isRequired,
   race: PropTypes.string.isRequired,
   age: PropTypes.number.isRequired,
-  main_picture: PropTypes.array.isRequired,
+  main_picture: PropTypes.string.isRequired,
   personality: PropTypes.string.isRequired,
   slug: PropTypes.string.isRequired,
 };

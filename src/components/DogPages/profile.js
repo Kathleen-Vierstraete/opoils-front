@@ -7,6 +7,7 @@ import { NavLink } from 'react-router-dom';
 
 import AppHeader from '../AppHeader';
 import AppFooter from '../AppFooter';
+import dogprofile from '../../assets/img/dogprofile.png';
 
 const DogProfile = ({
   isLogged,
@@ -24,7 +25,11 @@ const DogProfile = ({
           <div className="dog-images">
             <h1>{dog.name}</h1>
             <div className="main-image">
+              {dog.main_picture ? (
               <img src={`http://caroline-georges.vpnuser.lan:8090/uploads/pictures/${dog.main_picture}`} alt="main-image" />
+              ) : (
+              <img src={dogprofile} alt="fourth-image"/> 
+              )}
             </div>
             <div className="other-images">
               {pictures.map((picture) => (

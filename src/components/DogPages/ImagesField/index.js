@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { findDog } from 'src/selectors/dogs';
 
-import profile from '../../../assets/img/profile.png';
+import dogprofile from '../../../assets/img/dogprofile.png';
 
 import '../styles.scss';
 
@@ -21,7 +21,7 @@ const ImagesField = ({
             <img src={`http://caroline-georges.vpnuser.lan:8090/uploads/pictures/${dog.main_picture}`} alt="main-image" />
           ) : (
             <div className="empty-image-div">
-              <img src={profile} alt="fourth-image"/>
+              <img src={dogprofile} alt="fourth-image"/>
               <p>Ajouter votre photo</p>
             </div>
           )}
@@ -36,7 +36,7 @@ const ImagesField = ({
               <img src={`http://caroline-georges.vpnuser.lan:8090/uploads/pictures/${pictures[0]?.picture}`} alt="second-image" />
             ) : (
               <div className="empty-image-div">
-                <img src={profile} alt="fourth-image"/>
+                <img src={dogprofile} alt="fourth-image"/>
                 <p>Ajouter votre photo</p>
               </div>
             )}
@@ -49,7 +49,7 @@ const ImagesField = ({
               <img src={`http://caroline-georges.vpnuser.lan:8090/uploads/pictures/${pictures[1]?.picture}`} alt="second-image" />
             ) : (
               <div className="empty-image-div">
-                <img src={profile} alt="fourth-image"/>
+                <img src={dogprofile} alt="fourth-image"/>
                 <p>Ajouter votre photo</p>
               </div>
             )}
@@ -62,7 +62,7 @@ const ImagesField = ({
               <img src={`http://caroline-georges.vpnuser.lan:8090/uploads/pictures/${pictures[2]?.picture}`} alt="second-image" />
             ) : (
               <div className="empty-image-div">
-                <img src={profile} alt="fourth-image"/>
+                <img src={dogprofile} alt="fourth-image"/>
                 <p>Ajouter votre photo</p>
               </div>
             )}

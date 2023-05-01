@@ -14,7 +14,6 @@ import Signin from '../Authentification/signin';
 import Account from '../Account';
 import DogProfile from '../DogPages/profile';
 import DogEdit from '../DogPages/editprofile';
-import DogAdd from '../DogPages/addprofile';
 import UserProfile from '../UserPages/profile';
 import UserEdit from '../UserPages/editprofile';
 import UserSearch from '../SearchPages/usersearch';
@@ -33,11 +32,10 @@ function App() {
   const passwordValue = useSelector((state) => state.user.password);
   const usernameValue = useSelector((state) => state.user.username);
   const isLogged = useSelector((state) => state.user.isLogged);
-  const name = useSelector((state) => state.user.name);
+  const username = useSelector((state) => state.profiles.accountMember[0].username);
   const dogName = useSelector((state) => [...state.profiles.accountDogs, dogName]);
   const accountDogs = useSelector((state) => state.profiles.accountDogs);
   const accountMember = useSelector((state) => state.profiles.accountMember);
-  const user = useSelector((state) => state.user);
 
   const isProfilesLoaded = useSelector((state) => state.profiles.isProfilesLoaded);
 
@@ -73,7 +71,7 @@ function App() {
                 dispatch(submitLogin());
               }}
               isLogged={isLogged}
-              loggedMessage={`Au revoir ${name}!`}
+              loggedMessage={`Au revoir ${username}!`}
             />
           )}
         />
@@ -114,7 +112,6 @@ function App() {
             />
         <Route path="/chien/:slug" element={<DogProfile isLogged={isLogged} dogs={dogs} />} />
         <Route path="/dogedit/chien/:slug" element={<DogEdit isLogged={isLogged} />} />
-        <Route path="/ajouter-un-chien" element={<DogAdd isLogged={isLogged} />} />
         <Route path="/useredit/:slug" element={<UserEdit isLogged={isLogged} accountDogs={accountDogs} accountMember={accountMember} />} />
         <Route path="/:slug" element={<UserProfile isLogged={isLogged} members={members} />} />
         <Route path="/recherche-de-chien" element={<DogSearch dogs={dogs} isLogged={isLogged} />} />

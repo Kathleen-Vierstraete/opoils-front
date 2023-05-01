@@ -12,6 +12,20 @@
     background-size:cover;
     background-repeat: no-repeat;
     padding-bottom: 10%;
+    
+    & h3 {
+      text-align: center;
+      width:80%;
+      margin-top: 1%;
+      padding: 0.8%;
+      background-color: vars.$secondaryLightColor;
+      opacity: 0.75;
+      color: #0d290d;
+      border-radius: 6px;
+      box-shadow: 2px 2px 8px #000000;
+      text-shadow: 2px 2px 10px rgb(113, 248, 174);
+      font-weight: 600;
+    }
 
     & .authentification-form-div {
       width:70%;

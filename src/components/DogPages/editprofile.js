@@ -5,6 +5,7 @@ import { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { findDog } from 'src/selectors/dogs'
+import { updateDogInfos, sendUpdatedDogInfos } from '../../actions/profiles';
 import AppHeader from '../AppHeader';
 import AppFooter from '../AppFooter';
 import InfosField from './InfosField';
@@ -15,24 +16,24 @@ import Presentation from './InfosField/presentation';
 const DogEdit = ({
   isLogged,
 }) => {
-
   const dispatch = useDispatch();
-  const [name, setName] = useState('');
-  const [size, setSize] = useState('');
-  const [age, setAge] = useState('');
-  const [race, setRace] = useState('');
-  const [personality, setPersonality] = useState('');
-  const [presentation, setPresentation] = useState('');
+  const { slug } = useParams();
+  const dog = useSelector((state) => findDog(state.profiles.accountDogs, slug));
 
-  const handleSubmitInfos = (event) => {
+  const [name, setName] = useState(dog.name);
+  const [size, setSize] = useState(dog.size);
+  const [age, setAge] = useState(dog.age);
+  const [race, setRace] = useState(dog.race);
+  const [personality, setPersonality] = useState(dog.personality);
+  const [presentation, setPresentation] = useState(dog.presentation);
+
+  const handleUpdateInfosSubmit = (event) => {
     event.preventDefault();
-    const dog = { name, size, age, race, personality, presentation };
-      dispatch(addNewDog(dog));
-    console.log('submitNewdog');
+    const newDog = { name, size, age, race, personality, presentation };
+    dispatch(updateDogInfos(slug, newDog));
+    dispatch(sendUpdatedDogInfos(slug));
   };
 
-  const { slug } = useParams();
-  const dog = useSelector((state) => findDog(state.profiles.dogs, slug));
   return (
   <><AppHeader isLogged={isLogged} />
     <div className="dog-profile">
@@ -58,6 +59,7 @@ const DogEdit = ({
               setPresentation={setPresentation}
             />
             <button
+              onClick={handleUpdateInfosSubmit}
               type="submit"
             >
               Enregistrer les modifications

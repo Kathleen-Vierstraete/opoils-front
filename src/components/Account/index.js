@@ -7,7 +7,7 @@ import AppHeader from '../AppHeader';
 import AppFooter from '../AppFooter';
 import AccountDogCard from './AccountDogCard';
 import AccountUserCard from './AccountUserCard';
-import profile from '../../assets/img/profile.png';
+import dogprofile from '../../assets/img/dogprofile.png';
 import InfosField from '../DogPages/InfosField';
 
 
@@ -25,14 +25,11 @@ const Account = ({
   const [race, setRace] = useState('');
   const [personality, setPersonality] = useState('');
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    const dog = { name, size, age, race, personality };
-      dispatch(addNewDog(dog));
-    console.log('submitNewdog');
-  };
   const handleSubmitDog = (evt) => {
     evt.preventDefault();
+    const dog = { name, size, age, race, personality };
+    dispatch(addNewDog(dog));
+    console.log('submitNewdog');
     handleNewDog();
     dispatch(fetchAccountDogsProfiles());
   };
@@ -57,7 +54,7 @@ const Account = ({
                 </div>
               </div>
               <div className="account-card-image">
-                <img src={profile} alt="main-image" />
+                <img src={dogprofile} alt="main-image" />
               </div>
               <div className="account-modification-link">
               <form >
@@ -74,12 +71,6 @@ const Account = ({
                   setPersonality={setPersonality}
                   required
                 />
-                <button
-                  type="submit"
-                  onClick={handleSubmit}
-                >
-                  Ajouter les informations
-                </button>
                 <button
                   type="submit"
                   onClick={handleSubmitDog}
@@ -103,11 +94,13 @@ Account.propTypes = {
       id: PropTypes.number,
     }),
   ),
-  name: PropTypes.string.isRequired,
-  changeField: PropTypes.func.isRequired,
+  name: PropTypes.string,
+  changeField: PropTypes.func,
   handleNewDog: PropTypes.func.isRequired,
 };
 Account.defaultProps = {
   accountDogs: null,
+  changeField: null,
+  name: null,
 };
 export default Account;

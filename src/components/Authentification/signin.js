@@ -90,4 +90,10 @@ Signin.propTypes = {
   handleSignin: PropTypes.func.isRequired,
 };
 
+Signin.defaultProps = {
+  accountDogs: null,
+  changeField: null,
+  username: null,
+};
+
 export default Signin;

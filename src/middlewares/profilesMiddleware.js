@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { FETCH_DOGS_PROFILES, saveDogsProfiles, FETCH_MEMBERS_PROFILES,saveMembersProfiles, FETCH_ACCOUNT_DOGS_PROFILES, saveAccountDogsProfiles, FETCH_ACCOUNT_MEMBER_PROFILE, saveAccountMemberProfile, fetchAccountProfiles, SEND_NEW_ACCOUNT, sendNewAccount, SUBMIT_NEW_DOG, fetchAccountDogsProfiles, DELETE_DOG, deleteDog} from '../actions/profiles';
+import { FETCH_DOGS_PROFILES, saveDogsProfiles, FETCH_MEMBERS_PROFILES,saveMembersProfiles, FETCH_ACCOUNT_DOGS_PROFILES, saveAccountDogsProfiles, FETCH_ACCOUNT_MEMBER_PROFILE, saveAccountMemberProfile, fetchAccountProfiles, SEND_NEW_ACCOUNT, sendNewAccount, SUBMIT_NEW_DOG, fetchAccountDogsProfiles, DELETE_DOG, deleteDog, SEND_UPDATED_DOG_INFOS, sendUpdatedDogInfos} from '../actions/profiles';
 
 const profilesMiddleware = (store) => (next) => (action) => {
   switch (action.type) {
@@ -56,6 +56,7 @@ const profilesMiddleware = (store) => (next) => (action) => {
           console.log(error);
         });
       break;
+
     case SEND_NEW_ACCOUNT:
       axios.post('http://caroline-georges.vpnuser.lan:8090/api/secure/members',
         {
@@ -96,9 +97,8 @@ const profilesMiddleware = (store) => (next) => (action) => {
         });
       break;
 
-      case DELETE_DOG:
-
-        axios.delete(`http://caroline-georges.vpnuser.lan:8090/api/secure/dogs/${action.slug}`,
+    case DELETE_DOG:
+      axios.delete(`http://caroline-georges.vpnuser.lan:8090/api/secure/dogs/${action.slug}`,
         {
           headers: {
             Authorization: `Bearer ${store.getState().user.token}`,
@@ -108,6 +108,34 @@ const profilesMiddleware = (store) => (next) => (action) => {
         .then((response) => {
           console.log(response.data);
           store.dispatch(deleteDog());
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+      break;
+
+    case SEND_UPDATED_DOG_INFOS:
+      const slug = action.slug;
+      const dogs = store.getState().profiles.accountDogs;
+      const matchedDog = dogs.find((dog) => dog.slug === slug);
+
+      axios.post(`http://caroline-georges.vpnuser.lan:8090/api/secure/dogs/${action.slug}`, {
+        name: matchedDog.name,
+        age: matchedDog.age,
+        personality: matchedDog.personality,
+        size: matchedDog.size,
+        race: matchedDog.race,
+        presentation: matchedDog.presentation,
+      },
+      {
+        headers: {
+          Authorization: `Bearer ${store.getState().user.token}`,
+        },
+      },
+      )
+        .then((response) => {
+          console.log(response.data);
+          store.dispatch(sendUpdatedDogInfos());
         })
         .catch((error) => {
           console.log(error);

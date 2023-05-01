@@ -10,6 +10,8 @@ export const SEND_NEW_ACCOUNT = 'SEND_NEW_ACCOUNT';
 export const ADD_NEW_DOG = 'ADD_NEW_DOG';
 export const SUBMIT_NEW_DOG = 'SUBMIT_NEW_DOG';
 export const DELETE_DOG = 'DELETE_DOG';
+export const UPDATE_DOG_INFOS = 'UPDATE_DOG_INFOS';
+export const SEND_UPDATED_DOG_INFOS = 'SEND_UPDATED_DOG_INFOS';
 
 export const fetchMembersProfiles = () => ({
   type: FETCH_MEMBERS_PROFILES,
@@ -53,6 +55,7 @@ export const sendNewAccount = (email, username, password) => ({
   password: password,
 });
 
+
 export const addNewDog = (dog) => ({
   type: ADD_NEW_DOG,
   payload: dog,
@@ -63,6 +66,17 @@ export const submitNewDog = () => ({
 });
 
 export const deleteDog = (slug) => ({
-  type: 'DELETE_DOG',
+  type: DELETE_DOG,
   slug,
+});
+
+export const updateDogInfos = (slug, newDog) => ({
+  type: UPDATE_DOG_INFOS,
+  slug: slug,
+  newDog: newDog,
+});
+
+export const sendUpdatedDogInfos = (slug) => ({
+  type: SEND_UPDATED_DOG_INFOS,
+  slug: slug,
 });

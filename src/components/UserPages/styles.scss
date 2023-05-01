@@ -420,15 +420,6 @@
             font-size: calc(var(--index) / 1.2);
             cursor: pointer;
           }
-
-          & .contact:hover span {
-            display:none;
-          }
-
-          & .contact:hover:before{
-            content:"exemple@test.com";
-            font-size: calc(var(--index) / 1.3);
-          }
         }
       }
 
