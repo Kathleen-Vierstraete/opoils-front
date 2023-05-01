@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import { NavLink } from 'react-router-dom';
+import dogprofile from '../../../assets/img/dogprofile.png';
 import '../styles.scss';
 
 const DogCard = ({
@@ -9,7 +10,11 @@ const DogCard = ({
   slug,
 }) => (
   <div className="card">
+    {main_picture ? (
     <img src={`http://caroline-georges.vpnuser.lan:8090/uploads/pictures/${main_picture}`} alt={name} />
+    ) : (
+      <img src={dogprofile} alt="fourth-image"/> 
+      )}
     <div className="card-content">
       <h1>{name}</h1>
       <p>{presentation}</p>

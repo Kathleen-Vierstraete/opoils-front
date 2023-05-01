@@ -27,13 +27,15 @@ const SearchUser = ({ members, isLogged }) => {
 
   const filteredProfiles = members.filter((profile) => {
     const matchesSearchInput = Object.values(profile).some((value) =>
-      typeof value === 'string' && value.toLowerCase().includes(searchInput.toLowerCase())
-    );
-    // need to connect by dogs informations on dogprofile size and personality when I switch API
+      typeof value === 'string' && value.toLowerCase().includes(searchInput.toLowerCase()));
+
     const matchesDepartement = !selectedDepartement || profile.postal_code === selectedDepartement;
-    // need to think adding filter location too if I have time
     return matchesSearchInput && matchesDepartement;
   });
+
+  const handleSelectDepartement = (departement) => {
+    setDepartement(departement);
+  };
   return (
     <>
       <AppHeader isLogged={isLogged} />
@@ -53,7 +55,7 @@ const SearchUser = ({ members, isLogged }) => {
             </div>
             <div className="select-div">
               <div className="select-elem location">
-                <SelectLocation location={location} />
+                <SelectLocation onSelect={handleSelectDepartement} location={location} />
               </div>
             </div>
             </div>

@@ -1,12 +1,38 @@
 import './styles.scss';
+import { useDispatch} from 'react-redux';
+import { useState } from 'react';
+import { addNewDog, fetchAccountDogsProfiles } from '../../actions/profiles';
 import PropTypes from 'prop-types';
 import AppHeader from '../AppHeader';
 import AppFooter from '../AppFooter';
 import AccountDogCard from './AccountDogCard';
 import AccountUserCard from './AccountUserCard';
-import profile from '../../assets/img/profile.png';
+import dogprofile from '../../assets/img/dogprofile.png';
+import InfosField from '../DogPages/InfosField';
 
-function Account({ isLogged, accountDogs,accountMember, id }) {
+
+const Account = ({
+  isLogged,
+  accountDogs,
+  accountMember,
+  handleNewDog,
+
+}) => {
+  const dispatch = useDispatch();
+  const [name, setName] = useState('');
+  const [size, setSize] = useState('');
+  const [age, setAge] = useState('');
+  const [race, setRace] = useState('');
+  const [personality, setPersonality] = useState('');
+
+  const handleSubmitDog = (evt) => {
+    evt.preventDefault();
+    const dog = { name, size, age, race, personality };
+    dispatch(addNewDog(dog));
+    console.log('submitNewdog');
+    handleNewDog();
+    dispatch(fetchAccountDogsProfiles());
+  };
   return (
     <>
       <AppHeader isLogged={isLogged} />
@@ -14,7 +40,7 @@ function Account({ isLogged, accountDogs,accountMember, id }) {
         <div id="account-div">
           <div className="account-cards">
             {accountMember.map((member) => (
-              <AccountUserCard key={member.id} {...member} />
+              <AccountUserCard key={member.id} {...member}/>
             ))}
             {accountDogs.map((accountDog) => (
               <AccountDogCard key={accountDog.id} {...accountDog} />
@@ -28,10 +54,30 @@ function Account({ isLogged, accountDogs,accountMember, id }) {
                 </div>
               </div>
               <div className="account-card-image">
-                <img src={profile} alt="main-image" />
+                <img src={dogprofile} alt="main-image" />
               </div>
               <div className="account-modification-link">
-                <a href="/ajouter-un-chien">+</a>
+              <form >
+                <InfosField
+                  name={name}
+                  size={size}
+                  age={age}
+                  race={race}
+                  personality={personality}
+                  setName={setName}
+                  setSize={setSize}
+                  setAge={setAge}
+                  setRace={setRace}
+                  setPersonality={setPersonality}
+                  required
+                />
+                <button
+                  type="submit"
+                  onClick={handleSubmitDog}
+                >
+                  Enregistrer ce chien
+                </button>
+              </form>
               </div>
             </div>
           </div>
@@ -40,7 +86,7 @@ function Account({ isLogged, accountDogs,accountMember, id }) {
       <AppFooter />
     </>
   );
-}
+};
 
 Account.propTypes = {
   accountDogs: PropTypes.arrayOf(
@@ -48,8 +94,13 @@ Account.propTypes = {
       id: PropTypes.number,
     }),
   ),
+  name: PropTypes.string,
+  changeField: PropTypes.func,
+  handleNewDog: PropTypes.func.isRequired,
 };
 Account.defaultProps = {
   accountDogs: null,
+  changeField: null,
+  name: null,
 };
 export default Account;

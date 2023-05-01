@@ -3,9 +3,7 @@ import { useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { findDog } from 'src/selectors/dogs';
 
-import secondimage from '../../../assets/img/second-image.png';
-import thirdimage from '../../../assets/img/third-image.png';
-import fourthimage from '../../../assets/img/fourth-image.png';
+import dogprofile from '../../../assets/img/dogprofile.png';
 
 import '../styles.scss';
 
@@ -17,29 +15,64 @@ const ImagesField = ({
   const pictures = dog.pictures;
   return (
     <div className="dog-images">
-      <form>
-        <label>Nom</label>
-        <input type="nom" placeholder="Nom" required />
-        <button className="button-name" type="submit">Enregistrer le nom</button>
-      </form>
-    <div className="main-image">
-      <form>
-        <img src={`http://caroline-georges.vpnuser.lan:8090/uploads/pictures/${dog.main_picture}`} alt="main-image" />
-        <button type="submit">Enregistrer</button>
-      </form>
-    </div>
-    <div className="other-images">
-      {pictures.map((picture) => (
-      <div className="images" key={picture.id}>
+      <div className="main-image">
         <form>
-        <img src={`http://caroline-georges.vpnuser.lan:8090/uploads/pictures/${picture.picture}`} alt="second-image" />
+          {pictures && pictures[0] && pictures[0].picture ? (
+            <img src={`http://caroline-georges.vpnuser.lan:8090/uploads/pictures/${dog.main_picture}`} alt="main-image" />
+          ) : (
+            <div className="empty-image-div">
+              <img src={dogprofile} alt="fourth-image"/>
+              <p>Ajouter votre photo</p>
+            </div>
+          )}
         <button type="submit">Enregistrer</button>
         </form>
       </div>
-      ))}
+      <div className="other-images">
+        <div className="images">
+          <form>
+            {/* verify if pictures are undefined or not and the option to show nothing instead of gettingg an error if empty so people can access the possibility to upload an image if there's none to begin with */}
+            {pictures && pictures[0] && pictures[0].picture ? (
+              <img src={`http://caroline-georges.vpnuser.lan:8090/uploads/pictures/${pictures[0]?.picture}`} alt="second-image" />
+            ) : (
+              <div className="empty-image-div">
+                <img src={dogprofile} alt="fourth-image"/>
+                <p>Ajouter votre photo</p>
+              </div>
+            )}
+          <button type="submit">Enregistrer</button>
+          </form>
+        </div>
+        <div className="images">
+          <form>
+            {pictures && pictures[1] && pictures[1].picture ? (
+              <img src={`http://caroline-georges.vpnuser.lan:8090/uploads/pictures/${pictures[1]?.picture}`} alt="second-image" />
+            ) : (
+              <div className="empty-image-div">
+                <img src={dogprofile} alt="fourth-image"/>
+                <p>Ajouter votre photo</p>
+              </div>
+            )}
+            <button type="submit">Enregistrer</button>
+          </form>
+        </div>
+        <div className="images">
+          <form>
+            {pictures && pictures[2] && pictures[2].picture ? (
+              <img src={`http://caroline-georges.vpnuser.lan:8090/uploads/pictures/${pictures[2]?.picture}`} alt="second-image" />
+            ) : (
+              <div className="empty-image-div">
+                <img src={dogprofile} alt="fourth-image"/>
+                <p>Ajouter votre photo</p>
+              </div>
+            )}
+            <button type="submit">Enregistrer</button>
+          </form>
+        </div>
+      </div>
     </div>
-  </div>
   );
 };
+
 
 export default ImagesField;

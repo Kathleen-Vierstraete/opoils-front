@@ -52,7 +52,6 @@
       width:calc(var(--index) * 4);
       height: calc(var(--index) * 4);
       background: vars.$primaryDarkColor;
-      border-radius: 50% 50% 50% 50%;
       -webkit-transition: .5s ease-in-out;
       transition: .5s ease-in-out;
       box-shadow: 0 0 0 0 vars.$primaryDarkColor, 0 0 0 0 vars.$primaryDarkColor;
@@ -97,8 +96,9 @@
     }
 
     & label input:checked + .menu{
-      box-shadow: 0 0 0 10vw vars.$primaryLightColor, 0 calc(var(--index) * 8 ) 0 calc(var(--index) * 17 ) vars.$primaryLightColor;
-      opacity: 0.8;
+      box-shadow: 0 0 0 10vw vars.$secondaryLightColor, 0 calc(var(--index) * 3 ) 0 calc(var(--index) * 19 ) vars.$secondaryLightColor;
+      opacity: 0.9;
+      border-radius: 0px 0px 0px 2%;
     } 
 
     & label input:checked + .menu .hamburger{

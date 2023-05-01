@@ -14,14 +14,13 @@ import Signin from '../Authentification/signin';
 import Account from '../Account';
 import DogProfile from '../DogPages/profile';
 import DogEdit from '../DogPages/editprofile';
-import DogAdd from '../DogPages/addprofile';
 import UserProfile from '../UserPages/profile';
 import UserEdit from '../UserPages/editprofile';
 import UserSearch from '../SearchPages/usersearch';
 import DogSearch from '../SearchPages/dogsearch';
 import Loading from './Loading';
 
-import { fetchMembersProfiles, fetchDogsProfiles } from '../../actions/profiles';
+import { fetchMembersProfiles, fetchDogsProfiles, sendNewAccount, submitNewDog, fetchAccountDogsProfiles } from '../../actions/profiles';
 import { fetchRegions, fetchDepartements } from '../../actions/location';
 import { changeLoginField, submitLogin } from '../../actions/user';
 
@@ -31,22 +30,27 @@ function App() {
   const members = useSelector((state) => state.profiles.members);
   const emailValue = useSelector((state) => state.user.email);
   const passwordValue = useSelector((state) => state.user.password);
+  const usernameValue = useSelector((state) => state.user.username);
   const isLogged = useSelector((state) => state.user.isLogged);
-  const name = useSelector((state) => state.user.name);
+  const username = useSelector((state) => state.profiles.accountMember[0].username);
+  const dogName = useSelector((state) => [...state.profiles.accountDogs, dogName]);
   const accountDogs = useSelector((state) => state.profiles.accountDogs);
   const accountMember = useSelector((state) => state.profiles.accountMember);
-  const user = useSelector((state) => state.user);
 
   const isProfilesLoaded = useSelector((state) => state.profiles.isProfilesLoaded);
 
   useEffect(() => {
-    dispatch(fetchMembersProfiles());
-    dispatch(fetchDogsProfiles());
     dispatch(fetchRegions());
     dispatch(fetchDepartements());
-  }, []);
 
-  if (!isProfilesLoaded) {
+    if (isLogged) {
+      dispatch(fetchMembersProfiles());
+      dispatch(fetchDogsProfiles());
+      dispatch(fetchAccountDogsProfiles());
+    }
+  }, [dispatch, isLogged]);
+
+  if (!isProfilesLoaded && isLogged) {
     return <Loading />;
   }
 
@@ -54,10 +58,6 @@ function App() {
     <div className="wrapper">
       <Routes>
         <Route path="/accueil" element={<HomePage isLogged={isLogged} />} />
-        <Route path="/faq" element={<Faq isLogged={isLogged} />} />
-        <Route path="/politique-de-confidentialite" element={<Confidentiality isLogged={isLogged} />} />
-        <Route path="/contact" element={<Contact isLogged={isLogged} />} />
-        <Route path="/mentions-legales" element={<Mentions isLogged={isLogged} />} />
         <Route
           path="/connexion"
           element={(
@@ -71,15 +71,47 @@ function App() {
                 dispatch(submitLogin());
               }}
               isLogged={isLogged}
-              loggedMessage={`Au revoir ${name}!`}
+              loggedMessage={`Au revoir ${username}!`}
             />
           )}
         />
-        <Route path="/inscription" element={<Signin isLogged={isLogged} />} />
-        <Route path="/mon-compte" element={<Account accountDogs={accountDogs} accountMember={accountMember} isLogged={isLogged} user={user} />} />
+        <Route path="/faq" element={<Faq isLogged={isLogged} />} />
+        <Route path="/politique-de-confidentialite" element={<Confidentiality isLogged={isLogged} />} />
+        <Route path="/contact" element={<Contact isLogged={isLogged} />} />
+        <Route path="/mentions-legales" element={<Mentions isLogged={isLogged} />} />
+        <Route
+          path="/inscription"
+          element={(
+            <Signin
+              email={emailValue}
+              password={passwordValue}
+              username={usernameValue}
+              isLogged={isLogged}
+              changeField={(newValue, identifier) => {
+                dispatch(changeLoginField(newValue, identifier));
+              }}
+              handleSignin={() => {
+                dispatch(sendNewAccount(emailValue, usernameValue, passwordValue));
+              }}
+            />
+          )}
+        />
+
+        <Route 
+          path="/mon-compte" 
+          element={(
+            <Account
+              accountDogs={accountDogs}
+              accountMember={accountMember}
+              isLogged={isLogged} 
+              handleNewDog={() => {
+                dispatch(submitNewDog());
+              }}
+            />
+            )}
+            />
         <Route path="/chien/:slug" element={<DogProfile isLogged={isLogged} dogs={dogs} />} />
         <Route path="/dogedit/chien/:slug" element={<DogEdit isLogged={isLogged} />} />
-        <Route path="/ajouter-un-chien" element={<DogAdd isLogged={isLogged} />} />
         <Route path="/useredit/:slug" element={<UserEdit isLogged={isLogged} accountDogs={accountDogs} accountMember={accountMember} />} />
         <Route path="/:slug" element={<UserProfile isLogged={isLogged} members={members} />} />
         <Route path="/recherche-de-chien" element={<DogSearch dogs={dogs} isLogged={isLogged} />} />

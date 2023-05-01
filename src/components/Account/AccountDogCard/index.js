@@ -1,5 +1,8 @@
 import PropTypes from 'prop-types';
 import { NavLink } from 'react-router-dom';
+import { deleteDog } from '../../../actions/profiles';
+import { useDispatch} from 'react-redux';
+import dogprofile from '../../../assets/img/dogprofile.png';
 import '../styles.scss';
 
 const AccountDogCard = ({
@@ -9,50 +12,90 @@ const AccountDogCard = ({
   main_picture,
   personality,
   slug,
-}) => (
-  <div className="account-card">
-    <div className="account-card-header">
-      <div className="account-title">
-        <h1 href="">{name}</h1>
+}) => {
+  const dispatch = useDispatch();
+
+  const handleDelete = (slug) => {
+    dispatch(deleteDog(slug));
+  };
+
+  return (
+    <div className="account-card">
+      <div className="account-card-header">
+        <div className="account-title">
+          {name ? (
+            <h1>{name}</h1>
+          ) : (
+            <h1>Nom non renseigné</h1>
+          )}
+        </div>
+        <div className="account-delete-button">
+          <button onClick={() => handleDelete(slug)}>x</button>
+        </div>
       </div>
-      <div className="account-delete-button">
-        <button>x</button>
+      <div className="account-card-image">
+        {main_picture ? (
+          <img src={`http://caroline-georges.vpnuser.lan:8090/uploads/pictures/${main_picture}`} alt="main-image" />
+        ) : (
+          <img src={dogprofile} alt="fourth-image"/>
+          )}
+        </div>
+      <div className="account-card-content">
+        <ul className="account-infos">
+          <li><h1>Images</h1></li>
+          <li>
+            {name ? (
+              <h1>{name}</h1>
+            ) : (
+              <h1>Nom</h1>
+            )}
+          </li>
+          <li>
+            {age ? (
+              <h1>{age} ans</h1>
+            ) : (
+              <h1>Age</h1>
+            )}
+          </li>
+          <li>
+            {race ? (
+              <h1>{race}</h1>
+            ) : (
+              <h1>Race</h1>
+            )}
+          </li>
+          <li><h1>Hobbies</h1></li>
+          <li>
+            {personality ? (
+              <h1>{personality}</h1>
+            ) : (
+              <h1>Personnalité</h1>
+            )}
+          </li>
+          <li><h1>Description</h1></li>
+        </ul>
+      </div>
+      <div className="account-modification-link">
+        <NavLink
+          to={`/dogedit/chien/${slug}`}
+        >
+          Modifier la fiche
+        </NavLink>
+        <NavLink
+          to={`/chien/${slug}`}
+        >
+          Consulter
+        </NavLink>
       </div>
     </div>
-    <div className="account-card-image">
-      <img src={`http://caroline-georges.vpnuser.lan:8090/uploads/pictures/${main_picture}`} alt="main-image" />
-    </div>
-    <div className="account-card-content">
-      <ul className="account-infos">
-        <li>Images</li>
-        <li>{name}</li>
-        <li>{age} ans</li>
-        <li>{race}</li>
-        <li>Hobbies</li>
-        <li>{personality}</li>
-        <li>Description</li>
-      </ul>
-    </div>
-    <div className="account-modification-link">
-      <NavLink
-        to={`/dogedit/chien/${slug}`}
-      >
-        Modifier la fiche
-      </NavLink>
-      <NavLink
-        to={`/chien/${slug}`}
-      >
-        Consulter
-      </NavLink>
-    </div>
-  </div>
-);
+  );
+};
 
 AccountDogCard.propTypes = {
   name: PropTypes.string.isRequired,
   race: PropTypes.string.isRequired,
   age: PropTypes.number.isRequired,
-  main_picture: PropTypes.array.isRequired,
+  main_picture: PropTypes.string.isRequired,
   personality: PropTypes.string.isRequired,
   slug: PropTypes.string.isRequired,
 };

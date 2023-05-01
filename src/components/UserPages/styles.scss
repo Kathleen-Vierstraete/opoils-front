@@ -326,7 +326,7 @@
               max-width: calc(var(--index) * 10);
               max-height: calc(var(--index) * 10);
               box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.788);
-              border-radius: 50% ;
+              border-radius: 50px;
               border: calc(var(--index) / 6) solid vars.$primaryDarkColor;
             }
           }
@@ -419,15 +419,6 @@
             margin-top: 1%;
             font-size: calc(var(--index) / 1.2);
             cursor: pointer;
-          }
-
-          & .contact:hover span {
-            display:none;
-          }
-
-          & .contact:hover:before{
-            content:"exemple@test.com";
-            font-size: calc(var(--index) / 1.3);
           }
         }
       }

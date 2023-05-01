@@ -27,10 +27,8 @@ const enhancers = composeEnhancers(
   ),
 );
 
-// Pass the composed enhancer to createStore()
 const store = createStore(persistedReducer, enhancers);
 
 const persistor = persistStore(store);
 
-
-export default store;
+export { store, persistor };

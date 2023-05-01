@@ -9,6 +9,7 @@ import AppHeader from '../AppHeader';
 import AppFooter from '../AppFooter';
 import SelectLocation from '../SearchPages/SelectLocation';
 import UsersDogsPart from './UsersDogsPart';
+import memberprofile from '../../assets/img/memberprofile.png';
 
 const UserEdit = ({
   isLogged,
@@ -26,7 +27,11 @@ const UserEdit = ({
             <div className="user-images">
               <div className="main-image">
                 <form>
-                  <img src="" alt="main-image" />
+                  {member.picture ? (
+                  <img src={`http://caroline-georges.vpnuser.lan:8090/uploads/pictures/${member.picture}`} alt="main-image" />
+                  ) : (
+                  <img src={memberprofile} alt="fourth-image"/> 
+                  )}
                   <button type="submit">Modifier la photo</button>
                 </form>
               </div>
