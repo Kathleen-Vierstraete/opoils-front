@@ -69,7 +69,7 @@
           line-height: calc(var(--index) * 1.8);
           font-size: calc(var(--index) * 1.2);
           font-weight: 400;
-          text-shadow: 2px 2px 15px rgba(153, 235, 190, 0.342);
+          text-shadow: 2px 2px 15px rgba(153, 235, 190, 0.733);
         }
       & h1{
         padding-bottom: 10%;
@@ -398,6 +398,7 @@
         }
         
         & button {
+          width: 100%;
           color: vars.$primaryDarkColor;
           margin-top: 9%;
           background: vars.$primaryLightColor;
@@ -408,7 +409,7 @@
           box-shadow: 6px 6px 6px #473a33, -6px -5px 6px #070605;
           transition: 0.5s;
           margin-bottom: 8%;
-          font-size: calc(var(--index) / 1.5)
+          font-size: calc(var(--index) / 2)
         }
         
         & button:hover {

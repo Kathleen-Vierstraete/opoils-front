@@ -111,8 +111,20 @@ function App() {
         <Route path="/dogedit/chien/:slug" element={<DogEdit isLogged={isLogged} />} />
         <Route path="/useredit/:slug" element={<UserEdit isLogged={isLogged} accountDogs={accountDogs} accountMember={accountMember} />} />
         <Route path="/:slug" element={<UserProfile isLogged={isLogged} members={members} />} />
-        <Route path="/recherche-de-chien" element={<DogSearch dogs={dogs} isLogged={isLogged} />} />
-        <Route path="/recherche-de-proprietaire" element={<UserSearch members={members} isLogged={isLogged} />} />
+        <Route
+          path="/recherche-de-chien"
+          element={<DogSearch dogs={dogs} isLogged={isLogged} />}
+          onEnter={() => {
+            dispatch(fetchDogsProfiles());
+          }}
+        />
+        <Route
+          path="/recherche-de-proprietaire" 
+          element={<UserSearch members={members} isLogged={isLogged} />} 
+          onEnter={() => {
+            dispatch(fetchMembersProfiles());
+          }}
+        />
       </Routes>
     </div>
   );

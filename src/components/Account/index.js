@@ -1,7 +1,7 @@
 import './styles.scss';
 import { useDispatch} from 'react-redux';
 import { useState } from 'react';
-import { addNewDog, fetchAccountDogsProfiles } from '../../actions/profiles';
+import { addNewDog, fetchAccountDogsProfiles, fetchDogsProfiles } from '../../actions/profiles';
 import PropTypes from 'prop-types';
 import AppHeader from '../AppHeader';
 import AppFooter from '../AppFooter';
@@ -31,6 +31,7 @@ const Account = ({
     dispatch(addNewDog(dog));
     handleNewDog();
     dispatch(fetchAccountDogsProfiles());
+    dispatch(fetchDogsProfiles());
   };
   return (
     <>

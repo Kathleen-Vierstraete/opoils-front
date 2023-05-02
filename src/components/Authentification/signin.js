@@ -80,7 +80,7 @@ const Signin = ({
             <h1>Bienvenue !</h1>
             {isSuccess ? (
               <NavLink to="/connexion">
-                <h3>Compte créé! Tu peux cliquer ici pour te connecter</h3>
+                <h3>Compte créé! Vous pouvez cliquer ici pour vous connecter</h3>
               </NavLink>
             ) : (
               <h3>Veuillez remplir correctement les champs ci-dessous pour créer un compte. Ce message évolue si c'est bon.</h3>

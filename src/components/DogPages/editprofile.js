@@ -1,10 +1,9 @@
 import './styles.scss';
 import PropTypes from 'prop-types';
-import { useDispatch} from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useState } from 'react';
-import { useParams } from 'react-router-dom';
-import { useSelector } from 'react-redux';
-import { findDog } from 'src/selectors/dogs'
+import { useParams, useNavigate } from 'react-router-dom';
+import { findDog } from 'src/selectors/dogs';
 import { updateDogInfos, sendUpdatedDogInfos } from '../../actions/profiles';
 import AppHeader from '../AppHeader';
 import AppFooter from '../AppFooter';
@@ -17,6 +16,7 @@ const DogEdit = ({
   isLogged,
 }) => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const { slug } = useParams();
   const dog = useSelector((state) => findDog(state.profiles.accountDogs, slug));
 
@@ -32,6 +32,7 @@ const DogEdit = ({
     const newDog = { name, size, age, race, personality, presentation };
     dispatch(updateDogInfos(slug, newDog));
     dispatch(sendUpdatedDogInfos(slug));
+    navigate('/mon-compte');
   };
 
   return (
