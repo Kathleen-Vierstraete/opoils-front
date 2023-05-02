@@ -29,7 +29,6 @@ const Account = ({
     evt.preventDefault();
     const dog = { name, size, age, race, personality };
     dispatch(addNewDog(dog));
-    console.log('submitNewdog');
     handleNewDog();
     dispatch(fetchAccountDogsProfiles());
   };

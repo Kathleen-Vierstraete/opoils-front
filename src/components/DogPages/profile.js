@@ -16,7 +16,6 @@ const DogProfile = ({
   const dog = useSelector((state) => findDog(state.profiles.dogs, slug));
   const hobbies = dog.hobbies;
   const pictures = dog.pictures;
-  console.log(hobbies);
 
   return (
     <><AppHeader isLogged={isLogged} />

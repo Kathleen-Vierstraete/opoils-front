@@ -12,9 +12,7 @@ const InfosField = ({
   setAge,
   setRace,
   setPersonality,
-}) => {
-  return (
-
+}) => (
     <ul>
       <li>
         <label>Nom</label>
@@ -52,7 +50,7 @@ const InfosField = ({
           placeholder="age"
           name="age"
           value={age}
-          onChange={(e) => setAge(e.target.value)}
+          onChange={(e) => setAge(parseInt(e.target.value))}
           required
         />
       </li>
@@ -69,6 +67,5 @@ const InfosField = ({
       </li>
     </ul>
   );
-};
 
 export default InfosField;

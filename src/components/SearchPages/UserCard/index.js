@@ -27,10 +27,14 @@ const UserCard = ({
 );
 
 UserCard.propTypes = {
-  picture: PropTypes.string.isRequired,
+  picture: PropTypes.string,
   username: PropTypes.string.isRequired,
-  city: PropTypes.string.isRequired,
+  city: PropTypes.string,
   slug: PropTypes.string.isRequired,
 };
 
+UserCard.defaultProps = {
+  picture: null,
+  city: null,
+};
 export default UserCard;

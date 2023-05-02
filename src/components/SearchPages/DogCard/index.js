@@ -28,9 +28,12 @@ const DogCard = ({
 
 DogCard.propTypes = {
   name: PropTypes.string.isRequired,
-  main_picture: PropTypes.string.isRequired,
+  main_picture: PropTypes.string,
   presentation: PropTypes.string.isRequired,
   slug: PropTypes.string.isRequired,
+};
+DogCard.defaultProps = {
+  main_picture: null,
 };
 
 export default DogCard;

@@ -1,11 +1,14 @@
 import PropTypes from 'prop-types';
 import { leaveSession } from 'src/actions/user';
-import { useDispatch } from 'react-redux';
+import { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { persistor } from '../../store/index';
 import AppHeader from '../AppHeader';
 import AppFooter from '../AppFooter';
 import Field from './Field';
+import cacher from '../../assets/img/cacher.png';
+import oeil from '../../assets/img/oeil.png';
 
 import './styles.scss';
 
@@ -15,7 +18,6 @@ const Login = ({
   changeField,
   handleLogin,
   isLogged,
-  loggedMessage,
 }) => {
   const handleSubmit = (evt) => {
     evt.preventDefault();
@@ -23,11 +25,25 @@ const Login = ({
   };
   const dispatch = useDispatch();
 
+  const [showPassword, setShowPassword] = useState(false);
+
+  const handleTogglePassword = () => {
+    setShowPassword(!showPassword);
+  };
+  const username = useSelector((state) => {
+    const accountMember = state.profiles.accountMember;
+    if (accountMember && accountMember.length > 0) {
+      return accountMember[0].username;
+    }
+    return null;
+  });
+
   const handleClick = (evt) => {
     evt.preventDefault();
     dispatch(leaveSession());
     sessionStorage.removeItem('authToken');
-    persistor.purge();
+    persistor.pause();
+    persistor.flush().then(() => persistor.purge());
   };
 
   return (
@@ -40,20 +56,27 @@ const Login = ({
               <h1>Bonjour !</h1>
               <div className="authentification-inputs">
                 <form onSubmit={handleSubmit}>
-                  <Field
-                    name="email"
-                    placeholder="Adresse Email"
-                    value={email}
-                    onChange={changeField}
-                  />
-                  <Field
-                    name="password"
-                    type="password"
-                    placeholder="Mot de Passe"
-                    onChange={changeField}
-                    value={password}
-                  />
-                  <button type="submit">connexion</button>
+                  <div className="inputs">
+                    <Field
+                      name="email"
+                      placeholder="Adresse Email"
+                      value={email}
+                      onChange={changeField}
+                    />
+                    <Field
+                      name="password"
+                      type={showPassword ? 'text' : 'password'}
+                      placeholder="Mot de Passe"
+                      onChange={changeField}
+                      value={password}
+                    />
+                    <button type="submit">connexion</button>
+                  </div>
+                  <div className="password-login" onClick={handleTogglePassword}>
+                    {showPassword ? <img src={cacher} alt="hide" />
+                      :
+                    <img src={oeil} alt="show" />}
+                  </div>
                 </form>
                 <NavLink to="/inscription"><h2>Pas de compte ? Venez vous inscrire ici ! </h2></NavLink>
               </div>
@@ -61,7 +84,7 @@ const Login = ({
           )}
           {isLogged && (
             <div className="authentification-side-text">
-              <h1>{loggedMessage}</h1>
+              <h1>Au revoir {username}!</h1>
               <h3>Si vous venez de créer votre compte pensez à remplir votre profil</h3>
               <div className="authentification-inputs">
                 <button
@@ -87,12 +110,12 @@ Login.propTypes = {
   changeField: PropTypes.func.isRequired,
   handleLogin: PropTypes.func.isRequired,
   isLogged: PropTypes.bool,
-  loggedMessage: PropTypes.string,
+  username: PropTypes.string,
 };
 
 Login.defaultProps = {
   isLogged: false,
-  loggedMessage: 'Connecté',
+  username: null,
 };
 
 export default Login;

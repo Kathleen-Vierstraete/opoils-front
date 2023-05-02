@@ -95,9 +95,13 @@ AccountDogCard.propTypes = {
   name: PropTypes.string.isRequired,
   race: PropTypes.string.isRequired,
   age: PropTypes.number.isRequired,
-  main_picture: PropTypes.string.isRequired,
+  main_picture: PropTypes.string,
   personality: PropTypes.string.isRequired,
   slug: PropTypes.string.isRequired,
 };
 
+AccountDogCard.defaultProps = {
+  isLogged: false,
+  main_picture: null,
+};
 export default AccountDogCard;

@@ -18,7 +18,6 @@ const UserEdit = ({
 }) => {
   const { slug } = useParams();
   const member = useSelector((state) => findMember(state.profiles.members, slug));
-  console.log(member);
   return (
     <><AppHeader isLogged={isLogged} />
       <div className="user-profile">

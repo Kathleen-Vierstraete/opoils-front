@@ -2,6 +2,8 @@ import axios from 'axios';
 import { FETCH_DOGS_PROFILES, saveDogsProfiles, FETCH_MEMBERS_PROFILES,saveMembersProfiles, FETCH_ACCOUNT_DOGS_PROFILES, saveAccountDogsProfiles, FETCH_ACCOUNT_MEMBER_PROFILE, saveAccountMemberProfile, fetchAccountProfiles, SEND_NEW_ACCOUNT, sendNewAccount, SUBMIT_NEW_DOG, fetchAccountDogsProfiles, DELETE_DOG, deleteDog, SEND_UPDATED_DOG_INFOS, sendUpdatedDogInfos} from '../actions/profiles';
 
 const profilesMiddleware = (store) => (next) => (action) => {
+
+
   switch (action.type) {
     case FETCH_MEMBERS_PROFILES:
       axios.get('http://caroline-georges.vpnuser.lan:8090/api/members')
@@ -115,11 +117,12 @@ const profilesMiddleware = (store) => (next) => (action) => {
       break;
 
     case SEND_UPDATED_DOG_INFOS:
+      
       const slug = action.slug;
       const dogs = store.getState().profiles.accountDogs;
       const matchedDog = dogs.find((dog) => dog.slug === slug);
 
-      axios.post(`http://caroline-georges.vpnuser.lan:8090/api/secure/dogs/${action.slug}`, {
+      axios.put(`http://caroline-georges.vpnuser.lan:8090/api/secure/dogs/${action.slug}`, {
         name: matchedDog.name,
         age: matchedDog.age,
         personality: matchedDog.personality,

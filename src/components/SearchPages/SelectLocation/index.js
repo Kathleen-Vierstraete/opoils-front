@@ -46,15 +46,14 @@ const SelectLocation = ({location, onSelect}) => {
 };
 
 SelectLocation.propTypes = {
-  location: PropTypes.arrayOf(
-    PropTypes.shape({
-      region: PropTypes.string,
-      departement: PropTypes.string,
-    }),
-  ),
+  location: PropTypes.shape({
+    region: PropTypes.string,
+    departement: PropTypes.string,
+  }),
 };
 
 SelectLocation.defaultProps = {
   location: null,
 };
+
 export default SelectLocation;
