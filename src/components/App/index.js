@@ -32,7 +32,6 @@ function App() {
   const passwordValue = useSelector((state) => state.user.password);
   const usernameValue = useSelector((state) => state.user.username);
   const isLogged = useSelector((state) => state.user.isLogged);
-  const username = useSelector((state) => state.profiles.accountMember[0].username);
   const dogName = useSelector((state) => [...state.profiles.accountDogs, dogName]);
   const accountDogs = useSelector((state) => state.profiles.accountDogs);
   const accountMember = useSelector((state) => state.profiles.accountMember);
@@ -71,7 +70,7 @@ function App() {
                 dispatch(submitLogin());
               }}
               isLogged={isLogged}
-              loggedMessage={`Au revoir ${username}!`}
+
             />
           )}
         />

@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import { leaveSession } from 'src/actions/user';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { persistor } from '../../store/index';
 import AppHeader from '../AppHeader';
@@ -22,6 +22,8 @@ const Login = ({
     handleLogin();
   };
   const dispatch = useDispatch();
+
+  const username = useSelector((state) => state.profiles.accountMember[0].username);
 
   const handleClick = (evt) => {
     evt.preventDefault();
@@ -61,7 +63,7 @@ const Login = ({
           )}
           {isLogged && (
             <div className="authentification-side-text">
-              <h1>{loggedMessage}</h1>
+              <h1>Au revoir {username}!</h1>
               <h3>Si vous venez de créer votre compte pensez à remplir votre profil</h3>
               <div className="authentification-inputs">
                 <button
@@ -81,7 +83,6 @@ const Login = ({
 };
 
 Login.propTypes = {
-
   email: PropTypes.string.isRequired,
   password: PropTypes.string.isRequired,
   changeField: PropTypes.func.isRequired,
