@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import { NavLink } from 'react-router-dom';
-import { saveMembersProfiles } from '../../../actions/profiles';
+import dogprofile from '../../../assets/img/dogprofile.png';
 import '../styles.scss';
 
 const UserDogsPart = ({
@@ -17,8 +17,12 @@ const UserDogsPart = ({
   <div className="dog-part">
     <div className="dog-images">
       <div className="main-image">
-        <img src={`http://caroline-georges.vpnuser.lan:8090/uploads/pictures/${main_picture}`} alt="main-image" />
-      </div>
+      {main_picture ? (
+        <img src={`http://caroline-georges-server.eddi.cloud:8080/uploads/pictures/${main_picture}`} alt="main-image" />
+      ) : (
+        <img src={dogprofile} alt="fourth-image"/> 
+      )}
+        </div>
     </div>
     <div className="dog-infos">
       <div className="dog-description">

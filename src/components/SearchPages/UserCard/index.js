@@ -11,7 +11,7 @@ const UserCard = ({
 }) => (
   <div className="card">
     {picture ? (
-    <img src={`http://caroline-georges.vpnuser.lan:8090/uploads/pictures/${picture}`} alt={username} />
+    <img src={`http://caroline-georges-server.eddi.cloud:8080/uploads/pictures/${picture}`} alt={username} />
     ) : (
       <img src={memberprofile} alt="fourth-image"/> 
       )}

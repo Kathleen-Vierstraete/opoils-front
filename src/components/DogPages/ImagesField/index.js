@@ -18,7 +18,7 @@ const ImagesField = ({
       <div className="main-image">
         <form>
           {pictures && pictures[0] && pictures[0].picture ? (
-            <img src={`http://caroline-georges.vpnuser.lan:8090/uploads/pictures/${dog.main_picture}`} alt="main-image" />
+            <img src={`http://caroline-georges-server.eddi.cloud:8080/uploads/pictures/${dog.main_picture}`} alt="main-image" />
           ) : (
             <div className="empty-image-div">
               <img src={dogprofile} alt="fourth-image"/>
@@ -33,7 +33,7 @@ const ImagesField = ({
           <form>
             {/* verify if pictures are undefined or not and the option to show nothing instead of gettingg an error if empty so people can access the possibility to upload an image if there's none to begin with */}
             {pictures && pictures[0] && pictures[0].picture ? (
-              <img src={`http://caroline-georges.vpnuser.lan:8090/uploads/pictures/${pictures[0]?.picture}`} alt="second-image" />
+              <img src={`http://caroline-georges-server.eddi.cloud:8080/uploads/pictures/${pictures[0]?.picture}`} alt="second-image" />
             ) : (
               <div className="empty-image-div">
                 <img src={dogprofile} alt="fourth-image"/>
@@ -46,7 +46,7 @@ const ImagesField = ({
         <div className="images">
           <form>
             {pictures && pictures[1] && pictures[1].picture ? (
-              <img src={`http://caroline-georges.vpnuser.lan:8090/uploads/pictures/${pictures[1]?.picture}`} alt="second-image" />
+              <img src={`http://caroline-georges-server.eddi.cloud:8080/uploads/pictures/${pictures[1]?.picture}`} alt="second-image" />
             ) : (
               <div className="empty-image-div">
                 <img src={dogprofile} alt="fourth-image"/>
@@ -59,7 +59,7 @@ const ImagesField = ({
         <div className="images">
           <form>
             {pictures && pictures[2] && pictures[2].picture ? (
-              <img src={`http://caroline-georges.vpnuser.lan:8090/uploads/pictures/${pictures[2]?.picture}`} alt="second-image" />
+              <img src={`http://caroline-georges-server.eddi.cloud:8080/uploads/pictures/${pictures[2]?.picture}`} alt="second-image" />
             ) : (
               <div className="empty-image-div">
                 <img src={dogprofile} alt="fourth-image"/>

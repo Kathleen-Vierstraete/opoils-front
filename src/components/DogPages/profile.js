@@ -1,9 +1,11 @@
 import './styles.scss';
 import PropTypes from 'prop-types';
+import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { findDog } from 'src/selectors/dogs';
 import { NavLink } from 'react-router-dom';
+import { FETCH_DOGS_PROFILES } from '../../actions/profiles';
 
 import AppHeader from '../AppHeader';
 import AppFooter from '../AppFooter';
@@ -17,6 +19,12 @@ const DogProfile = ({
   const hobbies = dog.hobbies;
   const pictures = dog.pictures;
 
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch({ type: FETCH_DOGS_PROFILES });
+  }, []);
+
   return (
     <><AppHeader isLogged={isLogged} />
       <div className="dog-profile">
@@ -25,7 +33,7 @@ const DogProfile = ({
             <h1>{dog.name}</h1>
             <div className="main-image">
               {dog.main_picture ? (
-              <img src={`http://caroline-georges.vpnuser.lan:8090/uploads/pictures/${dog.main_picture}`} alt="main-image" />
+              <img src={`http://caroline-georges-server.eddi.cloud:8080/uploads/pictures/${dog.main_picture}`} alt="main-image" />
               ) : (
               <img src={dogprofile} alt="fourth-image"/> 
               )}
@@ -33,7 +41,7 @@ const DogProfile = ({
             <div className="other-images">
               {pictures.map((picture) => (
                 <div className="images" key={picture.id}>
-                  <img src={`http://caroline-georges.vpnuser.lan:8090/uploads/pictures/${picture.picture}`} alt="second-image" />
+                  <img src={`http://caroline-georges-server.eddi.cloud:8080/uploads/pictures/${picture.picture}`} alt="second-image" />
                 </div>
               ))}
             </div>

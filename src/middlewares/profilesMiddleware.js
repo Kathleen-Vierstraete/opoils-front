@@ -1,12 +1,12 @@
 import axios from 'axios';
-import { FETCH_DOGS_PROFILES, saveDogsProfiles, FETCH_MEMBERS_PROFILES,saveMembersProfiles, FETCH_ACCOUNT_DOGS_PROFILES, saveAccountDogsProfiles, FETCH_ACCOUNT_MEMBER_PROFILE, saveAccountMemberProfile, fetchAccountProfiles, SEND_NEW_ACCOUNT, sendNewAccount, SUBMIT_NEW_DOG, fetchAccountDogsProfiles, DELETE_DOG, deleteDog, SEND_UPDATED_DOG_INFOS, sendUpdatedDogInfos} from '../actions/profiles';
+import { FETCH_DOGS_PROFILES, saveDogsProfiles, FETCH_MEMBERS_PROFILES,saveMembersProfiles, FETCH_ACCOUNT_DOGS_PROFILES, saveAccountDogsProfiles, FETCH_ACCOUNT_MEMBER_PROFILE, saveAccountMemberProfile, fetchAccountProfiles, SEND_NEW_ACCOUNT, sendNewAccount, SUBMIT_NEW_DOG, fetchAccountDogsProfiles, DELETE_DOG, deleteDog, SEND_UPDATED_DOG_INFOS, sendUpdatedDogInfos, fetchDogsProfiles} from '../actions/profiles';
 
 const profilesMiddleware = (store) => (next) => (action) => {
 
 
   switch (action.type) {
     case FETCH_MEMBERS_PROFILES:
-      axios.get('http://caroline-georges.vpnuser.lan:8090/api/members')
+      axios.get('http://caroline-georges-server.eddi.cloud:8080/api/members')
         .then((response) => {
           store.dispatch(saveMembersProfiles(response.data));
         })
@@ -16,7 +16,7 @@ const profilesMiddleware = (store) => (next) => (action) => {
       break;
 
       case FETCH_DOGS_PROFILES:
-      axios.get('http://caroline-georges.vpnuser.lan:8090/api/dogs ')
+      axios.get('http://caroline-georges-server.eddi.cloud:8080/api/dogs ')
         .then((response) => {
           store.dispatch(saveDogsProfiles(response.data));
         })
@@ -26,7 +26,7 @@ const profilesMiddleware = (store) => (next) => (action) => {
       break;
 
     case FETCH_ACCOUNT_MEMBER_PROFILE:
-      axios.get('http://caroline-georges.vpnuser.lan:8090/api/member',
+      axios.get('http://caroline-georges-server.eddi.cloud:8080/api/member',
         {
           headers: {
             Authorization: `Bearer ${store.getState().user.token}`,
@@ -43,7 +43,7 @@ const profilesMiddleware = (store) => (next) => (action) => {
       break;
 
     case FETCH_ACCOUNT_DOGS_PROFILES:
-      axios.get('http://caroline-georges.vpnuser.lan:8090/api/member',
+      axios.get('http://caroline-georges-server.eddi.cloud:8080/api/member',
         {
           headers: {
             Authorization: `Bearer ${store.getState().user.token}`,
@@ -60,7 +60,7 @@ const profilesMiddleware = (store) => (next) => (action) => {
       break;
 
     case SEND_NEW_ACCOUNT:
-      axios.post('http://caroline-georges.vpnuser.lan:8090/api/secure/members',
+      axios.post('http://caroline-georges-server.eddi.cloud:8080/api/secure/members',
         {
           username: store.getState().user.username,
           password: store.getState().user.password,
@@ -69,6 +69,7 @@ const profilesMiddleware = (store) => (next) => (action) => {
       )
         .then((response) => {
           console.log(response.data);
+          dispatch(fetchDogsProfiles());
         })
         .catch((error) => {
           console.log(error);
@@ -79,7 +80,7 @@ const profilesMiddleware = (store) => (next) => (action) => {
 
       const addedDog = store.getState().profiles.dogs.slice(-1)[0];
 
-      axios.post('http://caroline-georges.vpnuser.lan:8090/api/secure/dogs', {
+      axios.post('http://caroline-georges-server.eddi.cloud:8080/api/secure/dogs', {
         name: addedDog.name,
         age: addedDog.age,
         personality: addedDog.personality,
@@ -93,6 +94,7 @@ const profilesMiddleware = (store) => (next) => (action) => {
       })
         .then((response) => {
           console.log(response.data);
+
         })
         .catch((error) => {
           console.log(error);
@@ -100,7 +102,7 @@ const profilesMiddleware = (store) => (next) => (action) => {
       break;
 
     case DELETE_DOG:
-      axios.delete(`http://caroline-georges.vpnuser.lan:8090/api/secure/dogs/${action.slug}`,
+      axios.delete(`http://caroline-georges-server.eddi.cloud:8080/api/secure/dogs/${action.slug}`,
         {
           headers: {
             Authorization: `Bearer ${store.getState().user.token}`,
@@ -122,7 +124,7 @@ const profilesMiddleware = (store) => (next) => (action) => {
       const dogs = store.getState().profiles.accountDogs;
       const matchedDog = dogs.find((dog) => dog.slug === slug);
 
-      axios.put(`http://caroline-georges.vpnuser.lan:8090/api/secure/dogs/${action.slug}`, {
+      axios.put(`http://caroline-georges-server.eddi.cloud:8080/api/secure/dogs/${action.slug}`, {
         name: matchedDog.name,
         age: matchedDog.age,
         personality: matchedDog.personality,
@@ -139,6 +141,7 @@ const profilesMiddleware = (store) => (next) => (action) => {
         .then((response) => {
           console.log(response.data);
           store.dispatch(sendUpdatedDogInfos());
+          dispatch(fetchDogsProfiles());
         })
         .catch((error) => {
           console.log(error);

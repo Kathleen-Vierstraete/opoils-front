@@ -35,14 +35,13 @@ const AccountDogCard = ({
       </div>
       <div className="account-card-image">
         {main_picture ? (
-          <img src={`http://caroline-georges.vpnuser.lan:8090/uploads/pictures/${main_picture}`} alt="main-image" />
+          <img src={`http://caroline-georges-server.eddi.cloud:8080/uploads/pictures/${main_picture}`} alt="main-image" />
         ) : (
           <img src={dogprofile} alt="fourth-image"/>
           )}
         </div>
       <div className="account-card-content">
         <ul className="account-infos">
-          <li><h1>Images</h1></li>
           <li>
             {name ? (
               <h1>{name}</h1>
@@ -50,6 +49,7 @@ const AccountDogCard = ({
               <h1>Nom</h1>
             )}
           </li>
+          <li><h1>Images</h1></li>
           <li>
             {age ? (
               <h1>{age} ans</h1>

@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { findDog } from 'src/selectors/dogs';
-import { updateDogInfos, sendUpdatedDogInfos } from '../../actions/profiles';
+import { updateDogInfos, sendUpdatedDogInfos, fetchAccountDogsProfiles } from '../../actions/profiles';
 import AppHeader from '../AppHeader';
 import AppFooter from '../AppFooter';
 import InfosField from './InfosField';

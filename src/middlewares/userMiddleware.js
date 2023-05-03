@@ -6,7 +6,7 @@ const userMiddleware = (store) => (next) => (action) => {
   switch (action.type) {
     case SUBMIT_LOGIN:
       axios.post(
-        'http://caroline-georges.vpnuser.lan:8090/api/login_check',
+        'http://caroline-georges-server.eddi.cloud:8080/api/login_check',
         {
           username: store.getState().user.email,
           password: store.getState().user.password,

@@ -44,9 +44,14 @@ const AccountUserCard = ({
 );
 
 AccountUserCard.propTypes = {
-  postalCode: PropTypes.string.isRequired,
+  postalCode: PropTypes.string,
   username: PropTypes.string.isRequired,
   slug: PropTypes.string.isRequired,
-  memberPicture: PropTypes.string.isRequired,
+  memberPicture: PropTypes.string,
+};
+AccountUserCard.defaultProps = {
+  isLogged: false,
+  memberPicture: null,
+  postalCode: null,
 };
 export default AccountUserCard;

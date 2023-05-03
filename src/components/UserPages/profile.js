@@ -33,7 +33,7 @@ const UserProfile = ({
             <div className="user-images">
               <div className="main-image">
               {member.picture ? (
-                <img src={`http://caroline-georges.vpnuser.lan:8090/uploads/pictures/${member.picture}`} alt="main-image" />
+                <img src={`http://caroline-georges-server.eddi.cloud:8080/uploads/pictures/${member.picture}`} alt="main-image" />
               ) : (
                 <img src={memberprofile} alt="user-image"/> 
               )}
