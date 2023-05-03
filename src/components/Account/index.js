@@ -25,8 +25,7 @@ const Account = ({
   const [race, setRace] = useState('');
   const [personality, setPersonality] = useState('');
 
-  const handleSubmitDog = (evt) => {
-    evt.preventDefault();
+  const handleSubmitDog = () => {
     const dog = { name, size, age, race, personality };
     dispatch(addNewDog(dog));
     handleNewDog();
