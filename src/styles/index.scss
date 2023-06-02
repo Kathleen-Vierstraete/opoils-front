@@ -1,0 +1,25 @@
+@use 'reset';
+@use 'vars';
+
+body {
+  font-family: sans-serif;
+}
+
+/* 
+  // or you can import your own font
+  @font-face {
+    font-family: 'Roboto';
+    src: url('../assets/fonts/Roboto-Regular.ttf');
+  }
+
+  body {
+    font-family: 'Roboto', sans-serif;
+  }
+*/
+:root {
+  --index: calc(1vw + 1vh)
+}
+::-webkit-scrollbar-track{
+  background-color: #1F1916;
+}
+
